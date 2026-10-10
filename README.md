@@ -1,5 +1,11 @@
 # Data Analytics Studio
 
+![Portada conceptual ilustrativa de Data-Analytics-Studio; no es una captura real. Cifras, pantallas y módulos ficticios.](assets/covers/cover.png)
+
+> **Ilustración conceptual · No es una captura de una aplicación real.** Las cifras, métricas, pantallas y módulos del mockup son ficticios y no acreditan funcionalidades, resultados ni garantías. Los porcentajes de calidad, estadísticas, flujos holográficos y referencias a consultoría son ilustrativos; no acreditan resultados medidos, servicios comerciales ni módulos implementados.
+>
+> **Concept artwork · Not an actual application screenshot.** Figures, metrics, screens and modules are fictional; they do not substantiate implemented features, measured results or security guarantees. Refer to the documentation below for the project’s actual scope.
+
 Aplicación de escritorio para explorar CSV/Excel, visualizar datos y preparar un
 estado de resultados simplificado. Edición de portfolio de Francisco Delgado.
 **Todos los ejemplos incluidos son sintéticos.**

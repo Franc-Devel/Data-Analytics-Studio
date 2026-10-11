@@ -134,6 +134,10 @@ python -m pytest tests/ -v
 Data-Analytics-Studio/
 ├── dashboard.py                 # Punto de entrada principal (Streamlit Web Dashboard)
 ├── run_app.py                   # Lanzador de la suite analítica de escritorio
+├── Modelfile                    # Manifiesto para despliegue de modelo local en Ollama
+├── DOCUMENTO_MAESTRO.md         # Documento Maestro de arquitectura corporativa
+├── Leeds orden.xlsx             # Dataset maestro de Leads CRM (100% anonimizado e interconectado)
+├── Comercial.xlsx               # Dataset maestro de Pauta y Cotizaciones (100% interconectado)
 ├── finance_app/
 │   ├── db/                      # Modelos SQLAlchemy, sesiones, migraciones y sync SQL
 │   ├── services/                # Servicios de IA, reglas de asignación, colas y seguridad
@@ -143,6 +147,8 @@ Data-Analytics-Studio/
 │   ├── pdf_reports.py           # Motor de generación de reportes ejecutivos en PDF
 │   ├── whatsapp_service.py      # Sincronización, parser NLP y timeline de mensajes
 │   └── config.py                # Configuración desacoplada por entorno (.env)
+├── whatsapp_bridge/             # Microservicio Node.js con Baileys para integración de WhatsApp
+├── llm/                         # Laboratorio de IA: Multi-agentes, OCR de comprobantes, asistentes y prompts
 ├── data/
 │   ├── sample_leads.xlsx        # Dataset interconectado de leads CRM
 │   └── sample_comercial.xlsx    # Dataset interconectado de pauta y cotizaciones mensuales
@@ -153,6 +159,7 @@ Data-Analytics-Studio/
 │   └── run_migrations.py        # Gestor de esquemas de base de datos
 ├── docs/
 │   ├── DOCUMENTO_MAESTRO.md     # Especificación arquitectónica corporativa completa
+│   ├── BACKUP_AND_RECOVERY.md   # Políticas y comandos de respaldo/recuperación
 │   ├── arquitectura.md          # Diagramas de flujo y arquitectura
 │   └── funcionalidades.md       # Detalle de módulos analíticos
 ├── tests/                       # Suite de tests unitarios y de integración

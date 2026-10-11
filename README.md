@@ -6,6 +6,8 @@
 >
 > **Concept artwork · Not an actual application screenshot.** Figures, metrics, screens and modules are fictional; they do not substantiate implemented features, measured results or security guarantees. Refer to the documentation below for the project’s actual scope.
 
+[Portada para Social Preview · 1280×640](assets/covers/cover-social.jpg) · Ilustración conceptual, no captura real.
+
 Aplicación de escritorio para explorar CSV/Excel, visualizar datos y preparar un
 estado de resultados simplificado. Edición de portfolio de Francisco Delgado.
 **Todos los ejemplos incluidos son sintéticos.**

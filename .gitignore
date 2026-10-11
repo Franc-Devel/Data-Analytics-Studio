@@ -41,3 +41,8 @@ Thumbs.db
 .vscode/
 .idea/
 *.bak
+
+# WhatsApp Bridge & Node modules
+whatsapp_bridge/node_modules/
+whatsapp_bridge/auth_info_baileys*/
+llm/node_modules/

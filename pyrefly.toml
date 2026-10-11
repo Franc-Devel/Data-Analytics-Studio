@@ -1,0 +1,38 @@
+search-path = [
+    ".",
+    "finance_app",
+    ".venv_linux/lib/python3.14/site-packages",
+]
+recursion-depth-limit = 50
+recursion-overflow-handler = "break-with-placeholder"
+replace-imports-with-any = [
+    "streamlit",
+    "pandas",
+    "altair",
+    "matplotlib",
+    "matplotlib.pyplot",
+    "numpy",
+    "openpyxl",
+    "openpyxl.chart",
+    "openpyxl.styles",
+    "openpyxl.utils",
+    "reportlab",
+    "reportlab.lib",
+    "reportlab.lib.colors",
+    "reportlab.lib.enums",
+    "reportlab.lib.pagesizes",
+    "reportlab.lib.styles",
+    "reportlab.pdfgen",
+    "reportlab.pdfgen.canvas",
+    "reportlab.platypus",
+    "qrcode",
+    "requests",
+    "plotly",
+    "plotly.express",
+    "plotly.graph_objects",
+]
+
+[errors]
+bad-argument-type = false
+bad-assignment = false
+unsupported-operation = false

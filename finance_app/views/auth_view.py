@@ -418,11 +418,11 @@ def init_auth_session():
             return
         if st.session_state.get("current_user") is None:
             st.session_state["current_user"] = {
-                "id": "local-admin",
-                "username": "admin@consultora.com",
-                "full_name": "Administrador Local",
+                "id": "admin-01",
+                "username": "juan.perez@consultora.com",
+                "full_name": "Juan Pérez",
                 "role": "admin",
-                "email": "admin@consultora.com",
+                "email": "juan.perez@consultora.com",
                 "must_change_password": False,
                 "token_version": 1,
                 "last_activity": time.time(),

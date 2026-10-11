@@ -1,0 +1,58 @@
+{
+  "+54 9 351 777-1234": {
+    "name": "Juan Perez (Agro del Sur)",
+    "product": "Davis",
+    "closer": "Jony",
+    "monto_cotizado": 280000,
+    "lead_score": 85
+  },
+  "+54 9 11 5555-4444": {
+    "name": "Elena Gomez (Establecimiento El Trebol)",
+    "product": "Sentek",
+    "closer": "Luisa",
+    "monto_cotizado": 450000,
+    "lead_score": 85
+  },
+  "+54 9 261 444-3322": {
+    "name": "Carlos Rodriguez (Vinedos & Bodegas Mendoza)",
+    "product": "Raphael",
+    "closer": "Sergio",
+    "monto_cotizado": 320000,
+    "lead_score": 65
+  },
+  "+54 9 341 666-7788": {
+    "name": "Laura Diaz (Viveros del Litoral)",
+    "product": "Jardineria",
+    "closer": "Alon",
+    "monto_cotizado": 95000,
+    "lead_score": 85
+  },
+  "+54 9 221 777-1122": {
+    "name": "Martin Alvarez (Cereales del Centro)",
+    "product": "GSI",
+    "closer": "Jony",
+    "monto_cotizado": 185000,
+    "lead_score": 65
+  },
+  "+54 9 342 555-8899": {
+    "name": "Sofia Romero (Semillero Santa Fe)",
+    "product": "Sentek",
+    "closer": "Luisa",
+    "monto_cotizado": 310000,
+    "lead_score": 65
+  },
+  "+54 9 2954 44-5566": {
+    "name": "Lucas Fernandez (Agropecuaria Pampeana)",
+    "product": "Davis",
+    "closer": "Sergio",
+    "monto_cotizado": 390000,
+    "lead_score": 65
+  },
+  "+54 9 2323 55-6677": {
+    "name": "Diego Martinez (Haras San Jorge)",
+    "product": "Jardineria",
+    "closer": "Alon",
+    "monto_cotizado": 140000,
+    "lead_score": 85
+  }
+}

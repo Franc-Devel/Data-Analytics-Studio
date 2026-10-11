@@ -89,4 +89,3 @@ def _unique_column_names(columns: pd.Index) -> list[str]:
         seen[base] = count + 1
         result.append(base if count == 0 else f"{base}_{count + 1}")
     return result
-

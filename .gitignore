@@ -1,12 +1,43 @@
+# Environments
 .venv/
+.venv_linux/
+env/
+venv/
+ENV/
+
+# Python cache & artifacts
 __pycache__/
 *.py[cod]
+*$py.class
+*.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Sensitive files & credentials
 .env
 .env.*
 !.env.example
 *.pem
 *.key
-local_data/
-outputs/
+*.enc
+*.sha256
+
+# Databases and Backups
+backups/
+*.db
+*.db-journal
+*.sqlite3
+!data/sample_*.xlsx
+
+# Logs
 *.log
+logs/
+
+# Operating Systems
 .DS_Store
+Thumbs.db
+
+# IDEs
+.vscode/
+.idea/
+*.bak

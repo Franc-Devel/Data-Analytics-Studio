@@ -1,0 +1,7 @@
+{
+  "phone_number": "+5491100000000",
+  "webhook_url": "http://localhost:8000/webhook",
+  "auto_reply": true,
+  "simulation_mode": true,
+  "rate_limit_per_minute": 30
+}

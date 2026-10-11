@@ -1,5 +1,8 @@
 import pandas as pd
 from typing import Dict, Any
+from finance_app.logging_config import get_logger
+
+logger = get_logger("reports")
 
 def export_income_statement_to_excel(result: Dict[str, Any], filepath: str) -> bool:
     """
@@ -33,8 +36,8 @@ def export_income_statement_to_excel(result: Dict[str, Any], filepath: str) -> b
             df_resumen.to_excel(writer, sheet_name="Estado de Resultados", index=False)
             df_detalle.to_excel(writer, sheet_name="Detalle por Categoría", index=False)
             
+        logger.info(f"Estado de resultados exportado exitosamente a: {filepath}")
         return True
     except Exception as e:
-        print(f"Error exportando a Excel: {e}")
+        logger.error(f"Error exportando Estado de Resultados a Excel '{filepath}': {e}", exc_info=True)
         return False
-

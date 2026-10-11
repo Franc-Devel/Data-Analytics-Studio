@@ -102,4 +102,3 @@ def recommend_chart(frame: pd.DataFrame, columns: list[str]) -> tuple[str, str]:
     if categorical and numeric:
         return "Barras o caja por categoría", "Barras compara agregados; cajas compara distribuciones sin ocultar dispersión y extremos."
     return "Barras agrupadas", "Sirve para comparar categorías relacionadas; limite la cantidad para conservar legibilidad."
-

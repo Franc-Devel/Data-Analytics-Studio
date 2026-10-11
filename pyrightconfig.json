@@ -1,0 +1,9 @@
+{
+  "venvPath": ".",
+  "venv": ".venv_linux",
+  "extraPaths": [
+    ".",
+    "finance_app",
+    ".venv_linux/lib/python3.14/site-packages"
+  ]
+}

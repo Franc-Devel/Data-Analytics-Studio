@@ -1,0 +1,146 @@
+[
+  {
+    "id": "msg_wa_in_001",
+    "from": "+54 9 351 777-1234",
+    "name": "Juan Perez (Agro del Sur)",
+    "body": "Hola Jony, recibimos la cotizacion de las estaciones Davis Vantage. Queriamos confirmar si el plazo de entrega es de 15 dias.",
+    "timestamp": "2026-10-06T20:27:58.509027",
+    "unread": false,
+    "is_from_me": false
+  },
+  {
+    "id": "msg_wa_out_001",
+    "from": "+54 9 351 777-1234",
+    "name": "Jony",
+    "body": "Hola Juan! Exacto, stock garantizado y entrega dentro de 15 dias habiles tras confirmacion de orden.",
+    "timestamp": "2026-10-08T21:27:58.509041",
+    "unread": false,
+    "is_from_me": true
+  },
+  {
+    "id": "msg_wa_in_002",
+    "from": "+54 9 11 5555-4444",
+    "name": "Elena Gomez (Establecimiento El Trebol)",
+    "body": "Buenas tardes Luisa, transferimos el anticipo de las sondas Sentek. Te adjunto el comprobante bancario.",
+    "timestamp": "2026-09-28T20:27:58.509049",
+    "unread": false,
+    "is_from_me": false
+  },
+  {
+    "id": "msg_wa_out_002",
+    "from": "+54 9 11 5555-4444",
+    "name": "Luisa",
+    "body": "Excelente Elena, pago acreditado. Ya coordinamos el despacho agronomico para el lunes.",
+    "timestamp": "2026-10-07T21:27:58.509052",
+    "unread": false,
+    "is_from_me": true
+  },
+  {
+    "id": "msg_wa_in_003",
+    "from": "+54 9 261 444-3322",
+    "name": "Carlos Rodriguez (Vinedos & Bodegas Mendoza)",
+    "body": "Sergio, revisamos la ficha tecnica de las valvulas Raphael. Queriamos ver si soportan presion variable en cabezal.",
+    "timestamp": "2026-09-22T20:27:58.509057",
+    "unread": false,
+    "is_from_me": false
+  },
+  {
+    "id": "msg_wa_out_003",
+    "from": "+54 9 261 444-3322",
+    "name": "Sergio",
+    "body": "Hola Carlos! Si, el diafragma reforzado tolera hasta 16 bar. Te paso las curvas en PDF.",
+    "timestamp": "2026-10-05T21:27:58.509059",
+    "unread": false,
+    "is_from_me": true
+  },
+  {
+    "id": "msg_wa_in_004",
+    "from": "+54 9 341 666-7788",
+    "name": "Laura Diaz (Viveros del Litoral)",
+    "body": "Alon, confirmamos la compra de los controladores Galcon. Enviamos los datos de facturacion.",
+    "timestamp": "2026-09-18T20:27:58.509063",
+    "unread": false,
+    "is_from_me": false
+  },
+  {
+    "id": "msg_wa_out_004",
+    "from": "+54 9 341 666-7788",
+    "name": "Alon",
+    "body": "Perfecto Laura, factura emitida y envio despachado por encomienda.",
+    "timestamp": "2026-10-02T21:27:58.509065",
+    "unread": false,
+    "is_from_me": true
+  },
+  {
+    "id": "msg_wa_in_005",
+    "from": "+54 9 221 777-1122",
+    "name": "Martin Alvarez (Cereales del Centro)",
+    "body": "Jony, estamos evaluando los costos de instalacion del sistema GSI para la proxima cosecha.",
+    "timestamp": "2026-09-10T20:27:58.509068",
+    "unread": false,
+    "is_from_me": false
+  },
+  {
+    "id": "msg_wa_out_005",
+    "from": "+54 9 221 777-1122",
+    "name": "Jony",
+    "body": "Hola Martin! Podemos bonificar la mano de obra de calibracion si cerramos antes de fin de mes.",
+    "timestamp": "2026-09-25T21:27:58.509070",
+    "unread": false,
+    "is_from_me": true
+  },
+  {
+    "id": "msg_wa_in_006",
+    "from": "+54 9 342 555-8899",
+    "name": "Sofia Romero (Semillero Santa Fe)",
+    "body": "Luisa, consultamos compatibilidad de las sondas con nuestra plataforma de telemetria existente.",
+    "timestamp": "2026-09-26T20:27:58.509074",
+    "unread": false,
+    "is_from_me": false
+  },
+  {
+    "id": "msg_wa_out_006",
+    "from": "+54 9 342 555-8899",
+    "name": "Luisa",
+    "body": "Hola Sofia, las sondas entregan SDI-12 y Modbus estandar, son 100% integrables.",
+    "timestamp": "2026-10-04T21:27:58.509075",
+    "unread": false,
+    "is_from_me": true
+  },
+  {
+    "id": "msg_wa_in_007",
+    "from": "+54 9 2954 44-5566",
+    "name": "Lucas Fernandez (Agropecuaria Pampeana)",
+    "body": "Sergio, nos llego la cotizacion del pack Davis. Nos parece competitiva la propuesta.",
+    "timestamp": "2026-09-15T20:27:58.509079",
+    "unread": false,
+    "is_from_me": false
+  },
+  {
+    "id": "msg_wa_out_007",
+    "from": "+54 9 2954 44-5566",
+    "name": "Sergio",
+    "body": "Excelente Lucas! Incluye ademas 1 ano de suscripcion Pro a WeatherLink Cloud.",
+    "timestamp": "2026-09-30T21:27:58.509080",
+    "unread": false,
+    "is_from_me": true
+  },
+  {
+    "id": "msg_wa_in_008",
+    "from": "+54 9 2323 55-6677",
+    "name": "Diego Martinez (Haras San Jorge)",
+    "body": "Hola Alon, queremos coordinar la fecha de inicio de obra para la pista principal.",
+    "timestamp": "2026-09-24T20:27:58.509084",
+    "unread": false,
+    "is_from_me": false
+  },
+  {
+    "id": "msg_wa_out_008",
+    "from": "+54 9 2323 55-6677",
+    "name": "Alon",
+    "body": "Hola Diego! El equipo tecnico esta disponible a partir del jueves proximo.",
+    "timestamp": "2026-10-06T21:27:58.509085",
+    "unread": false,
+    "is_from_me": true
+  }
+]

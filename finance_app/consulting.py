@@ -40,4 +40,3 @@ def generate_income_statement(df: pd.DataFrame, category_column: str, amount_col
 def get_catalog() -> Dict[str, List[str]]:
     """Returns the Chart of Accounts."""
     return DEFAULT_CATALOG
-

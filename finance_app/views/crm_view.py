@@ -88,7 +88,7 @@ def render_crm_view(current_user: dict):
                         st.markdown(f"**Empresa:** {customer.company or 'Particular'} | **Ubicación:** {customer.locality or ''}, {customer.province or 'N/A'} ({customer.region or ''})")
 
                     with col_h2:
-                        score_color = "#ef4444" if customer.lead_score >= 75 else "#f59e0b" if customer.lead_score >= 50 else "#64748b"
+                        score_color = "#ef4444" if customer.lead_score >= 75 else "#9B732A" if customer.lead_score >= 50 else "#64748b"
                         st.markdown(f"""
                         <div style="background: rgba(30, 41, 59, 0.8); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 14px; text-align: center;">
                             <div style="font-size: 14.5px; color: #786451; font-weight: 700; letter-spacing: 0.5px;">LEAD SCORE</div>
@@ -103,7 +103,7 @@ def render_crm_view(current_user: dict):
                         <div style="background: rgba(30, 41, 59, 0.8); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 14px; text-align: center;">
                             <div style="font-size: 14.5px; color: #786451; font-weight: 700; letter-spacing: 0.5px;">CLOSER ASIGNADO</div>
                             <div style="font-size: 18px; font-weight: 700; color: #895522; margin-top: 4px;">{closer_name}</div>
-                            <div style="font-size: 15px; color: #10b981; margin-top: 4px; font-weight: 600;">Estado: {customer.status}</div>
+                            <div style="font-size: 15px; color: #47664F; margin-top: 4px; font-weight: 600;">Estado: {customer.status}</div>
                         </div>
                         """, unsafe_allow_html=True)
 
@@ -235,7 +235,7 @@ def render_crm_view(current_user: dict):
                                 <div style="background: rgba(15, 23, 42, 0.7); border-left: 4px solid #895522; border-radius: 8px; padding: 12px 16px; margin-bottom: 10px;">
                                     <div style="font-size: 15px; color: #786451; font-weight: 700;"><b>CANAL: {act.channel}{direction_tag}</b> · {act.created_at.strftime('%Y-%m-%d %H:%M')}</div>
                                     <div style="font-size: 17px; font-weight: 600; color: #2B211A; margin-top: 4px;">{act.summary}</div>
-                                    {f"<div style='font-size: 16px; color: #cbd5e1; margin-top: 6px; line-height: 1.5;'>{act.content}</div>" if act.content else ""}
+                                    {f"<div style='font-size: 16px; color: #2B211A; margin-top: 6px; line-height: 1.5;'>{act.content}</div>" if act.content else ""}
                                 </div>
                                 """, unsafe_allow_html=True)
 
@@ -341,8 +341,8 @@ def render_crm_view(current_user: dict):
                             st.markdown(f"""
                             <div style="background: rgba(15, 23, 42, 0.8); border: 1px solid rgba(255,255,255,0.12); border-radius: 8px; padding: 12px; margin-bottom: 10px;">
                                 <div style="font-size: 16.5px; font-weight: 700; color: #2B211A;">{opp.title}</div>
-                                <div style="font-size: 15px; color: #cbd5e1; margin: 3px 0;">Cliente: {opp.customer.full_name if opp.customer else 'N/A'}</div>
-                                <div style="font-size: 16px; font-weight: 800; color: #10b981; margin-top: 4px;">${opp.amount_ars:,.0f} ARS</div>
+                                <div style="font-size: 15px; color: #2B211A; margin: 3px 0;">Cliente: {opp.customer.full_name if opp.customer else 'N/A'}</div>
+                                <div style="font-size: 16px; font-weight: 800; color: #47664F; margin-top: 4px;">${opp.amount_ars:,.0f} ARS</div>
                             </div>
                             """, unsafe_allow_html=True)
 
@@ -398,14 +398,14 @@ def render_crm_view(current_user: dict):
                 else:
                     for task in pending_tasks:
                         is_overdue = task.due_date < datetime.datetime.now(datetime.timezone.utc).replace(tzinfo=None)
-                        badge_color = "#ef4444" if is_overdue or task.priority == "URGENTE" else "#f59e0b" if task.priority == "ALTA" else "#895522"
+                        badge_color = "#ef4444" if is_overdue or task.priority == "URGENTE" else "#9B732A" if task.priority == "ALTA" else "#895522"
 
                         col_tk1, col_tk2 = st.columns([4, 1])
                         with col_tk1:
                             st.markdown(f"""
                             <div style="background: rgba(30, 41, 59, 0.7); border-left: 5px solid {badge_color}; border-radius: 8px; padding: 12px 16px; margin-bottom: 8px;">
                                 <div style="font-size: 17px; font-weight: 700; color: #2B211A;">{task.title}</div>
-                                <div style="font-size: 15px; color: #cbd5e1; margin-top: 4px;">
+                                <div style="font-size: 15px; color: #2B211A; margin-top: 4px;">
                                     Cliente: {task.customer.full_name if task.customer else 'N/A'} ({task.customer.phone if task.customer else ''}) |
                                     <b>Tipo:</b> {task.task_type} |
                                     <span style="color: {badge_color}; font-weight: bold;">{'VENCIDA' if is_overdue else 'Vence'}: {task.due_date.strftime('%Y-%m-%d')}</span>

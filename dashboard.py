@@ -1,5 +1,8 @@
 from __future__ import annotations
 
+from finance_app.chart_theme import apply_chart_theme
+apply_chart_theme()
+
 import datetime
 import os
 from io import BytesIO
@@ -202,7 +205,7 @@ st.markdown("""
         padding: 24px 32px !important;
         border: 1px solid #B18450;
         border-radius: 16px;
-        background: linear-gradient(135deg, rgba(169,111,53,0.9), rgba(169,111,53,0.98));
+        background: linear-gradient(135deg, #FFFAF2, #FFFAF2);
         backdrop-filter: blur(12px);
         margin-bottom: 24px;
         box-shadow: 0 10px 25px -5px rgba(74,42,24,0.16);
@@ -261,7 +264,7 @@ st.markdown("""
     }
 
     .kpi-detail {
-        color: #34d399;
+        color: #47664F;
         font-size: 16px !important;
         font-weight: 600;
         white-space: nowrap !important;
@@ -276,7 +279,7 @@ st.markdown("""
         font-size: 16px !important;
         font-weight: 600;
         background: rgba(16, 185, 129, 0.15);
-        color: #34d399;
+        color: #47664F;
         border: 1px solid rgba(169,111,53,0.3);
     }
 
@@ -683,7 +686,7 @@ with st.sidebar:
     # -------------------------------------------------------------
     with st.expander("WhatsApp Live Sync (Automático)", expanded=False):
         wa_state = WhatsAppSyncState()
-        st.markdown("<div style='background: rgba(16, 185, 129, 0.15); border-left: 3px solid #10b981; padding: 8px 12px; border-radius: 6px; margin-bottom: 8px;'><small><b>Auto-Sync en Vivo: ACTIVO</b><br>El sistema escucha y guarda los mensajes de WhatsApp en tiempo real sin requerir acciones manuales.</small></div>", unsafe_allow_html=True)
+        st.markdown("<div style='background: rgba(16, 185, 129, 0.15); border-left: 3px solid #47664F; padding: 8px 12px; border-radius: 6px; margin-bottom: 8px;'><small><b>Auto-Sync en Vivo: ACTIVO</b><br>El sistema escucha y guarda los mensajes de WhatsApp en tiempo real sin requerir acciones manuales.</small></div>", unsafe_allow_html=True)
         st.markdown(f"<small><b>Última actividad:</b> {wa_state.last_sync_iso[:19].replace('T', ' ')}</small>", unsafe_allow_html=True)
         st.markdown(f"<small><b>Leads WhatsApp:</b> {wa_state.total_synced_leads} registros</small>", unsafe_allow_html=True)
 
@@ -714,7 +717,7 @@ with st.sidebar:
         meta_acc = getattr(_cfg, "meta_ad_account_id", None) or os.getenv("META_AD_ACCOUNT_ID", "")
         if meta_tok and meta_acc:
             st.markdown(
-                "<div style='background: rgba(16, 185, 129, 0.15); border-left: 3px solid #10b981; "
+                "<div style='background: rgba(16, 185, 129, 0.15); border-left: 3px solid #47664F; "
                 "padding: 8px 12px; border-radius: 6px; margin-bottom: 8px;'>"
                 "<small><b>API Meta: Configurada</b><br>Modo estricto Solo Lectura (ads_read)</small></div>",
                 unsafe_allow_html=True,
@@ -734,7 +737,7 @@ with st.sidebar:
                         st.rerun()
         else:
             st.markdown(
-                "<div style='background: rgba(245, 158, 11, 0.15); border-left: 3px solid #f59e0b; "
+                "<div style='background: rgba(245, 158, 11, 0.15); border-left: 3px solid #9B732A; "
                 "padding: 8px 12px; border-radius: 6px; margin-bottom: 8px;'>"
                 "<small><b>Meta Token Pendiente</b><br>Configure META_ACCESS_TOKEN en .env o pruebe con el dataset simulador.</small></div>",
                 unsafe_allow_html=True,
@@ -811,13 +814,13 @@ if page == "Resumen ejecutivo":
     with c1:
         render_kpi("Leads Analizados", f"{kpis.total_leads:,}", f"{len(master):,} en base total", "#895522")
     with c2:
-        render_kpi("Conversión CRM", f"{kpis.tasa_conversion_pct:.1f}%", f"{kpis.convertidos} ganados/derivados", "#4ade80")
+        render_kpi("Conversión CRM", f"{kpis.tasa_conversion_pct:.1f}%", f"{kpis.convertidos} ganados/derivados", "#47664F")
     with c3:
         render_kpi("Pauta Acumulada", money(comm.kpis.total_inversion_ars), "Inversión 7 meses", "#B18450")
     with c4:
-        render_kpi("CPL Promedio", money(comm.kpis.cpl_promedio_ars), f"{comm.kpis.total_conversaciones:,} conversaciones", "#c084fc")
+        render_kpi("CPL Promedio", money(comm.kpis.cpl_promedio_ars), f"{comm.kpis.total_conversaciones:,} conversaciones", "#80634F")
     with c5:
-        render_kpi("Pipeline Cotizado", money(comm.kpis.presupuesto_cotizado_total), f"{comm.kpis.total_oportunidades} cotizaciones", "#f472b6")
+        render_kpi("Pipeline Cotizado", money(comm.kpis.presupuesto_cotizado_total), f"{comm.kpis.total_oportunidades} cotizaciones", "#985A4E")
 
     st.markdown("<div style='margin-top: 15px;'></div>", unsafe_allow_html=True)
 
@@ -840,12 +843,12 @@ if page == "Resumen ejecutivo":
             y=df_m["Conversaciones_Total"],
             name="Conversaciones",
             mode="lines+markers",
-            marker=dict(size=8, color="#10b981"),
-            line=dict(width=3, color="#10b981"),
+            marker=dict(size=8, color="#47664F"),
+            line=dict(width=3, color="#47664F"),
             yaxis="y2"
         ))
         fig_evol.update_layout(
-            template="plotly_white",
+            template="fauvor",
             paper_bgcolor="rgba(0,0,0,0)",
             plot_bgcolor="rgba(0,0,0,0)",
             height=340,
@@ -885,13 +888,13 @@ elif page in ["CRM & Leads (Explorador)", "CRM & Leads"]:
     with c1:
         render_kpi("Leads en Vista", f"{len(df_filtered):,}", f"{len(master):,} en base total", "#895522")
     with c2:
-        render_kpi("Conversión CRM", f"{kpis.tasa_conversion_pct:.1f}%", f"{kpis.convertidos} ganados/derivados", "#4ade80")
+        render_kpi("Conversión CRM", f"{kpis.tasa_conversion_pct:.1f}%", f"{kpis.convertidos} ganados/derivados", "#47664F")
     with c3:
-        render_kpi("Hablados Hoy", f"{kpis.contactados_hoy:,}", "Contactados hoy (al día)", "#10b981")
+        render_kpi("Hablados Hoy", f"{kpis.contactados_hoy:,}", "Contactados hoy (al día)", "#47664F")
     with c4:
-        render_kpi("Urgentes ≥14d", f"{kpis.recontacto_urgente:,}", "Sin contacto por ≥2 semanas", "#ec4899")
+        render_kpi("Urgentes ≥14d", f"{kpis.recontacto_urgente:,}", "Sin contacto por ≥2 semanas", "#985A4E")
     with c5:
-        render_kpi("En Seguimiento", f"{kpis.en_seguimiento:,}", f"{kpis.leads_hot} Hot | {kpis.leads_warm} Warm", "#f59e0b")
+        render_kpi("En Seguimiento", f"{kpis.en_seguimiento:,}", f"{kpis.leads_hot} Hot | {kpis.leads_warm} Warm", "#9B732A")
 
     st.markdown("<div style='margin-top: 15px;'></div>", unsafe_allow_html=True)
 
@@ -918,7 +921,7 @@ elif page in ["CRM & Leads (Explorador)", "CRM & Leads"]:
         col_banner_txt, col_banner_btn = st.columns([3.4, 1.2])
         with col_banner_txt:
             st.markdown(f"""
-            <div style="background: rgba(236, 72, 153, 0.12); border-left: 4px solid #ec4899; padding: 12px 18px; border-radius: 10px; margin-bottom: 10px;">
+            <div style="background: rgba(236, 72, 153, 0.12); border-left: 4px solid #985A4E; padding: 12px 18px; border-radius: 10px; margin-bottom: 10px;">
                 <span style="font-size: 16.5px; color: #fbcfe8; line-height: 1.5;">
                     <b>Oportunidades de Recontacto:</b> Hay <b>{kpis.recontacto_urgente} prospectos con más de 2 semanas sin contacto (URGENTES)</b>. Haz clic en <b>'Chatear'</b> en la tabla o presiona el botón para filtrarlos de inmediato.
                 </span>
@@ -1093,7 +1096,7 @@ elif page in ["CRM & Leads (Explorador)", "CRM & Leads"]:
         with col_drawer_left:
             diag_color_bg = "rgba(16, 185, 129, 0.12)" if lead_dias_sin == 0 else ("rgba(236, 72, 153, 0.12)" if "Urgente" in lead_rec_pri else "rgba(245, 158, 11, 0.12)")
             diag_color_border = "rgba(16, 185, 129, 0.4)" if lead_dias_sin == 0 else ("rgba(236, 72, 153, 0.4)" if "Urgente" in lead_rec_pri else "rgba(245, 158, 11, 0.4)")
-            diag_color_title = "#34d399" if lead_dias_sin == 0 else ("#f472b6" if "Urgente" in lead_rec_pri else "#fbbf24")
+            diag_color_title = "#47664F" if lead_dias_sin == 0 else ("#985A4E" if "Urgente" in lead_rec_pri else "#9B732A")
 
             drawer_card_html = (
                 f'<div class="lead-profile-card">'
@@ -1110,7 +1113,7 @@ elif page in ["CRM & Leads (Explorador)", "CRM & Leads"]:
                 f'<span style="color: #895522; font-weight: 800;">{lead_score} / 100 pts</span>'
                 f'</div>'
                 f'<div style="background: #EFE5D6; border-radius: 6px; height: 10px; overflow: hidden;">'
-                f'<div style="background: linear-gradient(90deg, #895522, #B18450, #ec4899); width: {lead_score}%; height: 100%;"></div>'
+                f'<div style="background: linear-gradient(90deg, #895522, #B18450, #985A4E); width: {lead_score}%; height: 100%;"></div>'
                 f'</div>'
                 f'</div>'
                 f'<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 16px;">'
@@ -1120,7 +1123,7 @@ elif page in ["CRM & Leads (Explorador)", "CRM & Leads"]:
                 f'</div>'
                 f'<div style="background: #F7F1E6; padding: 12px 14px; border-radius: 10px; border: 1px solid #EFE5D6;">'
                 f'<span style="font-size: 14px; color: #786451; text-transform: uppercase; font-weight: 600;">Último Contacto</span><br>'
-                f'<b style="font-size: 16.5px; color: {"#34d399" if lead_dias_sin == 0 else ("#f87171" if lead_dias_sin >= 14 else "#fcd34d")};">{lead_lbl_cont}</b>'
+                f'<b style="font-size: 16.5px; color: {"#47664F" if lead_dias_sin == 0 else ("#f87171" if lead_dias_sin >= 14 else "#fcd34d")};">{lead_lbl_cont}</b>'
                 f'</div>'
                 f'<div style="background: #F7F1E6; padding: 12px 14px; border-radius: 10px; border: 1px solid #EFE5D6;">'
                 f'<span style="font-size: 14px; color: #786451; text-transform: uppercase; font-weight: 600;">Contactos</span><br>'
@@ -1246,7 +1249,7 @@ elif page in ["CRM & Leads (Explorador)", "CRM & Leads"]:
                 )
                 st.markdown(f"""
                 <div style="background: rgba(16, 185, 129, 0.12); padding: 16px 18px; border-radius: 10px; margin-bottom: 10px; border: 1px solid rgba(16, 185, 129, 0.4); font-size: 16.5px;">
-                    <b style="color: #34d399; font-size: 17px;">1. Lanzamiento Davis Vantage Vue (Reactivación & Novedad):</b><br>
+                    <b style="color: #47664F; font-size: 17px;">1. Lanzamiento Davis Vantage Vue (Reactivación & Novedad):</b><br>
                     <span style="color: #ecfdf5; white-space: pre-line; line-height: 1.6;">"{msg_template_0}"</span>
                 </div>
                 """, unsafe_allow_html=True)
@@ -1268,7 +1271,7 @@ elif page in ["CRM & Leads (Explorador)", "CRM & Leads"]:
                 st.markdown(f"""
                 <div style="background: #EFE5D6; padding: 16px 18px; border-radius: 10px; margin-bottom: 10px; border: 1px solid #334155; font-size: 16.5px;">
                     <b style="color: #895522; font-size: 17px;">2. Recontacto y Seguimiento de Cotización:</b><br>
-                    <span style="color: #cbd5e1; line-height: 1.6;">"{msg_template_1}"</span>
+                    <span style="color: #2B211A; line-height: 1.6;">"{msg_template_1}"</span>
                 </div>
                 """, unsafe_allow_html=True)
                 url_t1 = build_whatsapp_link(lead_phone, lead_name, lead_prod, custom_text=msg_template_1)
@@ -1288,8 +1291,8 @@ elif page in ["CRM & Leads (Explorador)", "CRM & Leads"]:
                 msg_template_2 = f"Hola {lead_name}, un gusto saludarte nuevamente. Te escribo de Abatech para acercarte la ficha técnica y especificaciones de {lead_prod}. ¿Te gustaría que coordinemos una breve llamada de 10 minutos con nuestro especialista técnico para evaluar la instalación y despejar dudas?"
                 st.markdown(f"""
                 <div style="background: #EFE5D6; padding: 16px 18px; border-radius: 10px; margin-bottom: 10px; border: 1px solid #334155; font-size: 16.5px;">
-                    <b style="color: #4ade80; font-size: 17px;">3. Envío de Ficha Técnica & Asesoramiento:</b><br>
-                    <span style="color: #cbd5e1; line-height: 1.6;">"{msg_template_2}"</span>
+                    <b style="color: #47664F; font-size: 17px;">3. Envío de Ficha Técnica & Asesoramiento:</b><br>
+                    <span style="color: #2B211A; line-height: 1.6;">"{msg_template_2}"</span>
                 </div>
                 """, unsafe_allow_html=True)
                 url_t2 = build_whatsapp_link(lead_phone, lead_name, lead_prod, custom_text=msg_template_2)
@@ -1309,8 +1312,8 @@ elif page in ["CRM & Leads (Explorador)", "CRM & Leads"]:
                 msg_template_3 = f"Hola {lead_name}! ¿Cómo estás? Te escribo del equipo de Abatech. Retomamos contacto porque tenemos vigentes condiciones comerciales especiales y bonificaciones para {lead_prod}. ¿Seguís interesado en incorporar esta tecnología en esta campaña? Quedamos a disposición para pasarte los detalles."
                 st.markdown(f"""
                 <div style="background: #EFE5D6; padding: 16px 18px; border-radius: 10px; margin-bottom: 10px; border: 1px solid #334155; font-size: 16.5px;">
-                    <b style="color: #f59e0b; font-size: 17px;">4. Reactivación Comercial / Bonificación Especial:</b><br>
-                    <span style="color: #cbd5e1; line-height: 1.6;">"{msg_template_3}"</span>
+                    <b style="color: #9B732A; font-size: 17px;">4. Reactivación Comercial / Bonificación Especial:</b><br>
+                    <span style="color: #2B211A; line-height: 1.6;">"{msg_template_3}"</span>
                 </div>
                 """, unsafe_allow_html=True)
                 url_t3 = build_whatsapp_link(lead_phone, lead_name, lead_prod, custom_text=msg_template_3)
@@ -1341,11 +1344,11 @@ elif page == "Plan de Reactivación":
     with c1:
         render_kpi("Fríos para Reactivar", f"{kpis.total_frios_reactivables:,}", "Sin contacto por ≥14 días", "#895522")
     with c2:
-        render_kpi("Reactivados Exitosos", f"{kpis.leads_reactivados:,}", "Clientes que respondieron", "#4ade80")
+        render_kpi("Reactivados Exitosos", f"{kpis.leads_reactivados:,}", "Clientes que respondieron", "#47664F")
     with c3:
-        render_kpi("Tasa de Reactivación", f"{kpis.tasa_reactivacion_pct:.1f}%", "Efectividad sobre base inactiva", "#c084fc")
+        render_kpi("Tasa de Reactivación", f"{kpis.tasa_reactivacion_pct:.1f}%", "Efectividad sobre base inactiva", "#80634F")
     with c4:
-        render_kpi("Lote Sugerido Hoy", f"{kpis.lote_diario_count} prospectos", "Límite seguro anti-bloqueo", "#f59e0b")
+        render_kpi("Lote Sugerido Hoy", f"{kpis.lote_diario_count} prospectos", "Límite seguro anti-bloqueo", "#9B732A")
 
     st.markdown("<div style='margin-top: 15px;'></div>", unsafe_allow_html=True)
 
@@ -1465,7 +1468,7 @@ elif page == "Plan de Reactivación":
 
             st.markdown(f"""
             <div style="background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.35); border-radius: 12px; padding: 18px 22px; margin-bottom: 18px;">
-                <span style="font-size: 15px; font-weight: 700; color: #34d399; text-transform: uppercase; letter-spacing: 0.5px;">Vista Previa del Mensaje Generado (Spintax Único):</span>
+                <span style="font-size: 15px; font-weight: 700; color: #47664F; text-transform: uppercase; letter-spacing: 0.5px;">Vista Previa del Mensaje Generado (Spintax Único):</span>
                 <p style="color: #ecfdf5; font-size: 17.5px; margin: 10px 0 0 0; line-height: 1.6; font-weight: 500;">
                     "{gen_msg}"
                 </p>
@@ -1519,11 +1522,11 @@ elif page == "Reuniones & Fichas Técnicas":
     with c1:
         render_kpi("Reuniones & Derivaciones", f"{m_kpis.total_reuniones_derivaciones:,}", f"{m_kpis.meets_agendados} Meets | {m_kpis.derivados_closers} Closers", "#895522")
     with c2:
-        render_kpi("Superficie Total Relevada", f"{int(m_kpis.superficie_total_ha):,} ha", "Hectáreas en seguimiento técnico", "#4ade80")
+        render_kpi("Superficie Total Relevada", f"{int(m_kpis.superficie_total_ha):,} ha", "Hectáreas en seguimiento técnico", "#47664F")
     with c3:
-        render_kpi("Closers Asignados", f"{m_kpis.closers_activos_count} ejecutivos", "Jony, Luisa, Sergio, Celina...", "#c084fc")
+        render_kpi("Closers Asignados", f"{m_kpis.closers_activos_count} ejecutivos", "Jony, Luisa, Sergio, Celina...", "#80634F")
     with c4:
-        render_kpi("Rubros Relevados", f"{m_kpis.total_cultivos_relevados} cultivos", "Papa, Granos, Olivos, Ajo, Vid...", "#f59e0b")
+        render_kpi("Rubros Relevados", f"{m_kpis.total_cultivos_relevados} cultivos", "Papa, Granos, Olivos, Ajo, Vid...", "#9B732A")
 
     st.markdown("<div style='margin-top: 15px;'></div>", unsafe_allow_html=True)
 
@@ -1533,7 +1536,7 @@ elif page == "Reuniones & Fichas Técnicas":
         <div style="margin-bottom: 8px;">
             <b style="color: #895522; font-size: 18px;">Centro de Auditoría de Reuniones & Dossier Agronómico:</b>
         </div>
-        <div style="color: #cbd5e1; font-size: 16.5px; line-height: 1.6;">
+        <div style="color: #2B211A; font-size: 16.5px; line-height: 1.6;">
             Esta sección extrae automáticamente cada encuentro coordinado (Google Meet, Zoom, llamadas técnicas) y releva los datos agronómicos del campo: <b>superficie en hectáreas, tipo de cultivo, sistema de riego existente y acuerdos de reunión</b>.
         </div>
     </div>
@@ -1650,11 +1653,11 @@ elif page == "Reuniones & Fichas Técnicas":
                     f'<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 16px;">'
                     f'<div style="background: #F7F1E6; padding: 12px 14px; border-radius: 10px; border: 1px solid #EFE5D6;">'
                     f'<span style="font-size: 14px; color: #786451; text-transform: uppercase; font-weight: 600;">Superficie</span><br>'
-                    f'<b style="font-size: 16.5px; color: #34d399;">{m_ha}</b>'
+                    f'<b style="font-size: 16.5px; color: #47664F;">{m_ha}</b>'
                     f'</div>'
                     f'<div style="background: #F7F1E6; padding: 12px 14px; border-radius: 10px; border: 1px solid #EFE5D6;">'
                     f'<span style="font-size: 14px; color: #786451; text-transform: uppercase; font-weight: 600;">Cultivo / Rubro</span><br>'
-                    f'<b style="font-size: 16.5px; color: #fbbf24;">{m_cult}</b>'
+                    f'<b style="font-size: 16.5px; color: #9B732A;">{m_cult}</b>'
                     f'</div>'
                     f'<div style="background: #F7F1E6; padding: 12px 14px; border-radius: 10px; border: 1px solid #EFE5D6;">'
                     f'<span style="font-size: 14px; color: #786451; text-transform: uppercase; font-weight: 600;">Sistema & Riego</span><br>'
@@ -1765,7 +1768,7 @@ elif page == "Pauta & Conversión":
                 textposition="auto",
                 marker=dict(
                     color=df_inv["Inversion_Total"],
-                    colorscale=[[0.0, "#0369a1"], [1.0, "#895522"]],
+                    colorscale=[[0.0, "#B18450"], [1.0, "#895522"]],
                     line=dict(color="#895522", width=1),
                 ),
                 customdata=df_inv[["Pct_Inversion", "Conversaciones_Total", "CPL_Promedio"]],
@@ -1778,9 +1781,9 @@ elif page == "Pauta & Conversión":
             ))
             fig_inv.update_layout(
                 title=dict(text="Inversión Total por Producto ($ ARS y % del Total)", font=dict(size=16, color="#2B211A")),
-                template="plotly_white",
+                template="fauvor",
                 paper_bgcolor="rgba(0,0,0,0)",
-                plot_bgcolor="rgba(15, 23, 42, 0.4)",
+                plot_bgcolor="#FFFAF2",
                 xaxis=dict(
                     title="Inversión Acumulada ($ ARS)",
                     tickprefix="$",
@@ -1808,7 +1811,7 @@ elif page == "Pauta & Conversión":
                 textposition="auto",
                 marker=dict(
                     color=df_cpl["CPL_Promedio"],
-                    colorscale="Tealrose_r",
+                    colorscale=[[0, "#D8AA63"], [1, "#895522"]],
                     showscale=False,
                     line=dict(color="#2B211A", width=0.5),
                 ),
@@ -1822,9 +1825,9 @@ elif page == "Pauta & Conversión":
             ))
             fig_cpl.update_layout(
                 title=dict(text="Costo por Lead Adquirido (Menor CPL = Mayor Eficiencia)", font=dict(size=16, color="#2B211A")),
-                template="plotly_white",
+                template="fauvor",
                 paper_bgcolor="rgba(0,0,0,0)",
-                plot_bgcolor="rgba(15, 23, 42, 0.4)",
+                plot_bgcolor="#FFFAF2",
                 xaxis=dict(
                     title="Costo por Lead ($ ARS / lead)",
                     tickprefix="$",
@@ -1851,7 +1854,7 @@ elif page == "Pauta & Conversión":
                 text=df_conv["Text_Conv"],
                 textposition="auto",
                 marker=dict(
-                    color="#34d399",
+                    color="#47664F",
                     line=dict(color="#059669", width=1),
                 ),
                 customdata=df_conv[["Inversion_Total", "CPL_Promedio"]],
@@ -1864,9 +1867,9 @@ elif page == "Pauta & Conversión":
             ))
             fig_conv.update_layout(
                 title=dict(text="Volumen de Conversaciones Generadas por Producto", font=dict(size=16, color="#2B211A")),
-                template="plotly_white",
+                template="fauvor",
                 paper_bgcolor="rgba(0,0,0,0)",
-                plot_bgcolor="rgba(15, 23, 42, 0.4)",
+                plot_bgcolor="#FFFAF2",
                 xaxis=dict(
                     title="Conversaciones (Leads)",
                     gridcolor="rgba(51, 65, 85, 0.4)",
@@ -1951,9 +1954,9 @@ elif page == "Geografía & Territorio":
                 color="Tasa_Conversion_Pct",
                 color_continuous_scale=[
                     [0.0, "#ef4444"],    # Rojo: baja conversión
-                    [0.35, "#f59e0b"],   # Ámbar: conversión media
-                    [0.70, "#22c55e"],   # Verde: conversión alta
-                    [1.0, "#10b981"],    # Esmeralda: excelente
+                    [0.35, "#9B732A"],   # Ámbar: conversión media
+                    [0.70, "#47664F"],   # Verde: conversión alta
+                    [1.0, "#47664F"],    # Esmeralda: excelente
                 ],
                 text="Etiqueta",
                 labels={
@@ -1962,7 +1965,7 @@ elif page == "Geografía & Territorio":
                     "Tasa_Conversion_Pct": "Conversión (%)",
                 },
                 title="Top 12 Provincias: Volumen y Tasa de Cierre",
-                template="plotly_white"
+                template="fauvor"
             )
             fig_prov.update_traces(
                 textposition="outside",
@@ -2035,7 +2038,7 @@ elif page == "Calidad de datos":
     with c1:
         render_kpi("Fuentes Conectadas", "2 / 2", "Leads + Comercial", "#895522")
     with c2:
-        render_kpi("Registros Totales", f"{len(master):,}", "Base CRM", "#10b981")
+        render_kpi("Registros Totales", f"{len(master):,}", "Base CRM", "#47664F")
 
     st.markdown("<div style='margin-top: 15px;'></div>", unsafe_allow_html=True)
     st.markdown("#### Diagnóstico de Valores Faltantes en Base CRM")

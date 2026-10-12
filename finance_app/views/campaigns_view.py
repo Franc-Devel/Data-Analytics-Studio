@@ -55,11 +55,11 @@ def _render_meta_ads_live_tab(comm: Optional[CommercialAnalyticsResult]):
     with col_stat1:
         if status["configured"]:
             st.markdown(f"""
-            <div style="background: rgba(16, 185, 129, 0.12); border: 1.5px solid #10b981; border-radius: 10px; padding: 14px 18px; margin-bottom: 15px;">
+            <div style="background: rgba(16, 185, 129, 0.12); border: 1.5px solid #47664F; border-radius: 10px; padding: 14px 18px; margin-bottom: 15px;">
                 <div style="display: flex; align-items: center; justify-content: space-between;">
                     <div>
-                        <div style="font-size: 16px; font-weight: 800; color: #34d399;">● Conectado a Meta Graph API ({status['api_version']})</div>
-                        <div style="font-size: 13.5px; color: #cbd5e1; margin-top: 3px;">Cuenta Publicitaria: <code>{status['ad_account_id']}</code></div>
+                        <div style="font-size: 16px; font-weight: 800; color: #47664F;">● Conectado a Meta Graph API ({status['api_version']})</div>
+                        <div style="font-size: 13.5px; color: #2B211A; margin-top: 3px;">Cuenta Publicitaria: <code>{status['ad_account_id']}</code></div>
                         <div style="font-size: 12.5px; color: #786451; margin-top: 2px;">Permisos: <b>ads_read, read_insights</b> (Solo Lectura · Sin riesgo de modificación)</div>
                     </div>
                     <span style="font-size: 32px;">🛡️</span>
@@ -70,7 +70,7 @@ def _render_meta_ads_live_tab(comm: Optional[CommercialAnalyticsResult]):
             st.markdown(f"""
             <div style="background: rgba(56, 189, 248, 0.10); border: 1.5px solid #895522; border-radius: 10px; padding: 14px 18px; margin-bottom: 15px;">
                 <div style="font-size: 16px; font-weight: 800; color: #895522;">📡 Conexión con Meta Marketing API</div>
-                <div style="font-size: 13.5px; color: #cbd5e1; margin-top: 4px;">
+                <div style="font-size: 13.5px; color: #2B211A; margin-top: 4px;">
                     Para leer las campañas activas directamente de Meta, configure <code>META_ACCESS_TOKEN</code> y <code>META_AD_ACCOUNT_ID</code> en el archivo <code>.env</code> o pruébelo interactivamente abajo.
                 </div>
                 <div style="font-size: 12px; color: #786451; margin-top: 6px;">
@@ -137,11 +137,11 @@ def _render_meta_ads_live_tab(comm: Optional[CommercialAnalyticsResult]):
         with mc1:
             _render_kpi_card("Inversión Meta Ads", _money(m_inv), f"{len(insights_list)} campañas activas", "#895522")
         with mc2:
-            _render_kpi_card("Conversaciones / Leads", f"{m_conv:,}", "Generadas en Meta", "#10b981")
+            _render_kpi_card("Conversaciones / Leads", f"{m_conv:,}", "Generadas en Meta", "#47664F")
         with mc3:
-            _render_kpi_card("CPL Promedio Meta", _money(m_cpl), "Por conversación", "#f59e0b")
+            _render_kpi_card("CPL Promedio Meta", _money(m_cpl), "Por conversación", "#9B732A")
         with mc4:
-            _render_kpi_card("Alcance Total Meta", f"{m_alc:,}", "Impactos directos", "#a855f7")
+            _render_kpi_card("Alcance Total Meta", f"{m_alc:,}", "Impactos directos", "#80634F")
 
         st.markdown("<div style='margin-top: 15px;'></div>", unsafe_allow_html=True)
 
@@ -206,13 +206,13 @@ def render_campaigns_view(comm: Optional[CommercialAnalyticsResult], sheets: dic
     with c1:
         _render_kpi_card("Inversión Total Pauta", _money(total_inv), f"{len(df_spend)} partidas registradas", "#895522")
     with c2:
-        _render_kpi_card("Conversaciones Pauta", f"{total_conv:,}", f"{total_reach:,} alcance total", "#10b981")
+        _render_kpi_card("Conversaciones Pauta", f"{total_conv:,}", f"{total_reach:,} alcance total", "#47664F")
     with c3:
-        _render_kpi_card("CPL Promedio Global", _money(cpl_global), "Costo por conversación", "#f59e0b")
+        _render_kpi_card("CPL Promedio Global", _money(cpl_global), "Costo por conversación", "#9B732A")
     with c4:
-        _render_kpi_card("Alcance Publicitario", f"{total_reach:,}", "Impactos directos", "#a855f7")
+        _render_kpi_card("Alcance Publicitario", f"{total_reach:,}", "Impactos directos", "#80634F")
     with c5:
-        _render_kpi_card("Campaña Más Eficiente", _money(best_cpl_val), best_cpl_campaign, "#06b6d4")
+        _render_kpi_card("Campaña Más Eficiente", _money(best_cpl_val), best_cpl_campaign, "#536B70")
 
     st.markdown("<div style='margin-top: 20px;'></div>", unsafe_allow_html=True)
 
@@ -280,7 +280,7 @@ def render_campaigns_view(comm: Optional[CommercialAnalyticsResult], sheets: dic
                         "CPL_ARS": "CPL ($)",
                     },
                     title="Inversión ($ ARS) coloreada por CPL (Más oscuro = menor costo)",
-                    template="plotly_white",
+                    template="fauvor",
                 )
                 fig_bar.update_layout(
                     paper_bgcolor="rgba(0,0,0,0)",
@@ -312,7 +312,7 @@ def render_campaigns_view(comm: Optional[CommercialAnalyticsResult], sheets: dic
                         "CPL_ARS": "CPL ($)",
                     },
                     title="Eficiencia: Inversión vs Conversaciones (Tamaño = Alcance)",
-                    template="plotly_white",
+                    template="fauvor",
                 )
                 fig_scatter.update_layout(
                     paper_bgcolor="rgba(0,0,0,0)",
@@ -348,12 +348,12 @@ def render_campaigns_view(comm: Optional[CommercialAnalyticsResult], sheets: dic
                 mode="lines+markers+text",
                 text=[f"${v:,.0f}" if v > 0 else "-" for v in monthly_agg["CPL_Mes"]],
                 textposition="top center",
-                line=dict(color="#f59e0b", width=3),
-                marker=dict(size=8, color="#f59e0b"),
+                line=dict(color="#9B732A", width=3),
+                marker=dict(size=8, color="#9B732A"),
                 yaxis="y2",
             ))
             fig_trend.update_layout(
-                template="plotly_white",
+                template="fauvor",
                 paper_bgcolor="rgba(0,0,0,0)",
                 plot_bgcolor="rgba(0,0,0,0)",
                 yaxis=dict(title="Inversión ($ ARS)", tickprefix="$", showgrid=True, gridcolor="rgba(255,255,255,0.06)"),
@@ -412,9 +412,9 @@ def render_campaigns_view(comm: Optional[CommercialAnalyticsResult], sheets: dic
                 with r_k1:
                     _render_kpi_card("Leads en Remarketing", f"{total_rem:,}", "Campaña 01/06/26", "#895522")
                 with r_k2:
-                    _render_kpi_card("Leads Convertidos", f"{conv_rem:,}", "Oportunidades ganadas", "#10b981")
+                    _render_kpi_card("Leads Convertidos", f"{conv_rem:,}", "Oportunidades ganadas", "#47664F")
                 with r_k3:
-                    _render_kpi_card("Tasa de Cierre Rem.", f"{tasa_rem:.1f}%", "Efectividad recontacto", "#f59e0b")
+                    _render_kpi_card("Tasa de Cierre Rem.", f"{tasa_rem:.1f}%", "Efectividad recontacto", "#9B732A")
 
                 st.markdown("<div style='margin-top: 15px;'></div>", unsafe_allow_html=True)
 
@@ -427,7 +427,7 @@ def render_campaigns_view(comm: Optional[CommercialAnalyticsResult], sheets: dic
                         names="Producto",
                         values="Total_Leads",
                         title="Distribución de Leads de Remarketing por Línea",
-                        template="plotly_white",
+                        template="fauvor",
                         hole=0.4,
                     )
                     fig_rem.update_layout(paper_bgcolor="rgba(0,0,0,0)")
@@ -482,24 +482,24 @@ def render_campaigns_view(comm: Optional[CommercialAnalyticsResult], sheets: dic
             <div style="background: rgba(15, 23, 42, 0.85); border: 1px solid rgba(56, 189, 248, 0.4); border-radius: 12px; padding: 18px 20px; margin-top: 12px;">
                 <div style="font-size: 18px; font-weight: 700; color: #895522; margin-bottom: 12px;">Resultados Estimados de la Campaña</div>
                 <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
-                    <span style="color: #cbd5e1; font-size: 16px;">CPL Histórico de Referencia:</span>
+                    <span style="color: #2B211A; font-size: 16px;">CPL Histórico de Referencia:</span>
                     <b style="color: #2B211A; font-size: 17px;">{_money(target_cpl)}</b>
                 </div>
                 <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
-                    <span style="color: #cbd5e1; font-size: 16px;">Conversaciones Esperadas:</span>
-                    <b style="color: #10b981; font-size: 17px;">~{est_convs:,} contactos</b>
+                    <span style="color: #2B211A; font-size: 16px;">Conversaciones Esperadas:</span>
+                    <b style="color: #47664F; font-size: 17px;">~{est_convs:,} contactos</b>
                 </div>
                 <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
-                    <span style="color: #cbd5e1; font-size: 16px;">Ventas Proyectadas (12% tasa):</span>
+                    <span style="color: #2B211A; font-size: 16px;">Ventas Proyectadas (12% tasa):</span>
                     <b style="color: #2B211A; font-size: 17px;">~{est_sales} operaciones</b>
                 </div>
                 <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
-                    <span style="color: #cbd5e1; font-size: 16px;">Facturación Bruta Proyectada:</span>
+                    <span style="color: #2B211A; font-size: 16px;">Facturación Bruta Proyectada:</span>
                     <b style="color: #895522; font-size: 18px;">{_money(est_revenue)}</b>
                 </div>
                 <div style="display: flex; justify-content: space-between; border-top: 1px solid rgba(255,255,255,0.15); padding-top: 10px; margin-top: 10px;">
-                    <span style="color: #f59e0b; font-size: 16.5px; font-weight: 700;">ROAS Estimado:</span>
-                    <b style="color: #f59e0b; font-size: 18px;">{est_roas:.1f}x</b>
+                    <span style="color: #9B732A; font-size: 16.5px; font-weight: 700;">ROAS Estimado:</span>
+                    <b style="color: #9B732A; font-size: 18px;">{est_roas:.1f}x</b>
                 </div>
             </div>
             """, unsafe_allow_html=True)
@@ -524,17 +524,17 @@ def render_campaigns_view(comm: Optional[CommercialAnalyticsResult], sheets: dic
                         x=df_soc["Mes"],
                         y=df_soc["Visualizaciones reels %"],
                         name="Visualizaciones Reels (%)",
-                        marker_color="#ec4899",
+                        marker_color="#985A4E",
                     ))
                     fig_soc.add_trace(go.Bar(
                         x=df_soc["Mes"],
                         y=df_soc["Visualizaciones historias %"],
                         name="Visualizaciones Historias (%)",
-                        marker_color="#8b5cf6",
+                        marker_color="#80634F",
                     ))
                     fig_soc.update_layout(
                         barmode="group",
-                        template="plotly_white",
+                        template="fauvor",
                         paper_bgcolor="rgba(0,0,0,0)",
                         plot_bgcolor="rgba(0,0,0,0)",
                         yaxis=dict(ticksuffix="%", showgrid=True, gridcolor="rgba(255,255,255,0.06)"),
@@ -556,6 +556,6 @@ def render_campaigns_view(comm: Optional[CommercialAnalyticsResult], sheets: dic
                     mes = row.get("Mes", "General")
                     obs = row.get("Observación", "")
                     with st.expander(f"Período: {mes}", expanded=False):
-                        st.markdown(f"<p style='color: #cbd5e1; font-size: 15.5px; line-height: 1.5;'>{obs}</p>", unsafe_allow_html=True)
+                        st.markdown(f"<p style='color: #2B211A; font-size: 15.5px; line-height: 1.5;'>{obs}</p>", unsafe_allow_html=True)
             else:
                 st.info("No hay notas de auditoría registradas.")

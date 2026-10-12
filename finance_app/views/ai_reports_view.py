@@ -80,7 +80,7 @@ def _render_document_coequiper_tab(current_user: Optional[Dict[str, Any]] = None
         st.markdown("""
         <div style="background: rgba(30, 41, 59, 0.5); border: 1px solid rgba(148, 163, 184, 0.2); border-radius: 10px; padding: 14px 16px;">
             <b style="color: #895522;">¿Qué controla el Coequiper IA?</b>
-            <ul style="margin: 6px 0 0 0; padding-left: 18px; color: #cbd5e1; font-size: 13.5px;">
+            <ul style="margin: 6px 0 0 0; padding-left: 18px; color: #2B211A; font-size: 13.5px;">
                 <li>Coherencia aritmética: <code>cant × precio = subtotal</code>.</li>
                 <li>Neto gravado vs suma de ítems.</li>
                 <li>Cálculo de alícuota de IVA y total general.</li>
@@ -108,8 +108,8 @@ def _render_document_coequiper_tab(current_user: Optional[Dict[str, Any]] = None
         # 1. Semáforo de auditoría de cuentas
         if doc_res.get("cuentas_cierran"):
             st.markdown("""
-            <div style="background: rgba(16, 185, 129, 0.15); border-left: 4px solid #10b981; border-radius: 8px; padding: 12px 16px; margin-bottom: 14px;">
-                <b style="color: #10b981; font-size: 15px;">✅ AUDITORÍA CONTABLE EXITOSA: LAS CUENTAS CIERRAN</b>
+            <div style="background: rgba(16, 185, 129, 0.15); border-left: 4px solid #47664F; border-radius: 8px; padding: 12px 16px; margin-bottom: 14px;">
+                <b style="color: #47664F; font-size: 15px;">✅ AUDITORÍA CONTABLE EXITOSA: LAS CUENTAS CIERRAN</b>
                 <p style="margin: 4px 0 0 0; color: #2B211A; font-size: 14px;">Todos los subtotales de ítems, el neto gravado, el IVA y el total coinciden aritméticamente sin discrepancias.</p>
             </div>
             """, unsafe_allow_html=True)
@@ -147,7 +147,7 @@ def _render_document_coequiper_tab(current_user: Optional[Dict[str, Any]] = None
 
         with col_c:
             loc_cliente = cliente.get('localidad')
-            loc_display = f"<span style='color: #895522;'>{loc_cliente}, {cliente.get('provincia') or ''}</span>" if loc_cliente else "<span style='color: #f59e0b;'>⚠️ No informada en documento</span>"
+            loc_display = f"<span style='color: #895522;'>{loc_cliente}, {cliente.get('provincia') or ''}</span>" if loc_cliente else "<span style='color: #9B732A;'>⚠️ No informada en documento</span>"
             st.markdown(f"""
             <div style="background: rgba(30, 41, 59, 0.6); border: 1px solid rgba(148, 163, 184, 0.2); border-radius: 10px; padding: 14px;">
                 <b style="color: #786451; font-size: 13px; text-transform: uppercase;">Cliente / Receptor</b>
@@ -396,11 +396,11 @@ def _render_whatsapp_demand_tab(master_df: pd.DataFrame, comm_data: Any = None, 
     with k2:
         _render_metric_card("Mensajes en Vista", f"{tot_msgs:,}", f"{df_filtered['Mensajes_Entrantes'].sum():,} entrantes", "#B18450")
     with k3:
-        _render_metric_card("Piden Cotización", f"{pide_presupuesto}", f"{pct_presup:.1f}% de tasa comercial", "#4ade80")
+        _render_metric_card("Piden Cotización", f"{pide_presupuesto}", f"{pct_presup:.1f}% de tasa comercial", "#47664F")
     with k4:
-        _render_metric_card("Piden Reunión / Meet", f"{pide_meet}", "Agendas pendientes", "#f59e0b")
+        _render_metric_card("Piden Reunión / Meet", f"{pide_meet}", "Agendas pendientes", "#9B732A")
     with k5:
-        _render_metric_card("Mayor Demanda", top_prod.split("(")[0].strip()[:18], "Producto líder", "#ec4899")
+        _render_metric_card("Mayor Demanda", top_prod.split("(")[0].strip()[:18], "Producto líder", "#985A4E")
 
     st.markdown("<div style='margin-top: 20px;'></div>", unsafe_allow_html=True)
 
@@ -432,10 +432,10 @@ def _render_whatsapp_demand_tab(master_df: pd.DataFrame, comm_data: Any = None, 
                 values="Clientes",
                 names="Producto",
                 hole=0.45,
-                color_discrete_sequence=["#895522", "#06b6d4", "#10b981", "#f59e0b", "#ec4899", "#8b5cf6", "#64748b"],
+                color_discrete_sequence=["#895522", "#536B70", "#47664F", "#9B732A", "#985A4E", "#80634F", "#64748b"],
             )
             fig_prod.update_layout(
-                template="plotly_white",
+                template="fauvor",
                 paper_bgcolor="rgba(0,0,0,0)",
                 plot_bgcolor="rgba(0,0,0,0)",
                 height=340,
@@ -457,7 +457,7 @@ def _render_whatsapp_demand_tab(master_df: pd.DataFrame, comm_data: Any = None, 
                 color_continuous_scale="Viridis",
             )
             fig_intent.update_layout(
-                template="plotly_white",
+                template="fauvor",
                 paper_bgcolor="rgba(0,0,0,0)",
                 plot_bgcolor="rgba(0,0,0,0)",
                 height=340,
@@ -514,13 +514,13 @@ def _render_whatsapp_demand_tab(master_df: pd.DataFrame, comm_data: Any = None, 
                     marker=dict(line=dict(width=0)),
                 )
                 fig_camp.update_layout(
-                    template="plotly_white",
+                    template="fauvor",
                     paper_bgcolor="rgba(0,0,0,0)",
                     plot_bgcolor="rgba(0,0,0,0)",
                     height=max(330, len(camp_counts) * 44),
                     margin=dict(l=10, r=45, t=10, b=10),
                     xaxis=dict(title="", showgrid=True, gridcolor="rgba(255,255,255,0.06)"),
-                    yaxis=dict(title="", tickfont=dict(size=12, color="#cbd5e1")),
+                    yaxis=dict(title="", tickfont=dict(size=12, color="#2B211A")),
                     coloraxis_showscale=False,
                 )
             else:
@@ -529,10 +529,10 @@ def _render_whatsapp_demand_tab(master_df: pd.DataFrame, comm_data: Any = None, 
                     camp_prod,
                     orientation="h",
                     barmode="stack",
-                    color_discrete_sequence=["#10b981", "#f59e0b", "#895522", "#06b6d4", "#ec4899", "#8b5cf6", "#64748b"],
+                    color_discrete_sequence=["#47664F", "#9B732A", "#895522", "#536B70", "#985A4E", "#80634F", "#64748b"],
                 )
                 fig_camp.update_layout(
-                    template="plotly_white",
+                    template="fauvor",
                     paper_bgcolor="rgba(0,0,0,0)",
                     plot_bgcolor="rgba(0,0,0,0)",
                     height=max(340, len(camp_counts) * 44),
@@ -546,7 +546,7 @@ def _render_whatsapp_demand_tab(master_df: pd.DataFrame, comm_data: Any = None, 
                         title=dict(text=""),
                     ),
                     xaxis=dict(title="", showgrid=True, gridcolor="rgba(255,255,255,0.06)"),
-                    yaxis=dict(title="", tickfont=dict(size=12, color="#cbd5e1")),
+                    yaxis=dict(title="", tickfont=dict(size=12, color="#2B211A")),
                 )
             st.plotly_chart(fig_camp, width="stretch")
 
@@ -568,7 +568,7 @@ def _render_whatsapp_demand_tab(master_df: pd.DataFrame, comm_data: Any = None, 
                     color_continuous_scale="Teal",
                 )
                 fig_crop.update_layout(
-                    template="plotly_white",
+                    template="fauvor",
                     paper_bgcolor="rgba(0,0,0,0)",
                     plot_bgcolor="rgba(0,0,0,0)",
                     height=340,
@@ -652,26 +652,26 @@ def _render_whatsapp_demand_tab(master_df: pd.DataFrame, comm_data: Any = None, 
             st.markdown(f"""
             <div style="background: rgba(30, 41, 59, 0.7); border: 1px solid rgba(148, 163, 184, 0.2); border-radius: 12px; padding: 18px 20px; margin-bottom: 16px;">
                 <h4 style="margin: 0 0 12px 0; color: #895522; font-size: 20px; font-weight: 700;">{selected_row['Cliente']}</h4>
-                <p style="margin: 4px 0; font-size: 16.5px; color: #cbd5e1;"><b>Teléfono:</b> <code>{selected_row['Telefono']}</code></p>
-                <p style="margin: 4px 0; font-size: 16.5px; color: #cbd5e1;"><b>Campaña:</b> <span style="color: #a78bfa;">{selected_row['Campana_Origen']}</span></p>
-                <p style="margin: 4px 0; font-size: 16.5px; color: #cbd5e1;"><b>Producto:</b> {selected_row['Producto_Principal']}</p>
-                <p style="margin: 4px 0; font-size: 16.5px; color: #cbd5e1;"><b>Cultivo:</b> {selected_row['Cultivo_Aplicacion']}</p>
-                <p style="margin: 4px 0; font-size: 16.5px; color: #cbd5e1;"><b>Ubicación:</b> {selected_row['Localidad']}, {selected_row['Provincia']}</p>
-                <p style="margin: 4px 0; font-size: 16.5px; color: #cbd5e1;"><b>Prioridad:</b> {selected_row['Temperatura']}</p>
-                <p style="margin: 4px 0; font-size: 16.5px; color: #cbd5e1;"><b>Mensajes:</b> {selected_row['Total_Mensajes']} ({selected_row['Mensajes_Entrantes']} de cliente)</p>
+                <p style="margin: 4px 0; font-size: 16.5px; color: #2B211A;"><b>Teléfono:</b> <code>{selected_row['Telefono']}</code></p>
+                <p style="margin: 4px 0; font-size: 16.5px; color: #2B211A;"><b>Campaña:</b> <span style="color: #a78bfa;">{selected_row['Campana_Origen']}</span></p>
+                <p style="margin: 4px 0; font-size: 16.5px; color: #2B211A;"><b>Producto:</b> {selected_row['Producto_Principal']}</p>
+                <p style="margin: 4px 0; font-size: 16.5px; color: #2B211A;"><b>Cultivo:</b> {selected_row['Cultivo_Aplicacion']}</p>
+                <p style="margin: 4px 0; font-size: 16.5px; color: #2B211A;"><b>Ubicación:</b> {selected_row['Localidad']}, {selected_row['Provincia']}</p>
+                <p style="margin: 4px 0; font-size: 16.5px; color: #2B211A;"><b>Prioridad:</b> {selected_row['Temperatura']}</p>
+                <p style="margin: 4px 0; font-size: 16.5px; color: #2B211A;"><b>Mensajes:</b> {selected_row['Total_Mensajes']} ({selected_row['Mensajes_Entrantes']} de cliente)</p>
             </div>
             """, unsafe_allow_html=True)
 
             st.markdown("""
-            <div style="background: rgba(15, 23, 42, 0.6); border-left: 4px solid #10b981; border-radius: 8px; padding: 14px 16px; margin-bottom: 14px;">
-                <b style="color: #10b981; font-size: 14.5px; text-transform: uppercase; letter-spacing: 0.5px;">Síntesis de la Demanda:</b>
+            <div style="background: rgba(15, 23, 42, 0.6); border-left: 4px solid #47664F; border-radius: 8px; padding: 14px 16px; margin-bottom: 14px;">
+                <b style="color: #47664F; font-size: 14.5px; text-transform: uppercase; letter-spacing: 0.5px;">Síntesis de la Demanda:</b>
                 <p style="margin: 6px 0 0 0; color: #2B211A; font-size: 16.5px; line-height: 1.55;">""" + selected_row["Que_Pide_El_Cliente"] + """</p>
             </div>
             """, unsafe_allow_html=True)
 
             st.markdown("""
-            <div style="background: rgba(15, 23, 42, 0.6); border-left: 4px solid #f59e0b; border-radius: 8px; padding: 14px 16px; margin-bottom: 14px;">
-                <b style="color: #f59e0b; font-size: 14.5px; text-transform: uppercase; letter-spacing: 0.5px;">Acción Comercial Sugerida:</b>
+            <div style="background: rgba(15, 23, 42, 0.6); border-left: 4px solid #9B732A; border-radius: 8px; padding: 14px 16px; margin-bottom: 14px;">
+                <b style="color: #9B732A; font-size: 14.5px; text-transform: uppercase; letter-spacing: 0.5px;">Acción Comercial Sugerida:</b>
                 <p style="margin: 6px 0 0 0; color: #2B211A; font-size: 16.5px; line-height: 1.55;">""" + selected_row["Accion_Sugerida"] + """</p>
             </div>
             """, unsafe_allow_html=True)
@@ -699,7 +699,7 @@ def _render_whatsapp_demand_tab(master_df: pd.DataFrame, comm_data: Any = None, 
                             <p style="margin: 0 0 6px 0;"><b>Resumen:</b> {diag.get('summary', '-')}</p>
                             <p style="margin: 0 0 6px 0;"><b>Temas Clave:</b> {topics}</p>
                             <p style="margin: 0 0 6px 0;"><b>Objeciones / Pendientes:</b> {issues}</p>
-                            <p style="margin: 0;"><b>Estrategia Sugerida:</b> <span style="color: #4ade80;">{diag.get('next_step', '-')}</span></p>
+                            <p style="margin: 0;"><b>Estrategia Sugerida:</b> <span style="color: #47664F;">{diag.get('next_step', '-')}</span></p>
                         </div>
                         """, unsafe_allow_html=True)
 
@@ -712,7 +712,7 @@ def _render_whatsapp_demand_tab(master_df: pd.DataFrame, comm_data: Any = None, 
                     is_me = m.get("is_from_me")
                     align = "flex-end" if is_me else "flex-start"
                     bg_color = "rgba(16, 185, 129, 0.25)" if is_me else "rgba(51, 65, 85, 0.7)"
-                    border_color = "#10b981" if is_me else "#475569"
+                    border_color = "#47664F" if is_me else "#475569"
                     sender_lbl = "Empresa" if is_me else selected_row["Cliente"]
                     time_lbl = m.get("timestamp", "")
 

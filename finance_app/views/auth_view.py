@@ -47,9 +47,9 @@ def render_password_requirements_card(pwd: str) -> bool:
     crit = check_password_criteria(pwd)
 
     def _row(label: str, ok: bool, rule_cls: str) -> str:
-        color = "#10b981" if ok else "#786451"
+        color = "#47664F" if ok else "#786451"
         if ok:
-            icon = """<span style="display:inline-flex;align-items:center;justify-content:center;width:17px;height:17px;background:#10b981;border-radius:50%;color:#052e16;font-size:11px;font-weight:900;margin-right:8px;line-height:1;">✓</span>"""
+            icon = """<span style="display:inline-flex;align-items:center;justify-content:center;width:17px;height:17px;background:#47664F;border-radius:50%;color:#052e16;font-size:11px;font-weight:900;margin-right:8px;line-height:1;">✓</span>"""
         else:
             icon = """<span style="display:inline-flex;align-items:center;justify-content:center;width:17px;height:17px;border:1.5px solid #64748b;border-radius:50%;color:transparent;font-size:10px;margin-right:8px;"></span>"""
         return f'<div class="{rule_cls}" style="font-size: 13px; color: {color}; margin-bottom: 4px; display: flex; align-items: center;">{icon} {label}</div>'
@@ -106,9 +106,9 @@ def render_password_requirements_card(pwd: str) -> bool:
                         rows.forEach(r => {
                             const elements = doc.querySelectorAll('.' + r.cls);
                             elements.forEach(el => {
-                                const color = r.ok ? '#10b981' : '#786451';
+                                const color = r.ok ? '#47664F' : '#786451';
                                 const icon = r.ok
-                                    ? '<span style="display:inline-flex;align-items:center;justify-content:center;width:17px;height:17px;background:#10b981;border-radius:50%;color:#052e16;font-size:11px;font-weight:900;margin-right:8px;line-height:1;">✓</span>'
+                                    ? '<span style="display:inline-flex;align-items:center;justify-content:center;width:17px;height:17px;background:#47664F;border-radius:50%;color:#052e16;font-size:11px;font-weight:900;margin-right:8px;line-height:1;">✓</span>'
                                     : '<span style="display:inline-flex;align-items:center;justify-content:center;width:17px;height:17px;border:1.5px solid #64748b;border-radius:50%;color:transparent;font-size:10px;margin-right:8px;"></span>';
                                 el.innerHTML = icon + ' ' + r.text;
                                 el.style.color = color;
@@ -297,7 +297,7 @@ def _inject_progressive_form_guard():
                     }
                 } else {
                     // Email con formato válido -> DESBLOQUEAR contraseña y repetir contraseña
-                    emailIn.style.borderColor = '#10b981';
+                    emailIn.style.borderColor = '#47664F';
                     if (pwdIn) {
                         pwdIn.disabled = false;
                         pwdIn.style.opacity = '1';
@@ -317,7 +317,7 @@ def _inject_progressive_form_guard():
                     // Validación visual inmediata de coincidencia de contraseñas
                     if (pwdIn && pwdRepIn && pwdRepIn.value) {
                         if (pwdIn.value === pwdRepIn.value) {
-                            pwdRepIn.style.borderColor = '#10b981';
+                            pwdRepIn.style.borderColor = '#47664F';
                         } else {
                             pwdRepIn.style.borderColor = '#ef4444';
                         }
@@ -534,11 +534,11 @@ def render_login_form() -> bool:
                     if user_peek and user_peek.get("reset_generico"):
                         reset_pending = True
                         st.markdown("""
-                        <div style="background: rgba(245, 158, 11, 0.18); border: 1.5px solid #f59e0b; border-radius: 10px; padding: 14px 18px; margin: 10px 0 16px 0;">
+                        <div style="background: rgba(245, 158, 11, 0.18); border: 1.5px solid #9B732A; border-radius: 10px; padding: 14px 18px; margin: 10px 0 16px 0;">
                             <div style="display: flex; align-items: flex-start; gap: 12px;">
                                 <span style="font-size: 24px; line-height: 1;">🔔</span>
                                 <div>
-                                    <div style="font-size: 15px; font-weight: 800; color: #fbbf24; letter-spacing: -0.2px;">Tu contraseña ha sido reestablecida</div>
+                                    <div style="font-size: 15px; font-weight: 800; color: #9B732A; letter-spacing: -0.2px;">Tu contraseña ha sido reestablecida</div>
                                     <div style="font-size: 13.5px; color: #fde68a; margin-top: 4px; line-height: 1.45;">
                                         Un administrador ha reestablecido el acceso a tu cuenta. Ingresa con la clave genérica asignada (<code>Consultora2026!</code>) y podrás configurar inmediatamente tu nueva contraseña personal segura.
                                     </div>
@@ -937,8 +937,8 @@ def render_login_form() -> bool:
         elif step == "RESET_GENERICO":
             user = st.session_state.get("pending_user", {})
             st.markdown("""
-            <div style="background: rgba(245, 158, 11, 0.2); border: 1.5px solid #f59e0b; border-radius: 10px; padding: 14px 18px; margin-bottom: 15px;">
-                <div style="font-size: 16px; font-weight: 800; color: #fbbf24;">🔔 Tu contraseña ha sido reestablecida</div>
+            <div style="background: rgba(245, 158, 11, 0.2); border: 1.5px solid #9B732A; border-radius: 10px; padding: 14px 18px; margin-bottom: 15px;">
+                <div style="font-size: 16px; font-weight: 800; color: #9B732A;">🔔 Tu contraseña ha sido reestablecida</div>
                 <div style="font-size: 13.5px; color: #fde68a; margin-top: 4px; line-height: 1.45;">
                     Has ingresado con la clave genérica asignada para tu cuenta. Por políticas estrictas de ciberseguridad, define a continuación tu nueva contraseña segura personal.
                 </div>
@@ -1042,9 +1042,9 @@ def render_user_sidebar_badge():
 
     role_colors = {
         "admin": "#ef4444",
-        "manager": "#f59e0b",
+        "manager": "#9B732A",
         "closer": "#895522",
-        "viewer": "#10b981",
+        "viewer": "#47664F",
     }
     badge_color = role_colors.get(user.get("role", "closer"), "#786451")
     display_name = user.get("full_name") or user.get("email") or "Usuario"
@@ -1071,9 +1071,9 @@ def render_user_header_badge():
 
     role_colors = {
         "admin": "#ef4444",
-        "manager": "#f59e0b",
+        "manager": "#9B732A",
         "closer": "#895522",
-        "viewer": "#10b981",
+        "viewer": "#47664F",
     }
     badge_color = role_colors.get(user.get("role", "closer"), "#786451")
     display_name = user.get("full_name") or user.get("email") or "Usuario"

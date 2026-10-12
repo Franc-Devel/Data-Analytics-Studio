@@ -171,7 +171,7 @@ def render_whatsapp_view(current_user: dict):
                     c_str = st.session_state["last_pairing_code"]
                     formatted = f"{c_str[:4]} - {c_str[4:]}" if len(c_str) == 8 else c_str
                     st.markdown(f"""
-                    <div style="background-color: #064e3b; border: 2px solid #10b981; border-radius: 12px; padding: 18px; text-align: center;">
+                    <div style="background-color: #064e3b; border: 2px solid #47664F; border-radius: 12px; padding: 18px; text-align: center;">
                         <div style="font-size: 15px; color: #a7f3d0; text-transform: uppercase; font-weight: bold; letter-spacing: 0.5px;">Tu Código de Vinculación</div>
                         <div style="font-size: 36px; color: #2B211A; font-weight: 800; letter-spacing: 4px; margin: 8px 0;">{formatted}</div>
                         <div style="font-size: 15.5px; color: #6ee7b7;">Introduce este código en Dispositivos Vinculados en tu celular</div>
@@ -239,7 +239,7 @@ def render_whatsapp_view(current_user: dict):
                         <div style="background: rgba(30, 41, 59, 0.7); border: 1px solid rgba(56, 189, 248, 0.3); border-radius: 8px; padding: 12px 16px; margin: 8px 0;">
                             <p style="margin: 0 0 4px 0;"><b>Qué está pidiendo:</b> {an.what_is_requesting}</p>
                             <p style="margin: 0 0 4px 0;"><b>Procedencia Geográfica:</b> {an.origin_location}</p>
-                            <p style="margin: 0;"><b>Derivación Comercial:</b> <span style="color: #4ade80;">{an.derivation_summary}</span></p>
+                            <p style="margin: 0;"><b>Derivación Comercial:</b> <span style="color: #47664F;">{an.derivation_summary}</span></p>
                         </div>
                         """, unsafe_allow_html=True)
                 else:
@@ -326,7 +326,7 @@ def render_whatsapp_view(current_user: dict):
             <div style="background: rgba(30, 41, 59, 0.7); border: 1px solid rgba(99, 102, 241, 0.3); border-radius: 10px; padding: 14px 18px; margin: 12px 0;">
                 <p style="margin: 0 0 6px 0; font-size: 15px; color: #786451;"><b>Qué está pidiendo:</b> <span style="color: #2B211A; font-weight: 600;">{analysis.what_is_requesting}</span></p>
                 <p style="margin: 0 0 6px 0; font-size: 15px; color: #786451;"><b>Procedencia / Ubicación:</b> <span style="color: #895522; font-weight: 600;">{analysis.origin_location}</span></p>
-                <p style="margin: 0; font-size: 15px; color: #786451;"><b>Derivación Comercial:</b> <span style="color: #4ade80; font-weight: 600;">{analysis.derivation_summary}</span></p>
+                <p style="margin: 0; font-size: 15px; color: #786451;"><b>Derivación Comercial:</b> <span style="color: #47664F; font-weight: 600;">{analysis.derivation_summary}</span></p>
             </div>
             """, unsafe_allow_html=True)
 

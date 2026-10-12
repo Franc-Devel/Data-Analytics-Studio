@@ -26,7 +26,7 @@ def render_reports_view(sheets: dict, comm, current_user: dict):
         st.markdown("""
         <div style="background: rgba(30, 41, 59, 0.7); border-radius: 12px; padding: 20px; border-left: 5px solid #895522; min-height: 140px; display: flex; flex-direction: column; justify-content: space-between;">
             <h4 style="color: #2B211A; margin-bottom: 8px; font-size: 22px;">Informe Ejecutivo Completo (PDF)</h4>
-            <p style="color: #cbd5e1; font-size: 16.5px; line-height: 1.55;">Documento integral con portada corporativa, tarjetas de KPIs, gráficos de alta resolución, embudo de conversión y análisis territorial.</p>
+            <p style="color: #2B211A; font-size: 16.5px; line-height: 1.55;">Documento integral con portada corporativa, tarjetas de KPIs, gráficos de alta resolución, embudo de conversión y análisis territorial.</p>
         </div>
         """, unsafe_allow_html=True)
 
@@ -43,9 +43,9 @@ def render_reports_view(sheets: dict, comm, current_user: dict):
 
     with col_opt2:
         st.markdown("""
-        <div style="background: rgba(30, 41, 59, 0.7); border-radius: 12px; padding: 20px; border-left: 5px solid #10b981; min-height: 140px; display: flex; flex-direction: column; justify-content: space-between;">
+        <div style="background: rgba(30, 41, 59, 0.7); border-radius: 12px; padding: 20px; border-left: 5px solid #47664F; min-height: 140px; display: flex; flex-direction: column; justify-content: space-between;">
             <h4 style="color: #2B211A; margin-bottom: 8px; font-size: 22px;">Informes Mensuales Específicos</h4>
-            <p style="color: #cbd5e1; font-size: 16.5px; line-height: 1.55;">Seleccione un mes para auditar la inversión, alcance, CPL y prospectos generados en ese período.</p>
+            <p style="color: #2B211A; font-size: 16.5px; line-height: 1.55;">Seleccione un mes para auditar la inversión, alcance, CPL y prospectos generados en ese período.</p>
         </div>
         """, unsafe_allow_html=True)
 

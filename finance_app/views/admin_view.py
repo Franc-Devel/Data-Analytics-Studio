@@ -411,7 +411,7 @@ def render_admin_view(current_user: dict):
 
             with col_s2:
                 st.markdown("""
-                <div style="background: rgba(30, 41, 59, 0.7); border: 1px solid rgba(16, 185, 129, 0.25); border-radius: 12px; padding: 18px 20px;">
+                <div style="background: rgba(30, 41, 59, 0.7); border: 1px solid rgba(71,102,79,0.25); border-radius: 12px; padding: 18px 20px;">
                     <h5 style="color: #47664F; margin-bottom: 8px; font-size: 20px;">Exportar Base de Datos a Excel</h5>
                     <p style="font-size: 16.5px; color: #2B211A; line-height: 1.55;">Descarga la base consolidada de clientes con scoring y closer asignado en formato Excel.</p>
                 </div>

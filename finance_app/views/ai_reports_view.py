@@ -108,7 +108,7 @@ def _render_document_coequiper_tab(current_user: Optional[Dict[str, Any]] = None
         # 1. Semáforo de auditoría de cuentas
         if doc_res.get("cuentas_cierran"):
             st.markdown("""
-            <div style="background: rgba(16, 185, 129, 0.15); border-left: 4px solid #47664F; border-radius: 8px; padding: 12px 16px; margin-bottom: 14px;">
+            <div style="background: rgba(71,102,79,0.15); border-left: 4px solid #47664F; border-radius: 8px; padding: 12px 16px; margin-bottom: 14px;">
                 <b style="color: #47664F; font-size: 15px;">✅ AUDITORÍA CONTABLE EXITOSA: LAS CUENTAS CIERRAN</b>
                 <p style="margin: 4px 0 0 0; color: #2B211A; font-size: 14px;">Todos los subtotales de ítems, el neto gravado, el IVA y el total coinciden aritméticamente sin discrepancias.</p>
             </div>
@@ -711,7 +711,7 @@ def _render_whatsapp_demand_tab(master_df: pd.DataFrame, comm_data: Any = None, 
                 for m in chat_history:
                     is_me = m.get("is_from_me")
                     align = "flex-end" if is_me else "flex-start"
-                    bg_color = "rgba(16, 185, 129, 0.25)" if is_me else "rgba(51, 65, 85, 0.7)"
+                    bg_color = "rgba(71,102,79,0.25)" if is_me else "rgba(51, 65, 85, 0.7)"
                     border_color = "#47664F" if is_me else "#475569"
                     sender_lbl = "Empresa" if is_me else selected_row["Cliente"]
                     time_lbl = m.get("timestamp", "")

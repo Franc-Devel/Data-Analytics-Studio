@@ -280,7 +280,7 @@ def _chart_lead_funnel(leads_df: pd.DataFrame) -> Image | None:
         kpis.leads_hot + kpis.leads_warm,
         kpis.convertidos,
     ]
-    colors_list = ["#3B82F6", "#6366F1", "#8B5CF6", "#10B981"]
+    colors_list = ["#3B82F6", "#6366F1", "#8B5CF6", "#47664F"]
 
     fig, ax = plt.subplots(figsize=(6.8, 1.7), dpi=200)
     fig.patch.set_facecolor("#FFFFFF")

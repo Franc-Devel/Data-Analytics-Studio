@@ -111,7 +111,7 @@ def render_crm_view(current_user: dict):
                     col_act1, col_act2 = st.columns([2, 1])
                     with col_act1:
                         wa_url = build_whatsapp_link(customer.phone, customer.full_name, customer.product_line or "")
-                        st.markdown(f"<a href='{wa_url}' target='_blank' style='display: inline-block; background-color: #25D366; color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 16px; margin-top: 10px;'>Abrir Chat de WhatsApp Directo</a>", unsafe_allow_html=True)
+                        st.markdown(f"<a href='{wa_url}' target='_blank' style='display: inline-block; background-color: #895522; color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 16px; margin-top: 10px;'>Abrir Chat de WhatsApp Directo</a>", unsafe_allow_html=True)
 
                     with col_act2:
                         if current_user.get("role") in ("admin", "manager"):

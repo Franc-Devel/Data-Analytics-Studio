@@ -278,7 +278,7 @@ st.markdown("""
         border-radius: 8px;
         font-size: 16px !important;
         font-weight: 600;
-        background: rgba(16, 185, 129, 0.15);
+        background: rgba(71,102,79,0.15);
         color: #47664F;
         border: 1px solid rgba(169,111,53,0.3);
     }
@@ -686,7 +686,7 @@ with st.sidebar:
     # -------------------------------------------------------------
     with st.expander("WhatsApp Live Sync (Automático)", expanded=False):
         wa_state = WhatsAppSyncState()
-        st.markdown("<div style='background: rgba(16, 185, 129, 0.15); border-left: 3px solid #47664F; padding: 8px 12px; border-radius: 6px; margin-bottom: 8px;'><small><b>Auto-Sync en Vivo: ACTIVO</b><br>El sistema escucha y guarda los mensajes de WhatsApp en tiempo real sin requerir acciones manuales.</small></div>", unsafe_allow_html=True)
+        st.markdown("<div style='background: rgba(71,102,79,0.15); border-left: 3px solid #47664F; padding: 8px 12px; border-radius: 6px; margin-bottom: 8px;'><small><b>Auto-Sync en Vivo: ACTIVO</b><br>El sistema escucha y guarda los mensajes de WhatsApp en tiempo real sin requerir acciones manuales.</small></div>", unsafe_allow_html=True)
         st.markdown(f"<small><b>Última actividad:</b> {wa_state.last_sync_iso[:19].replace('T', ' ')}</small>", unsafe_allow_html=True)
         st.markdown(f"<small><b>Leads WhatsApp:</b> {wa_state.total_synced_leads} registros</small>", unsafe_allow_html=True)
 
@@ -717,7 +717,7 @@ with st.sidebar:
         meta_acc = getattr(_cfg, "meta_ad_account_id", None) or os.getenv("META_AD_ACCOUNT_ID", "")
         if meta_tok and meta_acc:
             st.markdown(
-                "<div style='background: rgba(16, 185, 129, 0.15); border-left: 3px solid #47664F; "
+                "<div style='background: rgba(71,102,79,0.15); border-left: 3px solid #47664F; "
                 "padding: 8px 12px; border-radius: 6px; margin-bottom: 8px;'>"
                 "<small><b>API Meta: Configurada</b><br>Modo estricto Solo Lectura (ads_read)</small></div>",
                 unsafe_allow_html=True,
@@ -1094,8 +1094,8 @@ elif page in ["CRM & Leads (Explorador)", "CRM & Leads"]:
         col_drawer_left, col_drawer_right = st.columns([1.2, 1.8])
 
         with col_drawer_left:
-            diag_color_bg = "rgba(16, 185, 129, 0.12)" if lead_dias_sin == 0 else ("rgba(236, 72, 153, 0.12)" if "Urgente" in lead_rec_pri else "rgba(245, 158, 11, 0.12)")
-            diag_color_border = "rgba(16, 185, 129, 0.4)" if lead_dias_sin == 0 else ("rgba(236, 72, 153, 0.4)" if "Urgente" in lead_rec_pri else "rgba(245, 158, 11, 0.4)")
+            diag_color_bg = "rgba(71,102,79,0.12)" if lead_dias_sin == 0 else ("rgba(236, 72, 153, 0.12)" if "Urgente" in lead_rec_pri else "rgba(245, 158, 11, 0.12)")
+            diag_color_border = "rgba(71,102,79,0.4)" if lead_dias_sin == 0 else ("rgba(236, 72, 153, 0.4)" if "Urgente" in lead_rec_pri else "rgba(245, 158, 11, 0.4)")
             diag_color_title = "#47664F" if lead_dias_sin == 0 else ("#985A4E" if "Urgente" in lead_rec_pri else "#9B732A")
 
             drawer_card_html = (
@@ -1162,7 +1162,7 @@ elif page in ["CRM & Leads (Explorador)", "CRM & Leads"]:
         with col_drawer_right:
             if lead_dias_sin == 0 or "Hoy" in lead_rec_pri:
                 st.markdown("""
-                <div style="background: rgba(16, 185, 129, 0.15); border: 1px solid rgba(16, 185, 129, 0.4); border-radius: 10px; padding: 14px 18px; margin-bottom: 14px; display: flex; align-items: center; gap: 10px;">
+                <div style="background: rgba(71,102,79,0.15); border: 1px solid rgba(71,102,79,0.4); border-radius: 10px; padding: 14px 18px; margin-bottom: 14px; display: flex; align-items: center; gap: 10px;">
                     <span style="color: #6ee7b7; font-size: 16px; font-weight: 600; line-height: 1.5;">
                         <b>Cliente Hablado Hoy:</b> Ya se registró contacto durante el día de hoy. Se sugiere esperar su respuesta antes de reiterar para no saturar al cliente.
                     </span>
@@ -1248,7 +1248,7 @@ elif page in ["CRM & Leads (Explorador)", "CRM & Leads"]:
                     f"Si todavía estás evaluando incorporar o renovar tecnología en tu campo, consultanos hoy por la propuesta y valor promocional."
                 )
                 st.markdown(f"""
-                <div style="background: rgba(16, 185, 129, 0.12); padding: 16px 18px; border-radius: 10px; margin-bottom: 10px; border: 1px solid rgba(16, 185, 129, 0.4); font-size: 16.5px;">
+                <div style="background: rgba(71,102,79,0.12); padding: 16px 18px; border-radius: 10px; margin-bottom: 10px; border: 1px solid rgba(71,102,79,0.4); font-size: 16.5px;">
                     <b style="color: #47664F; font-size: 17px;">1. Lanzamiento Davis Vantage Vue (Reactivación & Novedad):</b><br>
                     <span style="color: #ecfdf5; white-space: pre-line; line-height: 1.6;">"{msg_template_0}"</span>
                 </div>
@@ -1467,7 +1467,7 @@ elif page == "Plan de Reactivación":
             gen_msg = generate_reactivation_message(react_lead, strategy=strat_key, variant_seed=st.session_state["react_seed"])
 
             st.markdown(f"""
-            <div style="background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.35); border-radius: 12px; padding: 18px 22px; margin-bottom: 18px;">
+            <div style="background: rgba(71,102,79,0.08); border: 1px solid rgba(71,102,79,0.35); border-radius: 12px; padding: 18px 22px; margin-bottom: 18px;">
                 <span style="font-size: 15px; font-weight: 700; color: #47664F; text-transform: uppercase; letter-spacing: 0.5px;">Vista Previa del Mensaje Generado (Spintax Único):</span>
                 <p style="color: #ecfdf5; font-size: 17.5px; margin: 10px 0 0 0; line-height: 1.6; font-weight: 500;">
                     "{gen_msg}"

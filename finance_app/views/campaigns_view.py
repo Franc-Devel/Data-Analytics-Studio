@@ -55,7 +55,7 @@ def _render_meta_ads_live_tab(comm: Optional[CommercialAnalyticsResult]):
     with col_stat1:
         if status["configured"]:
             st.markdown(f"""
-            <div style="background: rgba(16, 185, 129, 0.12); border: 1.5px solid #47664F; border-radius: 10px; padding: 14px 18px; margin-bottom: 15px;">
+            <div style="background: rgba(71,102,79,0.12); border: 1.5px solid #47664F; border-radius: 10px; padding: 14px 18px; margin-bottom: 15px;">
                 <div style="display: flex; align-items: center; justify-content: space-between;">
                     <div>
                         <div style="font-size: 16px; font-weight: 800; color: #47664F;">● Conectado a Meta Graph API ({status['api_version']})</div>

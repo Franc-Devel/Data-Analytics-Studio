@@ -31,10 +31,10 @@ DEFAULT_SERVICE_COLORS = {
     "PRESTACIONES": "#ef4444",
     "INSUMO": "#3b82f6",     # Azul/Gris
     "INSUMOS": "#3b82f6",
-    "LECHE": "#10b981",      # Verde
-    "LECHES": "#10b981",
-    "ALIMENTO": "#10b981",
-    "ALIMENTOS": "#10b981",
+    "LECHE": "#47664F",      # Verde
+    "LECHES": "#47664F",
+    "ALIMENTO": "#47664F",
+    "ALIMENTOS": "#47664F",
     "ALQUILER": "#d97706",   # Ocre/Naranja
     "ALQUILERES": "#d97706",
     "EXPRESO": "#8b5cf6",    # Violeta/Púrpura

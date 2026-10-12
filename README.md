@@ -1,4 +1,6 @@
-# ◈ Data Analytics Studio · Nexo Suite
+# FAUVOR Analytics
+
+Producto de FAUVOR. Identidad visual: marfil, bronce y dorado; símbolo e iconos del kit original de la marca. Se conserva la URL histórica del repositorio.
 
 ![Portada conceptual de Data Analytics Studio](assets/covers/cover.png)
 

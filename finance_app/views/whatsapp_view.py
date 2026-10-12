@@ -1,5 +1,5 @@
 """
-Nexo Analytics - Vista de Conexión, Monitoreo y Cola de Mensajería de WhatsApp (Streamlit)
+FAUVOR Analytics - Vista de Conexión, Monitoreo y Cola de Mensajería de WhatsApp (Streamlit)
 """
 
 import json
@@ -39,7 +39,7 @@ def render_whatsapp_view(current_user: dict):
     with tab1:
         with get_db_session() as session:
             metrics = get_queue_metrics(session)
-            
+
             # Tarjetas de Métricas de Cola
             c1, c2, c3, c4 = st.columns(4)
             c1.metric("Pendientes / Reintentos", metrics["pending"], help="Mensajes en cola esperando despacho")
@@ -173,7 +173,7 @@ def render_whatsapp_view(current_user: dict):
                     st.markdown(f"""
                     <div style="background-color: #064e3b; border: 2px solid #10b981; border-radius: 12px; padding: 18px; text-align: center;">
                         <div style="font-size: 15px; color: #a7f3d0; text-transform: uppercase; font-weight: bold; letter-spacing: 0.5px;">Tu Código de Vinculación</div>
-                        <div style="font-size: 36px; color: #ffffff; font-weight: 800; letter-spacing: 4px; margin: 8px 0;">{formatted}</div>
+                        <div style="font-size: 36px; color: #2B211A; font-weight: 800; letter-spacing: 4px; margin: 8px 0;">{formatted}</div>
                         <div style="font-size: 15.5px; color: #6ee7b7;">Introduce este código en Dispositivos Vinculados en tu celular</div>
                     </div>
                     """, unsafe_allow_html=True)
@@ -184,7 +184,7 @@ def render_whatsapp_view(current_user: dict):
     with tab3:
         wa_state = WhatsAppSyncState()
         h_stats = get_whatsapp_history_stats()
-        
+
         c_sync1, c_sync2, c_sync3 = st.columns(3)
         c_sync1.metric("Mensajes en Memoria", f"{h_stats.get('total_messages', 0):,}")
         c_sync2.metric("Contactos Únicos", f"{h_stats.get('unique_contacts', len(wa_state.processed_phones)):,}")
@@ -310,7 +310,7 @@ def render_whatsapp_view(current_user: dict):
                 )
 
             st.success(f"✓ Relevamiento completado ({'IA API (' + status.get('current_model', 'LLM') + ')' if analysis.is_ai_generated else 'Motor de Contingencia Heurístico'})")
-            
+
             c_res1, c_res2, c_res3, c_res4 = st.columns(4)
             c_res1.metric("Línea Producto", analysis.product_line)
             c_res2.metric("Intención", analysis.intent)
@@ -324,9 +324,9 @@ def render_whatsapp_view(current_user: dict):
 
             st.markdown(f"""
             <div style="background: rgba(30, 41, 59, 0.7); border: 1px solid rgba(99, 102, 241, 0.3); border-radius: 10px; padding: 14px 18px; margin: 12px 0;">
-                <p style="margin: 0 0 6px 0; font-size: 15px; color: #94a3b8;"><b>Qué está pidiendo:</b> <span style="color: #f8fafc; font-weight: 600;">{analysis.what_is_requesting}</span></p>
-                <p style="margin: 0 0 6px 0; font-size: 15px; color: #94a3b8;"><b>Procedencia / Ubicación:</b> <span style="color: #38bdf8; font-weight: 600;">{analysis.origin_location}</span></p>
-                <p style="margin: 0; font-size: 15px; color: #94a3b8;"><b>Derivación Comercial:</b> <span style="color: #4ade80; font-weight: 600;">{analysis.derivation_summary}</span></p>
+                <p style="margin: 0 0 6px 0; font-size: 15px; color: #786451;"><b>Qué está pidiendo:</b> <span style="color: #2B211A; font-weight: 600;">{analysis.what_is_requesting}</span></p>
+                <p style="margin: 0 0 6px 0; font-size: 15px; color: #786451;"><b>Procedencia / Ubicación:</b> <span style="color: #895522; font-weight: 600;">{analysis.origin_location}</span></p>
+                <p style="margin: 0; font-size: 15px; color: #786451;"><b>Derivación Comercial:</b> <span style="color: #4ade80; font-weight: 600;">{analysis.derivation_summary}</span></p>
             </div>
             """, unsafe_allow_html=True)
 

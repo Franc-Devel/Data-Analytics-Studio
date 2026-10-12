@@ -47,7 +47,7 @@ def render_password_requirements_card(pwd: str) -> bool:
     crit = check_password_criteria(pwd)
 
     def _row(label: str, ok: bool, rule_cls: str) -> str:
-        color = "#10b981" if ok else "#94a3b8"
+        color = "#10b981" if ok else "#786451"
         if ok:
             icon = """<span style="display:inline-flex;align-items:center;justify-content:center;width:17px;height:17px;background:#10b981;border-radius:50%;color:#052e16;font-size:11px;font-weight:900;margin-right:8px;line-height:1;">✓</span>"""
         else:
@@ -56,7 +56,7 @@ def render_password_requirements_card(pwd: str) -> bool:
 
     html = f"""
     <div id="pwd-requirements-box" style="background: rgba(0, 0, 0, 0.55); border: 1px solid rgba(148, 163, 184, 0.25); border-radius: 8px; padding: 12px 16px; margin: 10px 0 14px 0; {'display: block;' if len(pwd) > 0 else 'display: none;'}">
-        <div style="font-size: 12px; font-weight: 600; color: #94a3b8; margin-bottom: 8px;">Requisitos de seguridad de la contraseña:</div>
+        <div style="font-size: 12px; font-weight: 600; color: #786451; margin-bottom: 8px;">Requisitos de seguridad de la contraseña:</div>
         <div style="display: flex; flex-direction: column; gap: 3px;">
             {_row("Entre 6 y 20 caracteres", crit["len"], "pwd-rule-len")}
             {_row("Al menos una letra minúscula (a-z)", crit["lower"], "pwd-rule-lower")}
@@ -81,7 +81,7 @@ def render_password_requirements_card(pwd: str) -> bool:
                 if (pwdInput.dataset.liveWatch) return;
                 pwdInput.dataset.liveWatch = "true";
                 const input = pwdInput;
-                    
+
                     const updateLiveChecks = () => {
                         const val = input.value || '';
                         const isLen = val.length >= 6 && val.length <= 20;
@@ -106,8 +106,8 @@ def render_password_requirements_card(pwd: str) -> bool:
                         rows.forEach(r => {
                             const elements = doc.querySelectorAll('.' + r.cls);
                             elements.forEach(el => {
-                                const color = r.ok ? '#10b981' : '#94a3b8';
-                                const icon = r.ok 
+                                const color = r.ok ? '#10b981' : '#786451';
+                                const icon = r.ok
                                     ? '<span style="display:inline-flex;align-items:center;justify-content:center;width:17px;height:17px;background:#10b981;border-radius:50%;color:#052e16;font-size:11px;font-weight:900;margin-right:8px;line-height:1;">✓</span>'
                                     : '<span style="display:inline-flex;align-items:center;justify-content:center;width:17px;height:17px;border:1.5px solid #64748b;border-radius:50%;color:transparent;font-size:10px;margin-right:8px;"></span>';
                                 el.innerHTML = icon + ' ' + r.text;
@@ -504,8 +504,8 @@ def render_login_form() -> bool:
     with col_l2:
         st.markdown("""
         <div style="background: rgba(15, 23, 42, 0.90); border: 1px solid rgba(56, 189, 248, 0.35); border-radius: 12px; padding: 22px 26px; margin-top: 30px; box-shadow: 0 12px 30px rgba(0,0,0,0.6); text-align: center;">
-            <div style="font-size: 26px; font-weight: 800; color: #f8fafc; letter-spacing: -0.5px;">Nexo Analytics</div>
-            <div style="font-size: 13.5px; color: #38bdf8; font-weight: 700; letter-spacing: 1px; margin-top: 4px; text-transform: uppercase;">Portal de Acceso Seguro · Airtable Cloud & 2FA</div>
+            <div style="font-size: 26px; font-weight: 800; color: #2B211A; letter-spacing: -0.5px;">FAUVOR Analytics</div>
+            <div style="font-size: 13.5px; color: #895522; font-weight: 700; letter-spacing: 1px; margin-top: 4px; text-transform: uppercase;">Portal de Acceso Seguro · Airtable Cloud & 2FA</div>
         </div>
         """, unsafe_allow_html=True)
         st.write("")
@@ -605,7 +605,7 @@ def render_login_form() -> bool:
             with tab_forgot:
                 st.markdown("##### Recuperación con Google Authenticator")
                 st.caption("Si olvidaste tu contraseña, define una nueva ingresando el código de tu aplicación de autenticación.")
-                
+
                 f_email = st.text_input("Tu Correo Registrado * (Requerido):", key="recup_email", placeholder="usuario@empresa.com (Requerido)").strip().lower()
                 f_email_valid = bool(f_email and is_valid_email(f_email))
 
@@ -698,8 +698,8 @@ def render_login_form() -> bool:
 
                 if not has_registered_admin:
                     st.markdown("""
-                    <div style="background: rgba(56, 189, 248, 0.12); border: 1.5px solid #38bdf8; border-radius: 10px; padding: 12px 16px; margin-bottom: 15px;">
-                        <div style="font-weight: 800; color: #38bdf8; font-size: 14.5px;">👑 Configuración de Administrador Único</div>
+                    <div style="background: rgba(56, 189, 248, 0.12); border: 1.5px solid #895522; border-radius: 10px; padding: 12px 16px; margin-bottom: 15px;">
+                        <div style="font-weight: 800; color: #895522; font-size: 14.5px;">👑 Configuración de Administrador Único</div>
                         <div style="font-size: 13px; color: #bae6fd; margin-top: 3px;">
                             Aún no existe una cuenta de administrador registrada en el sistema. Esta cuenta inicial se registrará como el <b>Administrador Principal y Único</b>.
                         </div>
@@ -947,7 +947,7 @@ def render_login_form() -> bool:
             st.markdown(f"Cuenta: **{user.get('nombre')}** (`{user.get('email')}`)")
 
             has_2fa = user.get("totp_enabled") and user.get("totp_secret_encrypted")
-            
+
             # Si no tenía 2FA, generamos uno nuevo para que lo vincule
             if not has_2fa:
                 if "setup_secret" not in st.session_state or not st.session_state["setup_secret"]:
@@ -962,7 +962,7 @@ def render_login_form() -> bool:
             req_ok_g = render_password_requirements_card(c_pwd1)
             c_pwd2 = st.text_input("Repetir Nueva Contraseña:", key="reset_g_pwd_rep", type="password", placeholder="••••••••")
             c_totp = st.text_input("Código de 6 dígitos de Google Authenticator:", key="reset_g_totp", max_chars=6, placeholder="123456").strip()
-            
+
             col_g1, col_g2 = st.columns(2)
             with col_g1:
                 btn_save_reset = st.button("Guardar Contraseña y Continuar", type="primary", use_container_width=True, key="btn_save_reset_g")
@@ -1043,18 +1043,18 @@ def render_user_sidebar_badge():
     role_colors = {
         "admin": "#ef4444",
         "manager": "#f59e0b",
-        "closer": "#38bdf8",
+        "closer": "#895522",
         "viewer": "#10b981",
     }
-    badge_color = role_colors.get(user.get("role", "closer"), "#94a3b8")
+    badge_color = role_colors.get(user.get("role", "closer"), "#786451")
     display_name = user.get("full_name") or user.get("email") or "Usuario"
     user_email = user.get("email") or ""
     role_name = user.get("role", "closer").upper()
 
     st.markdown(f"""
     <div style="background: rgba(30, 41, 59, 0.7); border-radius: 8px; padding: 12px 14px; margin-bottom: 10px; border-left: 4.5px solid {badge_color};">
-        <div style="font-size: 16px; font-weight: 700; color: #f8fafc;">{display_name}</div>
-        <div style="font-size: 13px; color: #94a3b8; margin-top: 1px;">{user_email}</div>
+        <div style="font-size: 16px; font-weight: 700; color: #2B211A;">{display_name}</div>
+        <div style="font-size: 13px; color: #786451; margin-top: 1px;">{user_email}</div>
         <div style="font-size: 13px; color: {badge_color}; text-transform: uppercase; font-weight: 700; letter-spacing: 0.8px; margin-top: 4px;">Rol: {role_name}</div>
     </div>
     """, unsafe_allow_html=True)
@@ -1072,10 +1072,10 @@ def render_user_header_badge():
     role_colors = {
         "admin": "#ef4444",
         "manager": "#f59e0b",
-        "closer": "#38bdf8",
+        "closer": "#895522",
         "viewer": "#10b981",
     }
-    badge_color = role_colors.get(user.get("role", "closer"), "#94a3b8")
+    badge_color = role_colors.get(user.get("role", "closer"), "#786451")
     display_name = user.get("full_name") or user.get("email") or "Usuario"
     role_name = user.get("role", "closer").upper()
 
@@ -1083,7 +1083,7 @@ def render_user_header_badge():
     with col_info:
         st.markdown(f"""
         <div style="text-align: right; padding-right: 6px;">
-            <div style="font-size: 14.5px; font-weight: 700; color: #f8fafc; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">👤 {display_name}</div>
+            <div style="font-size: 14.5px; font-weight: 700; color: #2B211A; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">👤 {display_name}</div>
             <div style="font-size: 12px; color: {badge_color}; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;">{role_name}</div>
         </div>
         """, unsafe_allow_html=True)

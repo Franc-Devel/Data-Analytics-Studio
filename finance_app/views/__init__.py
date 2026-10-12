@@ -1,5 +1,5 @@
 """
-Nexo Analytics - Paquete de Vistas Modulares para la Interfaz de Usuario (Streamlit).
+FAUVOR Analytics - Paquete de Vistas Modulares para la Interfaz de Usuario (Streamlit).
 """
 
 from finance_app.views.auth_view import (

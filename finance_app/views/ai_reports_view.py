@@ -1,5 +1,5 @@
 """
-Nexo Analytics - Vista de Informes de IA y Discriminación de Demanda en WhatsApp
+FAUVOR Analytics - Vista de Informes de IA y Discriminación de Demanda en WhatsApp
 Segmenta y analiza todo el historial de chats entrantes, identifica requerimientos específicos
 y permite filtrar dinámicamente por rangos de fechas, campañas publicitarias, productos e intenciones.
 """
@@ -79,7 +79,7 @@ def _render_document_coequiper_tab(current_user: Optional[Dict[str, Any]] = None
     with col_up2:
         st.markdown("""
         <div style="background: rgba(30, 41, 59, 0.5); border: 1px solid rgba(148, 163, 184, 0.2); border-radius: 10px; padding: 14px 16px;">
-            <b style="color: #38bdf8;">¿Qué controla el Coequiper IA?</b>
+            <b style="color: #895522;">¿Qué controla el Coequiper IA?</b>
             <ul style="margin: 6px 0 0 0; padding-left: 18px; color: #cbd5e1; font-size: 13.5px;">
                 <li>Coherencia aritmética: <code>cant × precio = subtotal</code>.</li>
                 <li>Neto gravado vs suma de ítems.</li>
@@ -110,14 +110,14 @@ def _render_document_coequiper_tab(current_user: Optional[Dict[str, Any]] = None
             st.markdown("""
             <div style="background: rgba(16, 185, 129, 0.15); border-left: 4px solid #10b981; border-radius: 8px; padding: 12px 16px; margin-bottom: 14px;">
                 <b style="color: #10b981; font-size: 15px;">✅ AUDITORÍA CONTABLE EXITOSA: LAS CUENTAS CIERRAN</b>
-                <p style="margin: 4px 0 0 0; color: #e2e8f0; font-size: 14px;">Todos los subtotales de ítems, el neto gravado, el IVA y el total coinciden aritméticamente sin discrepancias.</p>
+                <p style="margin: 4px 0 0 0; color: #2B211A; font-size: 14px;">Todos los subtotales de ítems, el neto gravado, el IVA y el total coinciden aritméticamente sin discrepancias.</p>
             </div>
             """, unsafe_allow_html=True)
         else:
             st.markdown("""
             <div style="background: rgba(239, 68, 68, 0.15); border-left: 4px solid #ef4444; border-radius: 8px; padding: 12px 16px; margin-bottom: 14px;">
                 <b style="color: #ef4444; font-size: 15px;">⚠️ OBSERVACIONES Y DISCREPANCIAS DETECTADAS</b>
-                <p style="margin: 4px 0 0 0; color: #e2e8f0; font-size: 14px;">Se encontraron inconsistencias numéricas o campos de identificación incompletos. Revise el detalle antes de aprobar.</p>
+                <p style="margin: 4px 0 0 0; color: #2B211A; font-size: 14px;">Se encontraron inconsistencias numéricas o campos de identificación incompletos. Revise el detalle antes de aprobar.</p>
             </div>
             """, unsafe_allow_html=True)
             for adv in doc_res.get("advertencias", []):
@@ -138,22 +138,22 @@ def _render_document_coequiper_tab(current_user: Optional[Dict[str, Any]] = None
         with col_e:
             st.markdown(f"""
             <div style="background: rgba(30, 41, 59, 0.6); border: 1px solid rgba(148, 163, 184, 0.2); border-radius: 10px; padding: 14px;">
-                <b style="color: #94a3b8; font-size: 13px; text-transform: uppercase;">Emisor del Documento</b>
-                <p style="margin: 6px 0 2px 0; color: #f8fafc; font-size: 16px; font-weight: 600;">{emisor.get('nombre') or 'No detectado'}</p>
-                <p style="margin: 0; color: #94a3b8; font-size: 13px;">CUIT: <code>{emisor.get('cuit') or 'S/D'}</code></p>
-                <p style="margin: 0; color: #94a3b8; font-size: 13px;">Dirección: {emisor.get('direccion') or 'S/D'}</p>
+                <b style="color: #786451; font-size: 13px; text-transform: uppercase;">Emisor del Documento</b>
+                <p style="margin: 6px 0 2px 0; color: #2B211A; font-size: 16px; font-weight: 600;">{emisor.get('nombre') or 'No detectado'}</p>
+                <p style="margin: 0; color: #786451; font-size: 13px;">CUIT: <code>{emisor.get('cuit') or 'S/D'}</code></p>
+                <p style="margin: 0; color: #786451; font-size: 13px;">Dirección: {emisor.get('direccion') or 'S/D'}</p>
             </div>
             """, unsafe_allow_html=True)
 
         with col_c:
             loc_cliente = cliente.get('localidad')
-            loc_display = f"<span style='color: #38bdf8;'>{loc_cliente}, {cliente.get('provincia') or ''}</span>" if loc_cliente else "<span style='color: #f59e0b;'>⚠️ No informada en documento</span>"
+            loc_display = f"<span style='color: #895522;'>{loc_cliente}, {cliente.get('provincia') or ''}</span>" if loc_cliente else "<span style='color: #f59e0b;'>⚠️ No informada en documento</span>"
             st.markdown(f"""
             <div style="background: rgba(30, 41, 59, 0.6); border: 1px solid rgba(148, 163, 184, 0.2); border-radius: 10px; padding: 14px;">
-                <b style="color: #94a3b8; font-size: 13px; text-transform: uppercase;">Cliente / Receptor</b>
-                <p style="margin: 6px 0 2px 0; color: #f8fafc; font-size: 16px; font-weight: 600;">{cliente.get('nombre') or 'No detectado'}</p>
-                <p style="margin: 0; color: #94a3b8; font-size: 13px;">CUIT: <code>{cliente.get('cuit') or 'S/D'}</code> | Tel: {cliente.get('telefono') or 'S/D'}</p>
-                <p style="margin: 0; color: #94a3b8; font-size: 13px;">Localidad: {loc_display}</p>
+                <b style="color: #786451; font-size: 13px; text-transform: uppercase;">Cliente / Receptor</b>
+                <p style="margin: 6px 0 2px 0; color: #2B211A; font-size: 16px; font-weight: 600;">{cliente.get('nombre') or 'No detectado'}</p>
+                <p style="margin: 0; color: #786451; font-size: 13px;">CUIT: <code>{cliente.get('cuit') or 'S/D'}</code> | Tel: {cliente.get('telefono') or 'S/D'}</p>
+                <p style="margin: 0; color: #786451; font-size: 13px;">Localidad: {loc_display}</p>
             </div>
             """, unsafe_allow_html=True)
 
@@ -170,8 +170,8 @@ def _render_document_coequiper_tab(current_user: Optional[Dict[str, Any]] = None
         # 5. Resumen Ejecutivo
         st.markdown(f"""
         <div style="background: rgba(15, 23, 42, 0.7); border: 1px solid rgba(99, 102, 241, 0.3); border-radius: 10px; padding: 14px; margin: 14px 0;">
-            <b style="color: #818cf8;">Síntesis Ejecutiva de la IA:</b>
-            <p style="margin: 4px 0 0 0; color: #f8fafc; font-size: 14.5px;">{devolucion.get('resumen')}</p>
+            <b style="color: #B18450;">Síntesis Ejecutiva de la IA:</b>
+            <p style="margin: 4px 0 0 0; color: #2B211A; font-size: 14.5px;">{devolucion.get('resumen')}</p>
         </div>
         """, unsafe_allow_html=True)
 
@@ -194,10 +194,10 @@ def render_ai_reports_view(master_df: pd.DataFrame, comm_data: Any = None, curre
     st.markdown("""
     <div style="background: linear-gradient(135deg, rgba(30, 41, 59, 0.8) 0%, rgba(15, 23, 42, 0.9) 100%);
                 border: 1px solid rgba(99, 102, 241, 0.3); border-radius: 14px; padding: 24px 28px; margin-bottom: 22px;">
-        <h3 style="margin: 0; color: #f8fafc; font-size: 24px; font-weight: 700; letter-spacing: -0.5px;">
+        <h3 style="margin: 0; color: #2B211A; font-size: 24px; font-weight: 700; letter-spacing: -0.5px;">
             Coequiper IA · Análisis, Control Documental y Segmentación de Demanda
         </h3>
-        <p style="margin: 6px 0 0 0; color: #94a3b8; font-size: 14.5px;">
+        <p style="margin: 6px 0 0 0; color: #786451; font-size: 14.5px;">
             Procesamiento y auditoría de documentos comerciales, y discriminación semántica profunda del historial de WhatsApp en tiempo real.
         </p>
     </div>
@@ -392,9 +392,9 @@ def _render_whatsapp_demand_tab(master_df: pd.DataFrame, comm_data: Any = None, 
     pct_presup = (pide_presupuesto / tot_convs * 100) if tot_convs > 0 else 0.0
 
     with k1:
-        _render_metric_card("Clientes en Vista", f"{tot_convs:,}", f"de {len(df_chats):,} analizados", "#38bdf8")
+        _render_metric_card("Clientes en Vista", f"{tot_convs:,}", f"de {len(df_chats):,} analizados", "#895522")
     with k2:
-        _render_metric_card("Mensajes en Vista", f"{tot_msgs:,}", f"{df_filtered['Mensajes_Entrantes'].sum():,} entrantes", "#818cf8")
+        _render_metric_card("Mensajes en Vista", f"{tot_msgs:,}", f"{df_filtered['Mensajes_Entrantes'].sum():,} entrantes", "#B18450")
     with k3:
         _render_metric_card("Piden Cotización", f"{pide_presupuesto}", f"{pct_presup:.1f}% de tasa comercial", "#4ade80")
     with k4:
@@ -432,10 +432,10 @@ def _render_whatsapp_demand_tab(master_df: pd.DataFrame, comm_data: Any = None, 
                 values="Clientes",
                 names="Producto",
                 hole=0.45,
-                color_discrete_sequence=["#6366f1", "#06b6d4", "#10b981", "#f59e0b", "#ec4899", "#8b5cf6", "#64748b"],
+                color_discrete_sequence=["#895522", "#06b6d4", "#10b981", "#f59e0b", "#ec4899", "#8b5cf6", "#64748b"],
             )
             fig_prod.update_layout(
-                template="plotly_dark",
+                template="plotly_white",
                 paper_bgcolor="rgba(0,0,0,0)",
                 plot_bgcolor="rgba(0,0,0,0)",
                 height=340,
@@ -457,7 +457,7 @@ def _render_whatsapp_demand_tab(master_df: pd.DataFrame, comm_data: Any = None, 
                 color_continuous_scale="Viridis",
             )
             fig_intent.update_layout(
-                template="plotly_dark",
+                template="plotly_white",
                 paper_bgcolor="rgba(0,0,0,0)",
                 plot_bgcolor="rgba(0,0,0,0)",
                 height=340,
@@ -503,18 +503,18 @@ def _render_whatsapp_demand_tab(master_df: pd.DataFrame, comm_data: Any = None, 
                     orientation="h",
                     text="Clientes",
                     color="Clientes",
-                    color_continuous_scale=[[0, "#38bdf8"], [0.5, "#6366f1"], [1.0, "#4338ca"]],
+                    color_continuous_scale=[[0, "#895522"], [0.5, "#895522"], [1.0, "#4338ca"]],
                     custom_data=["Producto_Lider", "Pct"],
                 )
                 fig_camp.update_traces(
                     textposition="outside",
                     texttemplate="<b>%{text}</b>",
-                    textfont=dict(size=12, color="#f8fafc"),
+                    textfont=dict(size=12, color="#2B211A"),
                     hovertemplate="<b>%{y}</b><br>Clientes: <b>%{x}</b> (%{customdata[1]:.1f}%)<br>Línea Principal: <b>%{customdata[0]}</b><extra></extra>",
                     marker=dict(line=dict(width=0)),
                 )
                 fig_camp.update_layout(
-                    template="plotly_dark",
+                    template="plotly_white",
                     paper_bgcolor="rgba(0,0,0,0)",
                     plot_bgcolor="rgba(0,0,0,0)",
                     height=max(330, len(camp_counts) * 44),
@@ -529,10 +529,10 @@ def _render_whatsapp_demand_tab(master_df: pd.DataFrame, comm_data: Any = None, 
                     camp_prod,
                     orientation="h",
                     barmode="stack",
-                    color_discrete_sequence=["#10b981", "#f59e0b", "#6366f1", "#06b6d4", "#ec4899", "#8b5cf6", "#64748b"],
+                    color_discrete_sequence=["#10b981", "#f59e0b", "#895522", "#06b6d4", "#ec4899", "#8b5cf6", "#64748b"],
                 )
                 fig_camp.update_layout(
-                    template="plotly_dark",
+                    template="plotly_white",
                     paper_bgcolor="rgba(0,0,0,0)",
                     plot_bgcolor="rgba(0,0,0,0)",
                     height=max(340, len(camp_counts) * 44),
@@ -568,7 +568,7 @@ def _render_whatsapp_demand_tab(master_df: pd.DataFrame, comm_data: Any = None, 
                     color_continuous_scale="Teal",
                 )
                 fig_crop.update_layout(
-                    template="plotly_dark",
+                    template="plotly_white",
                     paper_bgcolor="rgba(0,0,0,0)",
                     plot_bgcolor="rgba(0,0,0,0)",
                     height=340,
@@ -651,7 +651,7 @@ def _render_whatsapp_demand_tab(master_df: pd.DataFrame, comm_data: Any = None, 
         with col_c_info:
             st.markdown(f"""
             <div style="background: rgba(30, 41, 59, 0.7); border: 1px solid rgba(148, 163, 184, 0.2); border-radius: 12px; padding: 18px 20px; margin-bottom: 16px;">
-                <h4 style="margin: 0 0 12px 0; color: #38bdf8; font-size: 20px; font-weight: 700;">{selected_row['Cliente']}</h4>
+                <h4 style="margin: 0 0 12px 0; color: #895522; font-size: 20px; font-weight: 700;">{selected_row['Cliente']}</h4>
                 <p style="margin: 4px 0; font-size: 16.5px; color: #cbd5e1;"><b>Teléfono:</b> <code>{selected_row['Telefono']}</code></p>
                 <p style="margin: 4px 0; font-size: 16.5px; color: #cbd5e1;"><b>Campaña:</b> <span style="color: #a78bfa;">{selected_row['Campana_Origen']}</span></p>
                 <p style="margin: 4px 0; font-size: 16.5px; color: #cbd5e1;"><b>Producto:</b> {selected_row['Producto_Principal']}</p>
@@ -665,14 +665,14 @@ def _render_whatsapp_demand_tab(master_df: pd.DataFrame, comm_data: Any = None, 
             st.markdown("""
             <div style="background: rgba(15, 23, 42, 0.6); border-left: 4px solid #10b981; border-radius: 8px; padding: 14px 16px; margin-bottom: 14px;">
                 <b style="color: #10b981; font-size: 14.5px; text-transform: uppercase; letter-spacing: 0.5px;">Síntesis de la Demanda:</b>
-                <p style="margin: 6px 0 0 0; color: #e2e8f0; font-size: 16.5px; line-height: 1.55;">""" + selected_row["Que_Pide_El_Cliente"] + """</p>
+                <p style="margin: 6px 0 0 0; color: #2B211A; font-size: 16.5px; line-height: 1.55;">""" + selected_row["Que_Pide_El_Cliente"] + """</p>
             </div>
             """, unsafe_allow_html=True)
 
             st.markdown("""
             <div style="background: rgba(15, 23, 42, 0.6); border-left: 4px solid #f59e0b; border-radius: 8px; padding: 14px 16px; margin-bottom: 14px;">
                 <b style="color: #f59e0b; font-size: 14.5px; text-transform: uppercase; letter-spacing: 0.5px;">Acción Comercial Sugerida:</b>
-                <p style="margin: 6px 0 0 0; color: #e2e8f0; font-size: 16.5px; line-height: 1.55;">""" + selected_row["Accion_Sugerida"] + """</p>
+                <p style="margin: 6px 0 0 0; color: #2B211A; font-size: 16.5px; line-height: 1.55;">""" + selected_row["Accion_Sugerida"] + """</p>
             </div>
             """, unsafe_allow_html=True)
 
@@ -695,7 +695,7 @@ def _render_whatsapp_demand_tab(master_df: pd.DataFrame, comm_data: Any = None, 
                         topics = ", ".join(diag.get("key_topics", [])) or "No especificados"
                         issues = ", ".join(diag.get("pending_issues", [])) or "Sin objeciones detectadas"
                         st.markdown(f"""
-                        <div style="background: rgba(30, 41, 59, 0.9); border: 1px solid #6366f1; border-radius: 10px; padding: 16px; font-size: 16.5px; color: #f1f5f9;">
+                        <div style="background: rgba(30, 41, 59, 0.9); border: 1px solid #895522; border-radius: 10px; padding: 16px; font-size: 16.5px; color: #2B211A;">
                             <p style="margin: 0 0 6px 0;"><b>Resumen:</b> {diag.get('summary', '-')}</p>
                             <p style="margin: 0 0 6px 0;"><b>Temas Clave:</b> {topics}</p>
                             <p style="margin: 0 0 6px 0;"><b>Objeciones / Pendientes:</b> {issues}</p>
@@ -720,10 +720,10 @@ def _render_whatsapp_demand_tab(master_df: pd.DataFrame, comm_data: Any = None, 
                     chat_container_html += (
                         f'<div style="display: flex; justify-content: {align}; margin-bottom: 12px;">'
                         f'<div style="max-width: 82%; background: {bg_color}; border: 1px solid {border_color}; border-radius: 10px; padding: 10px 14px;">'
-                        f'<div style="display: flex; justify-content: space-between; gap: 12px; font-size: 13.5px; color: #94a3b8; margin-bottom: 4px;">'
+                        f'<div style="display: flex; justify-content: space-between; gap: 12px; font-size: 13.5px; color: #786451; margin-bottom: 4px;">'
                         f'<b>{sender_lbl}</b><span>{time_lbl}</span>'
                         f'</div>'
-                        f'<div style="font-size: 16.5px; color: #f8fafc; line-height: 1.5;">{m_text_clean}</div>'
+                        f'<div style="font-size: 16.5px; color: #2B211A; line-height: 1.5;">{m_text_clean}</div>'
                         f'</div>'
                         f'</div>'
                     )
@@ -739,8 +739,8 @@ def _render_metric_card(label: str, value: str, caption: str, accent_color: str)
     <div style="background: rgba(30, 41, 59, 0.7); border: 1px solid rgba(148, 163, 184, 0.15);
                 border-top: 3.5px solid {accent_color}; border-radius: 14px; padding: 18px 20px; margin-bottom: 14px;
                 min-height: 130px; display: flex; flex-direction: column; justify-content: space-between;">
-        <div style="font-size: 15px; color: #94a3b8; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{label}</div>
-        <div style="font-size: 34px; color: #f8fafc; font-weight: 800; margin: 6px 0 4px 0; line-height: 1.15;">{value}</div>
-        <div style="font-size: 15px; color: #94a3b8; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{caption}</div>
+        <div style="font-size: 15px; color: #786451; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{label}</div>
+        <div style="font-size: 34px; color: #2B211A; font-weight: 800; margin: 6px 0 4px 0; line-height: 1.15;">{value}</div>
+        <div style="font-size: 15px; color: #786451; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{caption}</div>
     </div>
     """, unsafe_allow_html=True)

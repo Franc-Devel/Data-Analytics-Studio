@@ -1,5 +1,5 @@
 """
-Nexo Analytics - Vista de Informes Mensuales y Descargas Ejecutivas (Streamlit)
+FAUVOR Analytics - Vista de Informes Mensuales y Descargas Ejecutivas (Streamlit)
 """
 
 import datetime
@@ -24,12 +24,12 @@ def render_reports_view(sheets: dict, comm, current_user: dict):
     col_opt1, col_opt2 = st.columns(2)
     with col_opt1:
         st.markdown("""
-        <div style="background: rgba(30, 41, 59, 0.7); border-radius: 12px; padding: 20px; border-left: 5px solid #38bdf8; min-height: 140px; display: flex; flex-direction: column; justify-content: space-between;">
-            <h4 style="color: #f8fafc; margin-bottom: 8px; font-size: 22px;">Informe Ejecutivo Completo (PDF)</h4>
+        <div style="background: rgba(30, 41, 59, 0.7); border-radius: 12px; padding: 20px; border-left: 5px solid #895522; min-height: 140px; display: flex; flex-direction: column; justify-content: space-between;">
+            <h4 style="color: #2B211A; margin-bottom: 8px; font-size: 22px;">Informe Ejecutivo Completo (PDF)</h4>
             <p style="color: #cbd5e1; font-size: 16.5px; line-height: 1.55;">Documento integral con portada corporativa, tarjetas de KPIs, gráficos de alta resolución, embudo de conversión y análisis territorial.</p>
         </div>
         """, unsafe_allow_html=True)
-        
+
         pdf_bytes_exec = generate_executive_pdf_report(sheets, comm)
         today_str = datetime.datetime.now().strftime("%Y%m%d")
         st.download_button(
@@ -44,7 +44,7 @@ def render_reports_view(sheets: dict, comm, current_user: dict):
     with col_opt2:
         st.markdown("""
         <div style="background: rgba(30, 41, 59, 0.7); border-radius: 12px; padding: 20px; border-left: 5px solid #10b981; min-height: 140px; display: flex; flex-direction: column; justify-content: space-between;">
-            <h4 style="color: #f8fafc; margin-bottom: 8px; font-size: 22px;">Informes Mensuales Específicos</h4>
+            <h4 style="color: #2B211A; margin-bottom: 8px; font-size: 22px;">Informes Mensuales Específicos</h4>
             <p style="color: #cbd5e1; font-size: 16.5px; line-height: 1.55;">Seleccione un mes para auditar la inversión, alcance, CPL y prospectos generados en ese período.</p>
         </div>
         """, unsafe_allow_html=True)
@@ -56,7 +56,7 @@ def render_reports_view(sheets: dict, comm, current_user: dict):
         if selected_month:
             report_data = build_monthly_report(selected_month, sheets, comm)
             today_str = datetime.datetime.now().strftime("%Y%m%d")
-            
+
             if report_data:
                 c_btn1, c_btn2 = st.columns(2)
                 with c_btn1:
@@ -93,7 +93,7 @@ def render_reports_view(sheets: dict, comm, current_user: dict):
     st.divider()
     with st.expander("Documentación Técnica · Arquitectura IA & CRM Cognitivo", expanded=False):
         st.markdown("""
-        **Informe Técnico de Infraestructura & Patrón Lightfield CRM**  
+        **Informe Técnico de Infraestructura & Patrón Lightfield CRM**
         Diagnóstico formal de arquitectura de inferencia, cuantización Q4_K_M de Qwen 2.5 7B,
         aislamiento de tensores y arquitectura autónoma con validación humana en 1 clic.
         """)

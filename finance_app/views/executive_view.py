@@ -1,5 +1,5 @@
 """
-Nexo Analytics - Vista de Resumen Ejecutivo y Métricas Consolidadas (Streamlit)
+FAUVOR Analytics - Vista de Resumen Ejecutivo y Métricas Consolidadas (Streamlit)
 """
 
 import streamlit as st
@@ -14,11 +14,11 @@ def money(val: float | int) -> str:
     return f"${val:,.0f}".replace(",", ".")
 
 
-def render_kpi_card(title: str, value: str, detail: str, highlight_color: str = "#38bdf8"):
+def render_kpi_card(title: str, value: str, detail: str, highlight_color: str = "#895522"):
     """Tarjeta de KPI ejecutiva con dark glassmorphism y alta legibilidad."""
     st.markdown(f"""
     <div style="background: rgba(30, 41, 59, 0.7); border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 12px; padding: 18px 20px; border-left: 5px solid {highlight_color}; box-shadow: 0 4px 14px rgba(0,0,0,0.3); min-height: 140px; display: flex; flex-direction: column; justify-content: space-between;">
-        <div style="font-size: 16px; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.8px;">{title}</div>
+        <div style="font-size: 16px; font-weight: 700; color: #786451; text-transform: uppercase; letter-spacing: 0.8px;">{title}</div>
         <div style="font-size: 38px; font-weight: 800; color: {highlight_color}; margin: 6px 0; line-height: 1.15;">{value}</div>
         <div style="font-size: 15.5px; font-weight: 500; color: #cbd5e1;">{detail}</div>
     </div>
@@ -29,11 +29,11 @@ def render_executive_view(kpis: LeadKPISummary, comm: CommercialAnalyticsResult,
     """Renderiza el resumen ejecutivo con KPIs macro y gráficos de evolución."""
     c1, c2, c3, c4, c5 = st.columns(5)
     with c1:
-        render_kpi_card("Leads Analizados", f"{kpis.total_leads:,}", f"{total_master_leads:,} en base total", "#38bdf8")
+        render_kpi_card("Leads Analizados", f"{kpis.total_leads:,}", f"{total_master_leads:,} en base total", "#895522")
     with c2:
         render_kpi_card("Conversión CRM", f"{kpis.tasa_conversion_pct:.1f}%", f"{kpis.convertidos} ganados/derivados", "#4ade80")
     with c3:
-        render_kpi_card("Pauta Acumulada", money(comm.kpis.total_inversion_ars), "Inversión 7 meses", "#818cf8")
+        render_kpi_card("Pauta Acumulada", money(comm.kpis.total_inversion_ars), "Inversión 7 meses", "#B18450")
     with c4:
         render_kpi_card("CPL Promedio", money(comm.kpis.cpl_promedio_ars), f"{comm.kpis.total_conversaciones:,} conversaciones", "#c084fc")
     with c5:
@@ -51,7 +51,7 @@ def render_executive_view(kpis: LeadKPISummary, comm: CommercialAnalyticsResult,
             x=df_m["Mes"],
             y=df_m["Inversion_Total"],
             name="Inversión ($)",
-            marker_color="#38bdf8",
+            marker_color="#895522",
             yaxis="y",
         ))
         fig_evol.add_trace(go.Scatter(

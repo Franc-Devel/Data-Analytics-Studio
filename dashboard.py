@@ -82,7 +82,7 @@ except RuntimeError as e:
 
 # Configuración de página
 st.set_page_config(
-    page_title="Nexo Analytics · Intelligence & Reporting Suite",
+    page_title="FAUVOR Analytics · Intelligence & Reporting Suite",
     page_icon="◈",
     layout="wide",
     initial_sidebar_state="expanded"
@@ -101,7 +101,7 @@ st.markdown("""
 st.markdown("""
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
-    
+
     html {
         font-size: 20px !important; /* Escala base generosa para personas con visión reducida y pantallas estándar */
     }
@@ -109,12 +109,12 @@ st.markdown("""
     body, [class*="css"] {
         font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     }
-    
+
     .stApp {
-        background: radial-gradient(circle at 85% 5%, #1e1b4b 0%, #0b0f19 50%, #030712 100%);
-        color: #f1f5f9;
+        background: radial-gradient(circle at 85% 5%, #FFFAF2 0%, #F7F1E6 50%, #F7F1E6 100%);
+        color: #2B211A;
     }
-    
+
     /* Contenedor principal expandido para que quepa todo el aumento sin apretar columnas */
     .block-container {
         max-width: 96% !important;
@@ -129,20 +129,20 @@ st.markdown("""
     [data-testid="column"] {
         min-width: 0 !important;
     }
-    
+
     [data-testid="stSidebar"] {
-        background: #090d16;
-        border-right: 1px solid #1e293b;
+        background: #F7F1E6;
+        border-right: 1px solid #B18450;
         min-width: 370px !important;
         width: 370px !important;
     }
-    
+
     /* Navegación Sidebar: Mismo tamaño uniforme para todas las opciones, legible para personas con problemas de vista */
     [data-testid="stSidebar"] [data-testid="stRadio"] > label,
     [data-testid="stSidebar"] [data-testid="stRadio"] [data-testid="stWidgetLabel"] p {
         font-size: 18px !important;
         font-weight: 800 !important;
-        color: #94a3b8 !important;
+        color: #895522 !important;
         text-transform: uppercase !important;
         letter-spacing: 1.2px !important;
         margin-bottom: 14px !important;
@@ -165,8 +165,8 @@ st.markdown("""
     }
 
     [data-testid="stSidebar"] [data-testid="stRadio"] div[role="radiogroup"] > label:hover {
-        background: rgba(99, 102, 241, 0.2) !important;
-        border-color: rgba(99, 102, 241, 0.35) !important;
+        background: rgba(169,111,53,0.2) !important;
+        border-color: rgba(169,111,53,0.35) !important;
         transform: translateX(4px) !important;
     }
 
@@ -175,21 +175,21 @@ st.markdown("""
     [data-testid="stSidebar"] [data-testid="stRadio"] div[role="radiogroup"] > label div {
         font-size: 19px !important;
         font-weight: 600 !important;
-        color: #f1f5f9 !important;
+        color: #2B211A !important;
         line-height: 1.4 !important;
     }
 
     [data-testid="stSidebar"] [data-testid="stRadio"] div[role="radiogroup"] > label:has(input:checked) {
-        background: linear-gradient(90deg, rgba(99, 102, 241, 0.35) 0%, rgba(99, 102, 241, 0.15) 100%) !important;
-        border-left: 5px solid #6366f1 !important;
-        border-color: rgba(99, 102, 241, 0.5) !important;
-        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4) !important;
+        background: linear-gradient(90deg, rgba(169,111,53,0.35) 0%, rgba(169,111,53,0.15) 100%) !important;
+        border-left: 5px solid #B18450 !important;
+        border-color: rgba(169,111,53,0.5) !important;
+        box-shadow: 0 4px 14px rgba(74,42,24,0.16) !important;
     }
 
     [data-testid="stSidebar"] [data-testid="stRadio"] div[role="radiogroup"] > label:has(input:checked) p,
     [data-testid="stSidebar"] [data-testid="stRadio"] div[role="radiogroup"] > label:has(input:checked) span {
         font-weight: 800 !important;
-        color: #ffffff !important;
+        color: #2B211A !important;
         font-size: 19.5px !important;
     }
 
@@ -197,52 +197,52 @@ st.markdown("""
         transform: scale(1.4) !important;
         margin-right: 12px !important;
     }
-    
+
     .hero-banner {
         padding: 24px 32px !important;
-        border: 1px solid #334155;
+        border: 1px solid #B18450;
         border-radius: 16px;
-        background: linear-gradient(135deg, rgba(30, 41, 59, 0.9), rgba(15, 23, 42, 0.98));
+        background: linear-gradient(135deg, rgba(169,111,53,0.9), rgba(169,111,53,0.98));
         backdrop-filter: blur(12px);
         margin-bottom: 24px;
-        box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4);
+        box-shadow: 0 10px 25px -5px rgba(74,42,24,0.16);
     }
-    
+
     .hero-banner h1 {
         margin: 0 0 8px 0;
         font-size: 36px !important;
         font-weight: 800;
-        background: linear-gradient(90deg, #38bdf8, #818cf8, #c084fc);
+        background: linear-gradient(90deg, #FFFAF2, #FFFAF2, #FFFAF2);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
     }
-    
+
     .hero-banner p {
         margin: 0;
-        color: #e2e8f0 !important;
+        color: #2B211A !important;
         font-size: 18px !important;
         line-height: 1.55 !important;
     }
-    
+
     .kpi-card {
         padding: 22px 24px !important;
-        border: 1px solid #26334d;
+        border: 1px solid #B18450;
         border-radius: 14px;
-        background: linear-gradient(145deg, #131b2e, #0c1220);
+        background: linear-gradient(145deg, #F7F1E6, #F7F1E6);
         min-height: 145px !important;
         display: flex !important;
         flex-direction: column !important;
         justify-content: space-between !important;
         transition: transform 0.2s ease, border-color 0.2s ease;
     }
-    
+
     .kpi-card:hover {
-        border-color: #6366f1;
+        border-color: #B18450;
         transform: translateY(-2px);
     }
-    
+
     .kpi-label {
-        color: #94a3b8;
+        color: #895522;
         font-size: 16px !important;
         text-transform: uppercase;
         font-weight: 700;
@@ -251,15 +251,15 @@ st.markdown("""
         overflow: hidden !important;
         text-overflow: ellipsis !important;
     }
-    
+
     .kpi-value {
         font-size: 40px !important;
         font-weight: 800;
         margin: 8px 0 6px 0 !important;
-        color: #ffffff;
+        color: #2B211A;
         line-height: 1.15 !important;
     }
-    
+
     .kpi-detail {
         color: #34d399;
         font-size: 16px !important;
@@ -268,7 +268,7 @@ st.markdown("""
         overflow: hidden !important;
         text-overflow: ellipsis !important;
     }
-    
+
     .status-badge {
         display: inline-block;
         padding: 8px 16px;
@@ -277,7 +277,7 @@ st.markdown("""
         font-weight: 600;
         background: rgba(16, 185, 129, 0.15);
         color: #34d399;
-        border: 1px solid rgba(16, 185, 129, 0.3);
+        border: 1px solid rgba(169,111,53,0.3);
     }
 
     /* Controles de Formularios, Selects y DatePickers a escala */
@@ -286,7 +286,7 @@ st.markdown("""
     label[data-testid="stWidgetLabel"] {
         font-size: 18.5px !important;
         font-weight: 700 !important;
-        color: #f1f5f9 !important;
+        color: #2B211A !important;
         margin-bottom: 8px !important;
     }
 
@@ -296,7 +296,7 @@ st.markdown("""
     div[data-testid="stTextArea"] textarea {
         font-size: 18px !important;
         padding: 12px 16px !important;
-        color: #ffffff !important;
+        color: #2B211A !important;
     }
 
     div[data-baseweb="select"],
@@ -323,7 +323,7 @@ st.markdown("""
     div[data-testid="stRadio"] div[role="radiogroup"] label span {
         font-size: 18px !important;
         font-weight: 500 !important;
-        color: #f1f5f9 !important;
+        color: #2B211A !important;
     }
     div[data-testid="stRadio"] div[role="radiogroup"] input[type="radio"] {
         transform: scale(1.35) !important;
@@ -360,10 +360,10 @@ st.markdown("""
         font-size: 17.5px !important;
     }
     div[data-testid="stDataFrame"] {
-        border: 1px solid #222f46;
+        border: 1px solid #B18450;
         border-radius: 14px;
         overflow: hidden;
-        background: #0f172a;
+        background: #F7F1E6;
     }
 
     /* Pills */
@@ -381,11 +381,11 @@ st.markdown("""
     h4, .stMarkdown h4 { font-size: 22px !important; font-weight: 700; }
     h5, .stMarkdown h5 { font-size: 19.5px !important; font-weight: 700; }
     p, span, div, li { font-size: 18px; line-height: 1.6; }
-    .stCaption, small { font-size: 16px !important; color: #94a3b8 !important; }
+    .stCaption, small { font-size: 16px !important; color: #895522 !important; }
 
     .wa-chat-box {
-        background: #090d16;
-        border: 1px solid #1e293b;
+        background: #F7F1E6;
+        border: 1px solid #B18450;
         border-radius: 12px;
         padding: 18px;
         max-height: 400px;
@@ -396,56 +396,56 @@ st.markdown("""
     }
     .wa-bubble-in {
         align-self: flex-start;
-        background: #1e293b;
-        color: #f1f5f9;
+        background: #FFFAF2;
+        color: #2B211A;
         padding: 12px 18px;
         border-radius: 12px 12px 12px 2px;
         max-width: 85%;
         font-size: 17.5px !important;
-        border: 1px solid #334155;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        border: 1px solid #B18450;
+        box-shadow: 0 2px 5px rgba(74,42,24,0.16);
     }
     .wa-bubble-out {
         align-self: flex-end;
         background: #064e3b;
-        color: #ecfdf5;
+        color: #2B211A;
         padding: 12px 18px;
         border-radius: 12px 12px 2px 12px;
         max-width: 85%;
         font-size: 17.5px !important;
         border: 1px solid #059669;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        box-shadow: 0 2px 5px rgba(74,42,24,0.16);
     }
     .wa-bubble-note {
         align-self: center;
-        background: rgba(99, 102, 241, 0.15);
-        color: #c7d2fe;
+        background: rgba(169,111,53,0.15);
+        color: #895522;
         padding: 8px 16px;
         border-radius: 20px;
         font-size: 16px !important;
-        border: 1px solid rgba(99, 102, 241, 0.3);
+        border: 1px solid rgba(169,111,53,0.3);
         text-align: center;
         max-width: 90%;
     }
     .wa-time {
         font-size: 14.5px !important;
-        color: #94a3b8;
+        color: #895522;
         margin-top: 4px;
         text-align: right;
     }
     .lead-profile-card {
-        background: linear-gradient(145deg, #131b2e, #0c1220);
-        border: 1px solid #26334d;
+        background: linear-gradient(145deg, #F7F1E6, #F7F1E6);
+        border: 1px solid #B18450;
         border-radius: 14px;
         padding: 22px;
         margin-bottom: 18px;
     }
-    
+
     div[data-testid="stPlotlyChart"], div[data-testid="stDataFrame"] {
-        border: 1px solid #222f46;
+        border: 1px solid #B18450;
         border-radius: 14px;
         overflow: hidden;
-        background: #0f172a;
+        background: #F7F1E6;
     }
 
     /* Regla universal para eliminar cualquier letra chica (< 17px) en estilos inline */
@@ -467,7 +467,26 @@ st.markdown("""
     [style*="font-size: 16.5px"], [style*="font-size:16.5px"] {
         font-size: 17.5px !important;
     }
-</style>
+
+/* FAUVOR: ivory surfaces, bronze accents and readable controls. */
+:root { color-scheme: light; --bs-body-bg:#F7F1E6; --bs-body-color:#2B211A; --bs-primary:#895522; --bs-primary-rgb:137,85,34; --bs-border-color:#D6C0A3; }
+body { background-color:#F7F1E6; color:#2B211A; }
+h1,h2,h3 { font-family:Georgia,'Times New Roman',serif; }
+button,input,select,textarea { font-family:inherit; }
+input,select,textarea,.form-control,.form-select { color:#2B211A; background-color:#FFFAF2; border-color:#D6C0A3; }
+input::placeholder,textarea::placeholder { color:#786451; opacity:1; }
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible { outline:2px solid #895522; outline-offset:3px; }
+.btn-primary,.btn-cyan,.btn-card-primary { background:#895522; border-color:#895522; color:#FFFAF2; }
+.btn-primary:hover,.btn-cyan:hover { background:#4A2A18; border-color:#4A2A18; color:#FFFAF2; }
+.btn-primary,.btn-success,.btn-danger,.btn-warning { --bs-btn-color:#FFFAF2; }
+.text-white,.text-light { color:#2B211A!important; }
+.bg-dark { background-color:#EFE5D6!important; }
+.border-secondary { border-color:#D6C0A3!important; }
+.text-celeste,.text-info,.text-primary { color:#895522!important; }
+.swal2-popup { background:#FFFAF2!important; color:#2B211A!important; }
+.swal2-confirm { background:#895522!important; color:#FFFAF2!important; }
+
+[data-testid="stAppViewContainer"],[data-testid="stHeader"]{background:#F7F1E6;color:#2B211A}</style>
 """, unsafe_allow_html=True)
 
 # Control de Autenticación y Sesión de Usuario
@@ -484,7 +503,7 @@ def money(v: float) -> str:
     return f"$ {v:,.0f}"
 
 
-def render_kpi(label: str, value: str, detail: str, highlight_color: str = "#ffffff"):
+def render_kpi(label: str, value: str, detail: str, highlight_color: str = "#2B211A"):
     st.markdown(f"""
     <div class="kpi-card">
         <div class="kpi-label">{label}</div>
@@ -558,13 +577,14 @@ sheets, comm = get_active_data()
 master = sheets.get("Leeds", pd.DataFrame()) if sheets else pd.DataFrame()
 
 with st.sidebar:
+    st.image(str(Path(__file__).parent / "assets" / "fauvor" / "symbol.png"), width=64)
     st.markdown("""
     <div style="padding: 6px 4px 12px 4px;">
-        <div style="font-size: 26px; font-weight: 800; color: #ffffff; letter-spacing: -0.5px;">Nexo Analytics</div>
-        <div style="font-size: 13.5px; font-weight: 700; color: #94a3b8; letter-spacing: 1.2px; text-transform: uppercase; margin-top: 3px;">Commercial & CRM Suite</div>
+        <div style="font-size: 26px; font-weight: 800; color: #2B211A; letter-spacing: -0.5px;">FAUVOR Analytics</div>
+        <div style="font-size: 13.5px; font-weight: 700; color: #786451; letter-spacing: 1.2px; text-transform: uppercase; margin-top: 3px;">Commercial & CRM Suite</div>
     </div>
     """, unsafe_allow_html=True)
-    
+
     st.markdown("<div style='margin-bottom: 10px;'></div>", unsafe_allow_html=True)
     render_user_sidebar_badge()
     st.markdown("<div style='margin-bottom: 14px;'></div>", unsafe_allow_html=True)
@@ -592,7 +612,7 @@ with st.sidebar:
     )
 
     st.divider()
-    
+
     # -------------------------------------------------------------
     # PANEL DE COEQUIPER IA (AUDITORÍA Y PROCESAMIENTO DOCUMENTAL)
     # -------------------------------------------------------------
@@ -613,7 +633,7 @@ with st.sidebar:
     # -------------------------------------------------------------
     with st.expander("Actualizar Bases de Datos", expanded=False):
         st.markdown("<small>Suba archivos Excel actualizados para refrescar todo el análisis en tiempo real.</small>", unsafe_allow_html=True)
-        
+
         uploaded_leads = st.file_uploader("Base CRM / Leads (.xlsx)", type=["xlsx", "csv"], key="uploader_leads")
         if uploaded_leads is not None:
             if st.button("Aplicar Base de Leads", width="stretch"):
@@ -666,7 +686,7 @@ with st.sidebar:
         st.markdown("<div style='background: rgba(16, 185, 129, 0.15); border-left: 3px solid #10b981; padding: 8px 12px; border-radius: 6px; margin-bottom: 8px;'><small><b>Auto-Sync en Vivo: ACTIVO</b><br>El sistema escucha y guarda los mensajes de WhatsApp en tiempo real sin requerir acciones manuales.</small></div>", unsafe_allow_html=True)
         st.markdown(f"<small><b>Última actividad:</b> {wa_state.last_sync_iso[:19].replace('T', ' ')}</small>", unsafe_allow_html=True)
         st.markdown(f"<small><b>Leads WhatsApp:</b> {wa_state.total_synced_leads} registros</small>", unsafe_allow_html=True)
-        
+
         if st.button("Forzar Verificación Inmediata", width="stretch"):
             res = sync_whatsapp_leads(DEFAULT_LEADS_PATH)
             st.session_state["leads_data"] = None
@@ -789,11 +809,11 @@ if page == "Resumen ejecutivo":
     # 5 Tarjetas de KPI principales
     c1, c2, c3, c4, c5 = st.columns(5)
     with c1:
-        render_kpi("Leads Analizados", f"{kpis.total_leads:,}", f"{len(master):,} en base total", "#38bdf8")
+        render_kpi("Leads Analizados", f"{kpis.total_leads:,}", f"{len(master):,} en base total", "#895522")
     with c2:
         render_kpi("Conversión CRM", f"{kpis.tasa_conversion_pct:.1f}%", f"{kpis.convertidos} ganados/derivados", "#4ade80")
     with c3:
-        render_kpi("Pauta Acumulada", money(comm.kpis.total_inversion_ars), "Inversión 7 meses", "#818cf8")
+        render_kpi("Pauta Acumulada", money(comm.kpis.total_inversion_ars), "Inversión 7 meses", "#B18450")
     with c4:
         render_kpi("CPL Promedio", money(comm.kpis.cpl_promedio_ars), f"{comm.kpis.total_conversaciones:,} conversaciones", "#c084fc")
     with c5:
@@ -812,7 +832,7 @@ if page == "Resumen ejecutivo":
             x=df_m["Mes"],
             y=df_m["Inversion_Total"],
             name="Inversión ($ ARS)",
-            marker_color="#6366f1",
+            marker_color="#895522",
             yaxis="y1"
         ))
         fig_evol.add_trace(go.Scatter(
@@ -825,12 +845,12 @@ if page == "Resumen ejecutivo":
             yaxis="y2"
         ))
         fig_evol.update_layout(
-            template="plotly_dark",
+            template="plotly_white",
             paper_bgcolor="rgba(0,0,0,0)",
             plot_bgcolor="rgba(0,0,0,0)",
             height=340,
             margin=dict(l=20, r=20, t=20, b=20),
-            yaxis=dict(title="Inversión ($ ARS)", showgrid=True, gridcolor="#1e293b"),
+            yaxis=dict(title="Inversión ($ ARS)", showgrid=True, gridcolor="#EFE5D6"),
             yaxis2=dict(title="Conversaciones", overlaying="y", side="right", showgrid=False),
             legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1)
         )
@@ -863,7 +883,7 @@ elif page in ["CRM & Leads (Explorador)", "CRM & Leads"]:
     # 1. 5 Tarjetas de KPI principales con indicadores de Recontacto
     c1, c2, c3, c4, c5 = st.columns(5)
     with c1:
-        render_kpi("Leads en Vista", f"{len(df_filtered):,}", f"{len(master):,} en base total", "#38bdf8")
+        render_kpi("Leads en Vista", f"{len(df_filtered):,}", f"{len(master):,} en base total", "#895522")
     with c2:
         render_kpi("Conversión CRM", f"{kpis.tasa_conversion_pct:.1f}%", f"{kpis.convertidos} ganados/derivados", "#4ade80")
     with c3:
@@ -1079,36 +1099,36 @@ elif page in ["CRM & Leads (Explorador)", "CRM & Leads"]:
                 f'<div class="lead-profile-card">'
                 f'<div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px;">'
                 f'<div>'
-                f'<h3 style="margin: 0; font-size: 22px; font-weight: 700; color: #ffffff;">{lead_name}</h3>'
-                f'<span style="color: #94a3b8; font-size: 16px;">ID #{selected_lead.get("ID_Lead", "")} · {lead_phone}</span>'
+                f'<h3 style="margin: 0; font-size: 22px; font-weight: 700; color: #2B211A;">{lead_name}</h3>'
+                f'<span style="color: #786451; font-size: 16px;">ID #{selected_lead.get("ID_Lead", "")} · {lead_phone}</span>'
                 f'</div>'
-                f'<span class="status-badge" style="background: rgba(99, 102, 241, 0.2); color: #818cf8; border-color: rgba(99, 102, 241, 0.4);">{lead_prod}</span>'
+                f'<span class="status-badge" style="background: rgba(99, 102, 241, 0.2); color: #B18450; border-color: rgba(99, 102, 241, 0.4);">{lead_prod}</span>'
                 f'</div>'
                 f'<div style="margin-bottom: 16px;">'
                 f'<div style="display: flex; justify-content: space-between; font-size: 15px; margin-bottom: 6px;">'
-                f'<span style="color: #94a3b8; font-weight: 700;">LEAD SCORE</span>'
-                f'<span style="color: #38bdf8; font-weight: 800;">{lead_score} / 100 pts</span>'
+                f'<span style="color: #786451; font-weight: 700;">LEAD SCORE</span>'
+                f'<span style="color: #895522; font-weight: 800;">{lead_score} / 100 pts</span>'
                 f'</div>'
-                f'<div style="background: #1e293b; border-radius: 6px; height: 10px; overflow: hidden;">'
-                f'<div style="background: linear-gradient(90deg, #38bdf8, #818cf8, #ec4899); width: {lead_score}%; height: 100%;"></div>'
+                f'<div style="background: #EFE5D6; border-radius: 6px; height: 10px; overflow: hidden;">'
+                f'<div style="background: linear-gradient(90deg, #895522, #B18450, #ec4899); width: {lead_score}%; height: 100%;"></div>'
                 f'</div>'
                 f'</div>'
                 f'<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 16px;">'
-                f'<div style="background: #090d16; padding: 12px 14px; border-radius: 10px; border: 1px solid #1e293b;">'
-                f'<span style="font-size: 14px; color: #94a3b8; text-transform: uppercase; font-weight: 600;">Estado CRM</span><br>'
-                f'<b style="font-size: 16.5px; color: #ffffff;">{lead_estado}</b>'
+                f'<div style="background: #F7F1E6; padding: 12px 14px; border-radius: 10px; border: 1px solid #EFE5D6;">'
+                f'<span style="font-size: 14px; color: #786451; text-transform: uppercase; font-weight: 600;">Estado CRM</span><br>'
+                f'<b style="font-size: 16.5px; color: #2B211A;">{lead_estado}</b>'
                 f'</div>'
-                f'<div style="background: #090d16; padding: 12px 14px; border-radius: 10px; border: 1px solid #1e293b;">'
-                f'<span style="font-size: 14px; color: #94a3b8; text-transform: uppercase; font-weight: 600;">Último Contacto</span><br>'
+                f'<div style="background: #F7F1E6; padding: 12px 14px; border-radius: 10px; border: 1px solid #EFE5D6;">'
+                f'<span style="font-size: 14px; color: #786451; text-transform: uppercase; font-weight: 600;">Último Contacto</span><br>'
                 f'<b style="font-size: 16.5px; color: {"#34d399" if lead_dias_sin == 0 else ("#f87171" if lead_dias_sin >= 14 else "#fcd34d")};">{lead_lbl_cont}</b>'
                 f'</div>'
-                f'<div style="background: #090d16; padding: 12px 14px; border-radius: 10px; border: 1px solid #1e293b;">'
-                f'<span style="font-size: 14px; color: #94a3b8; text-transform: uppercase; font-weight: 600;">Contactos</span><br>'
-                f'<b style="font-size: 16.5px; color: #ffffff;">{lead_cont} interacción(es)</b>'
+                f'<div style="background: #F7F1E6; padding: 12px 14px; border-radius: 10px; border: 1px solid #EFE5D6;">'
+                f'<span style="font-size: 14px; color: #786451; text-transform: uppercase; font-weight: 600;">Contactos</span><br>'
+                f'<b style="font-size: 16.5px; color: #2B211A;">{lead_cont} interacción(es)</b>'
                 f'</div>'
-                f'<div style="background: #090d16; padding: 12px 14px; border-radius: 10px; border: 1px solid #1e293b;">'
-                f'<span style="font-size: 14px; color: #94a3b8; text-transform: uppercase; font-weight: 600;">Días en Pipeline</span><br>'
-                f'<b style="font-size: 16.5px; color: #ffffff;">{lead_dias} días</b>'
+                f'<div style="background: #F7F1E6; padding: 12px 14px; border-radius: 10px; border: 1px solid #EFE5D6;">'
+                f'<span style="font-size: 14px; color: #786451; text-transform: uppercase; font-weight: 600;">Días en Pipeline</span><br>'
+                f'<b style="font-size: 16.5px; color: #2B211A;">{lead_dias} días</b>'
                 f'</div>'
                 f'</div>'
                 f'<div style="background: {diag_color_bg}; border: 1px solid {diag_color_border}; border-radius: 12px; padding: 16px 18px; margin-bottom: 16px;">'
@@ -1171,7 +1191,7 @@ elif page in ["CRM & Leads (Explorador)", "CRM & Leads"]:
                         sender = sanitize_display_name(item.get("sender", ""))
                         txt = item.get("text", "")
                         time_lbl = item.get("time", "")
-                        
+
                         if t_type == "whatsapp_out":
                             chat_html += (
                                 f'<div class="wa-bubble-out">'
@@ -1183,7 +1203,7 @@ elif page in ["CRM & Leads (Explorador)", "CRM & Leads"]:
                         elif t_type in ["whatsapp_in", "whatsapp_live"]:
                             chat_html += (
                                 f'<div class="wa-bubble-in">'
-                                f'<b style="color: #38bdf8;">{sender}</b><br>'
+                                f'<b style="color: #895522;">{sender}</b><br>'
                                 f'{txt}'
                                 f'<div class="wa-time">{time_lbl} · Recibido Cliente</div>'
                                 f'</div>'
@@ -1217,7 +1237,7 @@ elif page in ["CRM & Leads (Explorador)", "CRM & Leads"]:
 
             with tab_quick_replies:
                 st.markdown("##### Selecciona una plantilla para enviar con 1 Clic:")
-                
+
                 # Plantilla 0: Lanzamiento Davis Vantage Vue (Reactivación Comercial)
                 msg_template_0 = (
                     f"Hola {lead_name}! ¿Cómo estás? Te escribimos de parte del equipo de Abatech.\n\n"
@@ -1246,8 +1266,8 @@ elif page in ["CRM & Leads (Explorador)", "CRM & Leads"]:
                 # Plantilla 1: Seguimiento / Recontacto de Cotización
                 msg_template_1 = f"Hola {lead_name}! ¿Cómo estás? Te contacto de parte del equipo de Abatech para retomar la conversación sobre {lead_prod}. ¿Pudiste revisar los números o necesitás que ajustemos la propuesta a las necesidades actuales de tu campo?"
                 st.markdown(f"""
-                <div style="background: #1e293b; padding: 16px 18px; border-radius: 10px; margin-bottom: 10px; border: 1px solid #334155; font-size: 16.5px;">
-                    <b style="color: #38bdf8; font-size: 17px;">2. Recontacto y Seguimiento de Cotización:</b><br>
+                <div style="background: #EFE5D6; padding: 16px 18px; border-radius: 10px; margin-bottom: 10px; border: 1px solid #334155; font-size: 16.5px;">
+                    <b style="color: #895522; font-size: 17px;">2. Recontacto y Seguimiento de Cotización:</b><br>
                     <span style="color: #cbd5e1; line-height: 1.6;">"{msg_template_1}"</span>
                 </div>
                 """, unsafe_allow_html=True)
@@ -1267,7 +1287,7 @@ elif page in ["CRM & Leads (Explorador)", "CRM & Leads"]:
                 # Plantilla 2: Ficha Técnica y Asesoramiento
                 msg_template_2 = f"Hola {lead_name}, un gusto saludarte nuevamente. Te escribo de Abatech para acercarte la ficha técnica y especificaciones de {lead_prod}. ¿Te gustaría que coordinemos una breve llamada de 10 minutos con nuestro especialista técnico para evaluar la instalación y despejar dudas?"
                 st.markdown(f"""
-                <div style="background: #1e293b; padding: 16px 18px; border-radius: 10px; margin-bottom: 10px; border: 1px solid #334155; font-size: 16.5px;">
+                <div style="background: #EFE5D6; padding: 16px 18px; border-radius: 10px; margin-bottom: 10px; border: 1px solid #334155; font-size: 16.5px;">
                     <b style="color: #4ade80; font-size: 17px;">3. Envío de Ficha Técnica & Asesoramiento:</b><br>
                     <span style="color: #cbd5e1; line-height: 1.6;">"{msg_template_2}"</span>
                 </div>
@@ -1288,7 +1308,7 @@ elif page in ["CRM & Leads (Explorador)", "CRM & Leads"]:
                 # Plantilla 3: Reactivación Comercial / Bonificación Especial
                 msg_template_3 = f"Hola {lead_name}! ¿Cómo estás? Te escribo del equipo de Abatech. Retomamos contacto porque tenemos vigentes condiciones comerciales especiales y bonificaciones para {lead_prod}. ¿Seguís interesado en incorporar esta tecnología en esta campaña? Quedamos a disposición para pasarte los detalles."
                 st.markdown(f"""
-                <div style="background: #1e293b; padding: 16px 18px; border-radius: 10px; margin-bottom: 10px; border: 1px solid #334155; font-size: 16.5px;">
+                <div style="background: #EFE5D6; padding: 16px 18px; border-radius: 10px; margin-bottom: 10px; border: 1px solid #334155; font-size: 16.5px;">
                     <b style="color: #f59e0b; font-size: 17px;">4. Reactivación Comercial / Bonificación Especial:</b><br>
                     <span style="color: #cbd5e1; line-height: 1.6;">"{msg_template_3}"</span>
                 </div>
@@ -1319,7 +1339,7 @@ elif page == "Plan de Reactivación":
     # 1. Tarjetas de KPI principales de Reactivación
     c1, c2, c3, c4 = st.columns(4)
     with c1:
-        render_kpi("Fríos para Reactivar", f"{kpis.total_frios_reactivables:,}", "Sin contacto por ≥14 días", "#38bdf8")
+        render_kpi("Fríos para Reactivar", f"{kpis.total_frios_reactivables:,}", "Sin contacto por ≥14 días", "#895522")
     with c2:
         render_kpi("Reactivados Exitosos", f"{kpis.leads_reactivados:,}", "Clientes que respondieron", "#4ade80")
     with c3:
@@ -1335,7 +1355,7 @@ elif page == "Plan de Reactivación":
         <div style="margin-bottom: 8px;">
             <b style="color: #a5b4fc; font-size: 18px;">Protocolo Empresarial Anti-Bloqueo de WhatsApp:</b>
         </div>
-        <div style="color: #e2e8f0; font-size: 16.5px; line-height: 1.6;">
+        <div style="color: #2B211A; font-size: 16.5px; line-height: 1.6;">
             • <b>Spintax y Mensajes Únicos:</b> El motor genera variantes aleatorias en cada envío para evitar patrones repetitivos.<br>
             • <b>Cadencia Controlada:</b> Recomendamos reactivar entre <b>15 y 20 contactos por día</b> (lote diario sugerido) para proteger la reputación de la línea.<br>
             • <b>Detección Automática de Respuestas:</b> Cuando un cliente responda, el sistema lo moverá automáticamente a <i>'Hablados Hoy'</i> y <i>'En Seguimiento'</i>.
@@ -1387,7 +1407,7 @@ elif page == "Plan de Reactivación":
 
         with col_batch_studio:
             st.markdown("#### Estudio de Mensajes con Spintax Anti-Bloqueo")
-            
+
             r_name = str(react_lead.get("Contacto", "Cliente")).strip()
             r_phone = str(react_lead.get("Telefono", "")).strip()
             r_prod = str(react_lead.get("Linea_Producto", "Equipos")).strip()
@@ -1399,11 +1419,11 @@ elif page == "Plan de Reactivación":
             st.markdown(f"""
             <div style="background: #131b2e; border: 1px solid #26334d; border-radius: 12px; padding: 16px 20px; margin-bottom: 16px; display: flex; justify-content: space-between; align-items: center;">
                 <div>
-                    <b style="color: #ffffff; font-size: 19px;">{r_name}</b> <span style="color: #94a3b8; font-size: 16px;">(ID #{react_lead.get('ID_Lead')} · {r_phone})</span><br>
-                    <span style="color: #818cf8; font-size: 16px; font-weight: 500;">{r_prod} · {r_prov} · {r_dias} días sin contacto</span>
+                    <b style="color: #2B211A; font-size: 19px;">{r_name}</b> <span style="color: #786451; font-size: 16px;">(ID #{react_lead.get('ID_Lead')} · {r_phone})</span><br>
+                    <span style="color: #B18450; font-size: 16px; font-weight: 500;">{r_prod} · {r_prov} · {r_dias} días sin contacto</span>
                 </div>
                 <div style="text-align: right;">
-                    <span style="color: #38bdf8; font-weight: 800; font-size: 19px;">Score: {r_score} pts</span>
+                    <span style="color: #895522; font-weight: 800; font-size: 19px;">Score: {r_score} pts</span>
                 </div>
             </div>
             """, unsafe_allow_html=True)
@@ -1497,7 +1517,7 @@ elif page == "Reuniones & Fichas Técnicas":
     # 1. Tarjetas de KPI principales
     c1, c2, c3, c4 = st.columns(4)
     with c1:
-        render_kpi("Reuniones & Derivaciones", f"{m_kpis.total_reuniones_derivaciones:,}", f"{m_kpis.meets_agendados} Meets | {m_kpis.derivados_closers} Closers", "#38bdf8")
+        render_kpi("Reuniones & Derivaciones", f"{m_kpis.total_reuniones_derivaciones:,}", f"{m_kpis.meets_agendados} Meets | {m_kpis.derivados_closers} Closers", "#895522")
     with c2:
         render_kpi("Superficie Total Relevada", f"{int(m_kpis.superficie_total_ha):,} ha", "Hectáreas en seguimiento técnico", "#4ade80")
     with c3:
@@ -1511,7 +1531,7 @@ elif page == "Reuniones & Fichas Técnicas":
     st.markdown("""
     <div style="background: linear-gradient(135deg, rgba(15, 23, 42, 0.9), rgba(30, 41, 59, 0.8)); border: 1px solid #334155; border-radius: 14px; padding: 18px 22px; margin-bottom: 20px;">
         <div style="margin-bottom: 8px;">
-            <b style="color: #38bdf8; font-size: 18px;">Centro de Auditoría de Reuniones & Dossier Agronómico:</b>
+            <b style="color: #895522; font-size: 18px;">Centro de Auditoría de Reuniones & Dossier Agronómico:</b>
         </div>
         <div style="color: #cbd5e1; font-size: 16.5px; line-height: 1.6;">
             Esta sección extrae automáticamente cada encuentro coordinado (Google Meet, Zoom, llamadas técnicas) y releva los datos agronómicos del campo: <b>superficie en hectáreas, tipo de cultivo, sistema de riego existente y acuerdos de reunión</b>.
@@ -1524,11 +1544,11 @@ elif page == "Reuniones & Fichas Técnicas":
     else:
         # 2. Barra de Filtros Interactivos
         col_f1, col_f2, col_f3, col_f4 = st.columns([1.5, 1.2, 1.2, 1.5])
-        
+
         with col_f1:
             tipo_opts = ["Todos los Encuentros", "Meet / Zoom Agendado", "Derivación a Closer", "Dossier Técnico / Campo"]
             sel_tipo = st.selectbox("Filtrar por Tipo de Evento:", tipo_opts, index=0, key="meet_filter_tipo")
-            
+
         with col_f2:
             closers_list = sorted(list(df_meetings["Closer"].dropna().unique()))
             sel_closer = st.multiselect("Closer Asignado:", closers_list, default=closers_list, key="meet_filter_closer")
@@ -1565,7 +1585,7 @@ elif page == "Reuniones & Fichas Técnicas":
         cols_tbl = [c for c in cols_tbl if c in df_view.columns]
 
         st.caption(f"Mostrando **{len(df_view)}** reuniones y fichas técnicas identificadas. *(Haz clic en una fila para ver el Dossier Completo)*")
-        
+
         table_selection = st.dataframe(
             df_view[cols_tbl],
             width="stretch",
@@ -1622,32 +1642,32 @@ elif page == "Reuniones & Fichas Técnicas":
                     f'<div class="lead-profile-card">'
                     f'<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">'
                     f'<div>'
-                    f'<h3 style="margin: 0; font-size: 22px; font-weight: 700; color: #ffffff;">{m_nom}</h3>'
-                    f'<span style="color: #94a3b8; font-size: 16px;">ID #{selected_meeting.get("ID_Lead")} · {m_tel}</span>'
+                    f'<h3 style="margin: 0; font-size: 22px; font-weight: 700; color: #2B211A;">{m_nom}</h3>'
+                    f'<span style="color: #786451; font-size: 16px;">ID #{selected_meeting.get("ID_Lead")} · {m_tel}</span>'
                     f'</div>'
-                    f'<span class="status-badge" style="background: rgba(56, 189, 248, 0.2); color: #38bdf8; border-color: rgba(56, 189, 248, 0.4); font-size: 15px; font-weight: 700; padding: 6px 14px;">{m_tipo}</span>'
+                    f'<span class="status-badge" style="background: rgba(56, 189, 248, 0.2); color: #895522; border-color: rgba(56, 189, 248, 0.4); font-size: 15px; font-weight: 700; padding: 6px 14px;">{m_tipo}</span>'
                     f'</div>'
                     f'<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 16px;">'
-                    f'<div style="background: #090d16; padding: 12px 14px; border-radius: 10px; border: 1px solid #1e293b;">'
-                    f'<span style="font-size: 14px; color: #94a3b8; text-transform: uppercase; font-weight: 600;">Superficie</span><br>'
+                    f'<div style="background: #F7F1E6; padding: 12px 14px; border-radius: 10px; border: 1px solid #EFE5D6;">'
+                    f'<span style="font-size: 14px; color: #786451; text-transform: uppercase; font-weight: 600;">Superficie</span><br>'
                     f'<b style="font-size: 16.5px; color: #34d399;">{m_ha}</b>'
                     f'</div>'
-                    f'<div style="background: #090d16; padding: 12px 14px; border-radius: 10px; border: 1px solid #1e293b;">'
-                    f'<span style="font-size: 14px; color: #94a3b8; text-transform: uppercase; font-weight: 600;">Cultivo / Rubro</span><br>'
+                    f'<div style="background: #F7F1E6; padding: 12px 14px; border-radius: 10px; border: 1px solid #EFE5D6;">'
+                    f'<span style="font-size: 14px; color: #786451; text-transform: uppercase; font-weight: 600;">Cultivo / Rubro</span><br>'
                     f'<b style="font-size: 16.5px; color: #fbbf24;">{m_cult}</b>'
                     f'</div>'
-                    f'<div style="background: #090d16; padding: 12px 14px; border-radius: 10px; border: 1px solid #1e293b;">'
-                    f'<span style="font-size: 14px; color: #94a3b8; text-transform: uppercase; font-weight: 600;">Sistema & Riego</span><br>'
-                    f'<b style="font-size: 16.5px; color: #ffffff;">{m_tech}</b>'
+                    f'<div style="background: #F7F1E6; padding: 12px 14px; border-radius: 10px; border: 1px solid #EFE5D6;">'
+                    f'<span style="font-size: 14px; color: #786451; text-transform: uppercase; font-weight: 600;">Sistema & Riego</span><br>'
+                    f'<b style="font-size: 16.5px; color: #2B211A;">{m_tech}</b>'
                     f'</div>'
-                    f'<div style="background: #090d16; padding: 12px 14px; border-radius: 10px; border: 1px solid #1e293b;">'
-                    f'<span style="font-size: 14px; color: #94a3b8; text-transform: uppercase; font-weight: 600;">Closer Asignado</span><br>'
-                    f'<b style="font-size: 16.5px; color: #818cf8;">{m_closer}</b>'
+                    f'<div style="background: #F7F1E6; padding: 12px 14px; border-radius: 10px; border: 1px solid #EFE5D6;">'
+                    f'<span style="font-size: 14px; color: #786451; text-transform: uppercase; font-weight: 600;">Closer Asignado</span><br>'
+                    f'<b style="font-size: 16.5px; color: #B18450;">{m_closer}</b>'
                     f'</div>'
                     f'</div>'
                     f'<div style="background: rgba(99, 102, 241, 0.12); border: 1px solid rgba(99, 102, 241, 0.4); border-radius: 12px; padding: 16px 18px; margin-bottom: 16px;">'
-                    f'<div style="font-size: 14.5px; font-weight: 700; color: #818cf8; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px;">Acuerdo & Estado de la Reunión</div>'
-                    f'<div style="font-size: 16.5px; color: #f1f5f9; font-weight: 600; line-height: 1.5;">{m_acuerdo}</div>'
+                    f'<div style="font-size: 14.5px; font-weight: 700; color: #B18450; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px;">Acuerdo & Estado de la Reunión</div>'
+                    f'<div style="font-size: 16.5px; color: #2B211A; font-weight: 600; line-height: 1.5;">{m_acuerdo}</div>'
                     f'</div>'
                     f'</div>'
                 )
@@ -1668,7 +1688,7 @@ elif page == "Reuniones & Fichas Técnicas":
                 st.markdown("##### Historial de Conversación & Notas del Encuentro")
                 meet_lead_row = df_filtered[df_filtered["ID_Lead"] == selected_meeting.get("ID_Lead")]
                 lead_data_for_timeline = meet_lead_row.iloc[0] if not meet_lead_row.empty else selected_meeting
-                
+
                 timeline = get_lead_chat_timeline(lead_data_for_timeline)
                 if timeline:
                     chat_html = "<div class='wa-chat-box' style='max-height: 320px;'>"
@@ -1677,7 +1697,7 @@ elif page == "Reuniones & Fichas Técnicas":
                         sender = sanitize_display_name(item.get("sender", ""))
                         txt = item.get("text", "")
                         time_lbl = item.get("time", "")
-                        
+
                         if t_type == "whatsapp_out":
                             chat_html += (
                                 f'<div class="wa-bubble-out">'
@@ -1689,7 +1709,7 @@ elif page == "Reuniones & Fichas Técnicas":
                         elif t_type in ["whatsapp_in", "whatsapp_live"]:
                             chat_html += (
                                 f'<div class="wa-bubble-in">'
-                                f'<b style="color: #38bdf8;">{sender}</b><br>'
+                                f'<b style="color: #895522;">{sender}</b><br>'
                                 f'{txt}'
                                 f'<div class="wa-time">{time_lbl}</div>'
                                 f'</div>'
@@ -1724,13 +1744,13 @@ elif page == "Pauta & Conversión":
     col_p1, col_p2 = st.columns([1.3, 1.0])
     with col_p1:
         st.markdown("#### Rendimiento Publicitario por Línea de Producto")
-        
+
         tab_inv, tab_cpl, tab_conv = st.tabs([
             "Inversión ($ ARS)",
             "Costo por Lead (CPL)",
             "Conversaciones Generadas"
         ])
-        
+
         df_p = comm.df_product_summary.copy()
 
         with tab_inv:
@@ -1745,8 +1765,8 @@ elif page == "Pauta & Conversión":
                 textposition="auto",
                 marker=dict(
                     color=df_inv["Inversion_Total"],
-                    colorscale=[[0.0, "#0369a1"], [1.0, "#38bdf8"]],
-                    line=dict(color="#38bdf8", width=1),
+                    colorscale=[[0.0, "#0369a1"], [1.0, "#895522"]],
+                    line=dict(color="#895522", width=1),
                 ),
                 customdata=df_inv[["Pct_Inversion", "Conversaciones_Total", "CPL_Promedio"]],
                 hovertemplate=(
@@ -1757,18 +1777,18 @@ elif page == "Pauta & Conversión":
                 ),
             ))
             fig_inv.update_layout(
-                title=dict(text="Inversión Total por Producto ($ ARS y % del Total)", font=dict(size=16, color="#ffffff")),
-                template="plotly_dark",
+                title=dict(text="Inversión Total por Producto ($ ARS y % del Total)", font=dict(size=16, color="#2B211A")),
+                template="plotly_white",
                 paper_bgcolor="rgba(0,0,0,0)",
                 plot_bgcolor="rgba(15, 23, 42, 0.4)",
                 xaxis=dict(
                     title="Inversión Acumulada ($ ARS)",
                     tickprefix="$",
                     gridcolor="rgba(51, 65, 85, 0.4)",
-                    tickfont=dict(size=13, color="#94a3b8"),
+                    tickfont=dict(size=13, color="#786451"),
                 ),
                 yaxis=dict(
-                    tickfont=dict(size=14, color="#f1f5f9", weight=600),
+                    tickfont=dict(size=14, color="#2B211A", weight=600),
                     automargin=True,
                 ),
                 margin=dict(l=10, r=20, t=40, b=40),
@@ -1790,7 +1810,7 @@ elif page == "Pauta & Conversión":
                     color=df_cpl["CPL_Promedio"],
                     colorscale="Tealrose_r",
                     showscale=False,
-                    line=dict(color="#ffffff", width=0.5),
+                    line=dict(color="#2B211A", width=0.5),
                 ),
                 customdata=df_cpl[["Inversion_Total", "Conversaciones_Total"]],
                 hovertemplate=(
@@ -1801,18 +1821,18 @@ elif page == "Pauta & Conversión":
                 ),
             ))
             fig_cpl.update_layout(
-                title=dict(text="Costo por Lead Adquirido (Menor CPL = Mayor Eficiencia)", font=dict(size=16, color="#ffffff")),
-                template="plotly_dark",
+                title=dict(text="Costo por Lead Adquirido (Menor CPL = Mayor Eficiencia)", font=dict(size=16, color="#2B211A")),
+                template="plotly_white",
                 paper_bgcolor="rgba(0,0,0,0)",
                 plot_bgcolor="rgba(15, 23, 42, 0.4)",
                 xaxis=dict(
                     title="Costo por Lead ($ ARS / lead)",
                     tickprefix="$",
                     gridcolor="rgba(51, 65, 85, 0.4)",
-                    tickfont=dict(size=13, color="#94a3b8"),
+                    tickfont=dict(size=13, color="#786451"),
                 ),
                 yaxis=dict(
-                    tickfont=dict(size=14, color="#f1f5f9", weight=600),
+                    tickfont=dict(size=14, color="#2B211A", weight=600),
                     automargin=True,
                 ),
                 margin=dict(l=10, r=20, t=40, b=40),
@@ -1843,17 +1863,17 @@ elif page == "Pauta & Conversión":
                 ),
             ))
             fig_conv.update_layout(
-                title=dict(text="Volumen de Conversaciones Generadas por Producto", font=dict(size=16, color="#ffffff")),
-                template="plotly_dark",
+                title=dict(text="Volumen de Conversaciones Generadas por Producto", font=dict(size=16, color="#2B211A")),
+                template="plotly_white",
                 paper_bgcolor="rgba(0,0,0,0)",
                 plot_bgcolor="rgba(15, 23, 42, 0.4)",
                 xaxis=dict(
                     title="Conversaciones (Leads)",
                     gridcolor="rgba(51, 65, 85, 0.4)",
-                    tickfont=dict(size=13, color="#94a3b8"),
+                    tickfont=dict(size=13, color="#786451"),
                 ),
                 yaxis=dict(
-                    tickfont=dict(size=14, color="#f1f5f9", weight=600),
+                    tickfont=dict(size=14, color="#2B211A", weight=600),
                     automargin=True,
                 ),
                 margin=dict(l=10, r=20, t=40, b=40),
@@ -1919,7 +1939,7 @@ elif page == "Geografía & Territorio":
             st.markdown("#### Demanda por Provincia")
             top_prov_chart = prov_df.head(12).copy()
             max_val = float(top_prov_chart["Total_Leads"].max()) if not top_prov_chart.empty else 100
-            
+
             top_prov_chart["Etiqueta"] = top_prov_chart.apply(
                 lambda r: f" {int(r['Total_Leads'])} leads ({r['Tasa_Conversion_Pct']:.1f}%)", axis=1
             )
@@ -1942,12 +1962,12 @@ elif page == "Geografía & Territorio":
                     "Tasa_Conversion_Pct": "Conversión (%)",
                 },
                 title="Top 12 Provincias: Volumen y Tasa de Cierre",
-                template="plotly_dark"
+                template="plotly_white"
             )
             fig_prov.update_traces(
                 textposition="outside",
                 cliponaxis=False,
-                textfont=dict(size=14, color="#f8fafc"),
+                textfont=dict(size=14, color="#2B211A"),
                 hovertemplate="<b>%{y}</b><br>• Total Prospectos: <b>%{x}</b><br>• Tasa Conversión: <b>%{marker.color:.1f}%</b><extra></extra>",
             )
             fig_prov.update_coloraxes(showscale=False)
@@ -2013,7 +2033,7 @@ elif page in ["Informes mensuales & PDF", "Informes mensuales"]:
 elif page == "Calidad de datos":
     c1, c2 = st.columns(2)
     with c1:
-        render_kpi("Fuentes Conectadas", "2 / 2", "Leads + Comercial", "#38bdf8")
+        render_kpi("Fuentes Conectadas", "2 / 2", "Leads + Comercial", "#895522")
     with c2:
         render_kpi("Registros Totales", f"{len(master):,}", "Base CRM", "#10b981")
 

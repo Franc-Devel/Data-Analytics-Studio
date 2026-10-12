@@ -1,5 +1,5 @@
 """
-Nexo Analytics - Vista de CRM Estructurado, Ficha Única 360°, Pipeline y Tareas (Streamlit)
+FAUVOR Analytics - Vista de CRM Estructurado, Ficha Única 360°, Pipeline y Tareas (Streamlit)
 """
 
 import datetime
@@ -79,30 +79,30 @@ def render_crm_view(current_user: dict):
 
                 if customer:
                     st.divider()
-                    
+
                     # Encabezado 360°
                     col_h1, col_h2, col_h3 = st.columns([2, 1, 1])
                     with col_h1:
                         st.markdown(f"### {customer.full_name}")
                         st.markdown(f"**Teléfono:** `{customer.phone}` | **Email:** `{customer.email or 'No registrado'}`")
                         st.markdown(f"**Empresa:** {customer.company or 'Particular'} | **Ubicación:** {customer.locality or ''}, {customer.province or 'N/A'} ({customer.region or ''})")
-                    
+
                     with col_h2:
                         score_color = "#ef4444" if customer.lead_score >= 75 else "#f59e0b" if customer.lead_score >= 50 else "#64748b"
                         st.markdown(f"""
                         <div style="background: rgba(30, 41, 59, 0.8); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 14px; text-align: center;">
-                            <div style="font-size: 14.5px; color: #94a3b8; font-weight: 700; letter-spacing: 0.5px;">LEAD SCORE</div>
+                            <div style="font-size: 14.5px; color: #786451; font-weight: 700; letter-spacing: 0.5px;">LEAD SCORE</div>
                             <div style="font-size: 34px; font-weight: 800; color: {score_color}; margin: 4px 0;">{customer.lead_score}</div>
                             <div style="font-size: 16px; color: {score_color}; font-weight: 700;">{customer.segment}</div>
                         </div>
                         """, unsafe_allow_html=True)
-                    
+
                     with col_h3:
                         closer_name = customer.assigned_user.full_name if customer.assigned_user else "Sin Asignar"
                         st.markdown(f"""
                         <div style="background: rgba(30, 41, 59, 0.8); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 14px; text-align: center;">
-                            <div style="font-size: 14.5px; color: #94a3b8; font-weight: 700; letter-spacing: 0.5px;">CLOSER ASIGNADO</div>
-                            <div style="font-size: 18px; font-weight: 700; color: #38bdf8; margin-top: 4px;">{closer_name}</div>
+                            <div style="font-size: 14.5px; color: #786451; font-weight: 700; letter-spacing: 0.5px;">CLOSER ASIGNADO</div>
+                            <div style="font-size: 18px; font-weight: 700; color: #895522; margin-top: 4px;">{closer_name}</div>
                             <div style="font-size: 15px; color: #10b981; margin-top: 4px; font-weight: 600;">Estado: {customer.status}</div>
                         </div>
                         """, unsafe_allow_html=True)
@@ -223,7 +223,7 @@ def render_crm_view(current_user: dict):
                     # Sección de Actividad e Interacciones
                     st.markdown("#### Historial de Interacciones & Actividad Multicanal")
                     activities = customer.activities
-                    
+
                     col_act1, col_act2 = st.columns([2, 1])
                     with col_act1:
                         if not activities:
@@ -232,9 +232,9 @@ def render_crm_view(current_user: dict):
                             for act in activities[:10]:
                                 direction_tag = " [Entrante]" if act.direction == "INBOUND" else " [Saliente]"
                                 st.markdown(f"""
-                                <div style="background: rgba(15, 23, 42, 0.7); border-left: 4px solid #38bdf8; border-radius: 8px; padding: 12px 16px; margin-bottom: 10px;">
-                                    <div style="font-size: 15px; color: #94a3b8; font-weight: 700;"><b>CANAL: {act.channel}{direction_tag}</b> · {act.created_at.strftime('%Y-%m-%d %H:%M')}</div>
-                                    <div style="font-size: 17px; font-weight: 600; color: #f8fafc; margin-top: 4px;">{act.summary}</div>
+                                <div style="background: rgba(15, 23, 42, 0.7); border-left: 4px solid #895522; border-radius: 8px; padding: 12px 16px; margin-bottom: 10px;">
+                                    <div style="font-size: 15px; color: #786451; font-weight: 700;"><b>CANAL: {act.channel}{direction_tag}</b> · {act.created_at.strftime('%Y-%m-%d %H:%M')}</div>
+                                    <div style="font-size: 17px; font-weight: 600; color: #2B211A; margin-top: 4px;">{act.summary}</div>
                                     {f"<div style='font-size: 16px; color: #cbd5e1; margin-top: 6px; line-height: 1.5;'>{act.content}</div>" if act.content else ""}
                                 </div>
                                 """, unsafe_allow_html=True)
@@ -271,7 +271,7 @@ def render_crm_view(current_user: dict):
     with tab2:
         with get_db_session() as session:
             st.markdown("#### Pipeline Comercial de Oportunidades")
-            
+
             # Formulario para crear oportunidad
             with st.expander("Crear Nueva Oportunidad Comercial", expanded=False):
                 with st.form("form_new_opp"):
@@ -282,11 +282,11 @@ def render_crm_view(current_user: dict):
                         all_custs = search_customers(session=session, user_actor=current_user, limit=100)
                         opp_cust_dict = {f"{c.full_name} ({c.phone})": c.id for c in all_custs}
                         opp_cust_label = st.selectbox("Cliente / Prospecto", list(opp_cust_dict.keys()) if opp_cust_dict else ["Sin clientes"])
-                    
+
                     with c_col2:
                         opp_prod = st.selectbox("Producto", ["Sentek", "Davis", "Jardinería", "Raphael", "GSI"])
                         opp_amount = st.number_input("Monto Estimado ($ ARS)", min_value=0.0, step=50000.0, value=250000.0)
-                    
+
                     with c_col3:
                         opp_stage = st.selectbox("Etapa Inicial", ["PROSPECCION", "CONTACTADO", "REUNION_AGENDADA", "PROPUESTA_ENVIADA", "NEGOCIACION", "CERRADO_GANADO"])
                         # Closers
@@ -322,17 +322,17 @@ def render_crm_view(current_user: dict):
             stages = ["PROSPECCION", "CONTACTADO", "REUNION_AGENDADA", "PROPUESTA_ENVIADA", "NEGOCIACION", "CERRADO_GANADO"]
             cols = st.columns(len(stages))
             all_user_opps = get_opportunities_by_closer(session, closer_id=None, user_actor=current_user)
-            
+
             for i, stage_name in enumerate(stages):
                 with cols[i]:
                     opps = [o for o in all_user_opps if o.stage == stage_name]
                     total_stage_ars = sum(o.amount_ars for o in opps)
-                    
+
                     st.markdown(f"""
-                    <div style="background: rgba(30, 41, 59, 0.95); border-radius: 8px; padding: 10px 8px; text-align: center; border-bottom: 4px solid #38bdf8; margin-bottom: 12px;">
-                        <div style="font-size: 15.5px; font-weight: 700; color: #94a3b8; text-transform: uppercase;">{stage_name.replace('_', ' ')}</div>
-                        <div style="font-size: 18px; font-weight: 800; color: #f8fafc; margin: 4px 0;">${total_stage_ars:,.0f}</div>
-                        <div style="font-size: 14.5px; color: #38bdf8; font-weight: 600;">{len(opps)} ops</div>
+                    <div style="background: rgba(30, 41, 59, 0.95); border-radius: 8px; padding: 10px 8px; text-align: center; border-bottom: 4px solid #895522; margin-bottom: 12px;">
+                        <div style="font-size: 15.5px; font-weight: 700; color: #786451; text-transform: uppercase;">{stage_name.replace('_', ' ')}</div>
+                        <div style="font-size: 18px; font-weight: 800; color: #2B211A; margin: 4px 0;">${total_stage_ars:,.0f}</div>
+                        <div style="font-size: 14.5px; color: #895522; font-weight: 600;">{len(opps)} ops</div>
                     </div>
                     """, unsafe_allow_html=True)
 
@@ -340,7 +340,7 @@ def render_crm_view(current_user: dict):
                         with st.container():
                             st.markdown(f"""
                             <div style="background: rgba(15, 23, 42, 0.8); border: 1px solid rgba(255,255,255,0.12); border-radius: 8px; padding: 12px; margin-bottom: 10px;">
-                                <div style="font-size: 16.5px; font-weight: 700; color: #f8fafc;">{opp.title}</div>
+                                <div style="font-size: 16.5px; font-weight: 700; color: #2B211A;">{opp.title}</div>
                                 <div style="font-size: 15px; color: #cbd5e1; margin: 3px 0;">Cliente: {opp.customer.full_name if opp.customer else 'N/A'}</div>
                                 <div style="font-size: 16px; font-weight: 800; color: #10b981; margin-top: 4px;">${opp.amount_ars:,.0f} ARS</div>
                             </div>
@@ -358,7 +358,7 @@ def render_crm_view(current_user: dict):
                 with st.form("form_create_task"):
                     st.markdown("##### Nueva Tarea")
                     task_title = st.text_input("Título de la Tarea", placeholder="Ej: Enviar cotización actualizada")
-                    
+
                     all_custs = search_customers(session=session, user_actor=current_user, limit=100)
                     t_cust_dict = {f"{c.full_name} ({c.phone})": c.id for c in all_custs}
                     t_cust_label = st.selectbox("Cliente", list(t_cust_dict.keys()) if t_cust_dict else ["Sin clientes"])
@@ -366,7 +366,7 @@ def render_crm_view(current_user: dict):
                     t_type = st.selectbox("Tipo de Tarea", ["WHATSAPP", "LLAMADA", "REUNION", "PRESUPUESTO", "EMAIL"])
                     t_priority = st.selectbox("Prioridad", ["BAJA", "MEDIA", "ALTA", "URGENTE"])
                     t_due = st.date_input("Fecha Límite", datetime.date.today() + datetime.timedelta(days=1))
-                    
+
                     btn_save_task = st.form_submit_button("Crear Tarea", use_container_width=True)
                     if btn_save_task:
                         if not task_title or not task_title.strip():
@@ -392,22 +392,22 @@ def render_crm_view(current_user: dict):
             with col_t2:
                 pending_tasks = get_pending_tasks(session, user_actor=current_user)
                 st.markdown(f"##### Tareas Pendientes ({len(pending_tasks)})")
-                
+
                 if not pending_tasks:
                     st.info("No hay tareas pendientes. Todas las actividades están al día.")
                 else:
                     for task in pending_tasks:
                         is_overdue = task.due_date < datetime.datetime.now(datetime.timezone.utc).replace(tzinfo=None)
-                        badge_color = "#ef4444" if is_overdue or task.priority == "URGENTE" else "#f59e0b" if task.priority == "ALTA" else "#38bdf8"
-                        
+                        badge_color = "#ef4444" if is_overdue or task.priority == "URGENTE" else "#f59e0b" if task.priority == "ALTA" else "#895522"
+
                         col_tk1, col_tk2 = st.columns([4, 1])
                         with col_tk1:
                             st.markdown(f"""
                             <div style="background: rgba(30, 41, 59, 0.7); border-left: 5px solid {badge_color}; border-radius: 8px; padding: 12px 16px; margin-bottom: 8px;">
-                                <div style="font-size: 17px; font-weight: 700; color: #f8fafc;">{task.title}</div>
+                                <div style="font-size: 17px; font-weight: 700; color: #2B211A;">{task.title}</div>
                                 <div style="font-size: 15px; color: #cbd5e1; margin-top: 4px;">
-                                    Cliente: {task.customer.full_name if task.customer else 'N/A'} ({task.customer.phone if task.customer else ''}) | 
-                                    <b>Tipo:</b> {task.task_type} | 
+                                    Cliente: {task.customer.full_name if task.customer else 'N/A'} ({task.customer.phone if task.customer else ''}) |
+                                    <b>Tipo:</b> {task.task_type} |
                                     <span style="color: {badge_color}; font-weight: bold;">{'VENCIDA' if is_overdue else 'Vence'}: {task.due_date.strftime('%Y-%m-%d')}</span>
                                 </div>
                             </div>

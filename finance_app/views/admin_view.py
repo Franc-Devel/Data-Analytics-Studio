@@ -1,5 +1,5 @@
 """
-Nexo Analytics - Vista de Administración, Usuarios, Roles, Auditoría y Sincronización (Streamlit)
+FAUVOR Analytics - Vista de Administración, Usuarios, Roles, Auditoría y Sincronización (Streamlit)
 Disponible para administradores y gerentes corporativos.
 """
 
@@ -113,7 +113,7 @@ def render_admin_view(current_user: dict):
                 st.markdown("##### Configuración de Acceso y Estado")
                 with st.form("form_edit_cloud_account"):
                     new_nombre = st.text_input("Nombre Completo:", value=target_user.get("nombre", ""))
-                    
+
                     is_target_current_admin = (target_user.get("email") == current_user.get("email"))
                     is_target_admin = (str(target_user.get("rol")).lower() == "admin")
 
@@ -129,7 +129,7 @@ def render_admin_view(current_user: dict):
                             index=current_role_idx,
                             help="Solamente se permite un Administrador único en el sistema.",
                         )
-                    
+
                     new_active = st.checkbox(
                         "Cuenta Habilitada (Activa)",
                         value=bool(target_user.get("activo")),
@@ -165,17 +165,17 @@ def render_admin_view(current_user: dict):
             # Panel de Acciones Críticas (Reseteo y Eliminación Protegida)
             with col_op2:
                 st.markdown("##### Acciones de Seguridad")
-                
+
                 # 1. Reestablecer Contraseña
                 st.markdown("""
                 <div style="background: rgba(30, 41, 59, 0.7); border: 1px solid rgba(56, 189, 248, 0.25); border-radius: 8px; padding: 12px 14px; margin-bottom: 12px;">
-                    <div style="font-weight: 700; color: #38bdf8; font-size: 14px;">🔄 Reestablecer Contraseña</div>
-                    <div style="font-size: 12.5px; color: #94a3b8; margin-top: 4px;">
+                    <div style="font-weight: 700; color: #895522; font-size: 14px;">🔄 Reestablecer Contraseña</div>
+                    <div style="font-size: 12.5px; color: #786451; margin-top: 4px;">
                         Restablece la clave a la inicial (<code>Consultora2026!</code>) y activa la marca de reseteo. Al ingresar su mail, el usuario verá el cartel de aviso y deberá definir su clave personal.
                     </div>
                 </div>
                 """, unsafe_allow_html=True)
-                
+
                 if st.button(f"Reestablecer Clave de {target_user.get('nombre')}", use_container_width=True, key=f"btn_reset_{target_user['record_id']}"):
                     with st.spinner("Reestableciendo contraseña en Airtable..."):
                         ok_res, msg_res = admin_reset_user_password(
@@ -279,7 +279,7 @@ def render_admin_view(current_user: dict):
     with tab2:
         with get_db_session() as session:
             st.markdown("#### Registro de Auditoría Inmutable (Hash Chaining)")
-            
+
             # Verificación de Integridad Criptográfica
             from finance_app.db.audit_service import verify_audit_integrity
             col_v1, col_v2 = st.columns([3, 1])
@@ -331,7 +331,7 @@ def render_admin_view(current_user: dict):
         with get_db_session() as session:
             st.markdown("#### Reglas de Distribución de Leads")
             rules = session.query(AssignmentRule).order_by(AssignmentRule.priority_order.asc()).all()
-            
+
             rule_data = []
             for r in rules:
                 rule_data.append({
@@ -355,7 +355,7 @@ def render_admin_view(current_user: dict):
                     with r_col2:
                         r_score = st.slider("Score Mínimo Requerido", 0, 100, 0)
                         r_prio = st.number_input("Orden de Prioridad", min_value=1, value=len(rules) + 1)
-                        
+
                         closers = session.query(User).filter(User.role.in_(["closer", "admin", "manager"])).all()
                         closer_map = {c.full_name: c.id for c in closers}
                         r_closer_label = st.selectbox("Closer Destino", list(closer_map.keys()))
@@ -393,7 +393,7 @@ def render_admin_view(current_user: dict):
             with col_s1:
                 st.markdown("""
                 <div style="background: rgba(30, 41, 59, 0.7); border: 1px solid rgba(56, 189, 248, 0.25); border-radius: 12px; padding: 18px 20px;">
-                    <h5 style="color: #38bdf8; margin-bottom: 8px; font-size: 20px;">Importar desde Archivos Excel a BD</h5>
+                    <h5 style="color: #895522; margin-bottom: 8px; font-size: 20px;">Importar desde Archivos Excel a BD</h5>
                     <p style="font-size: 16.5px; color: #cbd5e1; line-height: 1.55;">Carga masivamente los datos de <code>Leeds orden.xlsx</code> y <code>Comercial.xlsx</code> hacia las tablas SQL.</p>
                 </div>
                 """, unsafe_allow_html=True)
@@ -402,7 +402,7 @@ def render_admin_view(current_user: dict):
                     with st.spinner("Importando bases de datos..."):
                         leads_path = cfg.resolve_leads_path()
                         comm_path = cfg.resolve_commercial_path()
-                        
+
                         created, updated = import_leads_excel_to_db(session, leads_path, user_actor=current_user["username"])
                         opps_count = import_commercial_excel_to_db(session, comm_path, user_actor=current_user["username"])
                         session.commit()

@@ -174,3 +174,12 @@ Data-Analytics-Studio/
 ## 📄 Licencia
 
 Este proyecto está bajo la Licencia **MIT**. Consulte el archivo [LICENSE](LICENSE) para más detalles. Desarrollado por **Francisco Delgado**.
+
+## Identidad FAUVOR y documentación actual
+
+**FAUVOR Analytics** forma parte del catálogo de seis productos FAUVOR. Análisis de datos e inteligencia comercial.
+
+- [Identidad, ejecución, validación y límites](docs/FAUVOR.md)
+- [FAUVOR Flow: automatizaciones para negocios](https://github.com/Franc-Devel/system-flow)
+
+La portada es conceptual. Las capacidades reales y las diferencias respecto de las demos se detallan en la documentación vinculada.

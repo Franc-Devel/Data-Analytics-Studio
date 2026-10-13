@@ -86,7 +86,7 @@ except RuntimeError as e:
 # Configuración de página
 st.set_page_config(
     page_title="FAUVOR Analytics · Intelligence & Reporting Suite",
-    page_icon="◈",
+    page_icon=str(Path(__file__).parent / "assets" / "fauvor" / "favicon.png"),
     layout="wide",
     initial_sidebar_state="expanded"
 )

@@ -29,3 +29,6 @@ Se revisaron los archivos de identidad y documentación. Las compilaciones React
 ## Autoría
 
 Proyecto presentado bajo la identidad FAUVOR y mantenido por Francisco Agustín Delgado. Se conservan el historial de Git, las licencias y las contribuciones acreditadas.
+
+## Identidad visual
+Cabecera de marca con escena vectorial específica del producto, marfil y bronce. Los fondos decorativos se mantienen separados de formularios, tablas y gráficos para preservar legibilidad. Adaptación a pantallas pequeñas sin animaciones intrusivas.
